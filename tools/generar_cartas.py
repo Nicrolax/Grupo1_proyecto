@@ -29,6 +29,7 @@ ORO = (232, 182, 40)
 ORO_OSC = (150, 100, 10)
 PIEL = (240, 200, 165)
 FUENTE = "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf"
+INDICE_PX = 27    # tamaño del número de la esquina (antes 19: se perdía al achicar la carta)
 # Ganchos para las barajas coleccionables (tools/barajas_temas.py los cambia para cada baraja):
 FONDO = None        # fondo(img, palo, numero): un dibujo apenas marcado detrás de la carta
 MARCO = None        # marco(d, palo): reemplaza el marco simple
@@ -395,21 +396,25 @@ def mascara_redondeada(w, h, radio):
 
 
 def indice(img, palo, numero):
+    """El índice de la esquina, grande y con contraste: es lo que se lee cuando la carta se ve chica."""
     d = ImageDraw.Draw(img)
-    f = fuente(19)
+    f = fuente(INDICE_PX)
     txt = str(numero)
-    col = COLOR[palo]
+    col = oscuro(COLOR[palo], 0.85)
     tw = d.textlength(txt, font=f)
-    x = s(15.5) - tw / 2
+    x = s(16.5) - tw / 2
 
     def dibujar(e):
         # el índice "corta" el marco, como en los naipes de verdad
-        e.rectangle([s(4), s(9), s(27), s(48)], fill=PAPEL + (255,))
-        e.text((x, s(9)), txt, font=f, fill=col + (255,))
+        e.rounded_rectangle([s(2.5), s(5), s(31), s(58)], radius=s(4), fill=PAPEL + (255,))
+        # contorno claro del número (se separa del papel aun achicado) y el número
+        for ox, oy in ((-1, 0), (1, 0), (0, -1), (0, 1)):
+            e.text((x + ox * s(0.6), s(4.5) + oy * s(0.6)), txt, font=f, fill=claro(col, 0.75) + (255,))
+        e.text((x, s(4.5)), txt, font=f, fill=col + (255,))
         if palo in ("espada", "basto"):
-            SIMBOLO[palo](e, 15.5, 39, 8.5)
+            SIMBOLO[palo](e, 16.5, 46.5, 10.5)
         else:
-            SIMBOLO[palo](e, 15.5, 39, 6.5)
+            SIMBOLO[palo](e, 16.5, 46.5, 8.2)
 
     dibujar(d)
     capa = Image.new("RGBA", (W, H), (0, 0, 0, 0))
@@ -441,7 +446,7 @@ def carta(palo, numero):
     (MARCO or marco)(d, palo)
     indice(img, palo, numero)
     d = ImageDraw.Draw(img)
-    x0, y0, x1, y1 = 26, 40, CW - 26, CH - 40
+    x0, y0, x1, y1 = 34, 44, CW - 34, CH - 44
     if numero == 1:
         cx, cy = CW / 2, CH / 2
         if palo == "oro":

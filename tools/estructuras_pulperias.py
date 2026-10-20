@@ -515,13 +515,7 @@ def cabana(estilo="taiga"):
                 if ("grass_block" in b or "snow_block" in b) and t.get(x, FL + 1, z) in (None, AIR):
                     t.set(x, FL + 1, z, st("snow", layers=str(t.r.choice([1, 1, 2]))))
         for x, z in ((21, 17), (3, 19)):
-            for y in range(h(1), h(7)):
-                t.set(x, y, z, st("spruce_log", axis="y"))
-            for y, r in ((h(3), 2), (h(4), 2), (h(5), 1), (h(6), 1), (h(7), 0)):
-                for dx in range(-r, r + 1):
-                    for dz in range(-r, r + 1):
-                        if abs(dx) + abs(dz) <= r + 1 and t.get(x + dx, y, z + dz) in (None, AIR):
-                            t.set(x + dx, y, z + dz, st("spruce_leaves", distance="1", persistent="true"))
+            AR.arbol(t, x, z, "pino", alto=7, semilla=x * 13 + z)
         t.farol(9, h(3), 3, alma=False)
         gente(t, [(5, h(1), 3, "PAISANO", 2), (12, h(1), 9, "PEON", 3)])
     elif estilo == "bosque":
@@ -699,15 +693,122 @@ def serrana():
     return t
 
 
+# ================================================================ profundidad y terreno (ver estructuras_detalle.py)
+
+import estructuras_detalle as D   # noqa: E402
+import estructuras_arboles as AR   # noqa: E402
+
+FLORES_VENTANA = ["poppy", "dandelion", "cornflower", "oxeye_daisy", "azure_bluet"]
+
+
+def _remate(mat):
+    return lambda afuera: D.escalon(mat, OPUESTO[afuera], "top")
+
+
+def _con_detalle(fabrica, nombre):
+    def hacer():
+        t = fabrica()
+        g = DETALLE[nombre]
+        x0, z0, x1, z1 = g["caja"]
+        y0, y1 = g["muro"]
+        if g.get("desgaste"):
+            D.desgaste(t, x0 - 1, y0 - 1, z0 - 1, x1 + 1, y1, z1 + 1, g["desgaste"])
+        if g.get("zocalo"):
+            D.zocalo(t, x0, z0, x1, z1, y0, g["zocalo"])
+        if g.get("pilastra"):
+            D.pilastras(t, x0, z0, x1, z1, y0 + (1 if g.get("zocalo") else 0), y1 - 1, g["pilastra"], g.get("paso", 4),
+                        _remate(g["capitel"]) if g.get("capitel") else None)
+        if g.get("esquina"):
+            D.esquinas(t, x0, z0, x1, z1, y0, y1, g["esquina"], g.get("remate"))
+        if g.get("cornisa"):
+            D.cornisa(t, x0, z0, x1, z1, g.get("y_cornisa", y1), g["cornisa"])
+        if g.get("mensula"):
+            D.mensulas(t, x0, z0, x1, z1, g["y_mensula"], g["mensula"])
+        if g.get("ventana"):
+            D.ventanas(t, g["ventana"], FLORES_VENTANA if g.get("flores", True) else None)
+        if g.get("zapata"):
+            D.zapatas(t, g["zapata"])
+        if g.get("variar"):
+            D.variar(t, g["variar"], g.get("prob_variar", 0.18))
+        if g.get("alero"):
+            D.espesor_alero(t, g["alero"])
+        if g.get("enredadera"):
+            D.enredaderas(t, x0, z0, x1, z1, y0 + 1, y1, g["enredadera"])
+        sx, sy, sz = t.size
+        D.paisaje(t, (0, 0, sx - 1, sz - 1), g["paisaje"], evitar=g.get("evitar", ()))
+        for px, pz in g.get("faroles", ()):
+            D.poste_farol(t, px, pz, cerco=g.get("cerco", W + "spruce_fence"), base=g.get("base_farol"))
+        for lx, lz in g.get("lenia", ()):
+            D.lenia(t, lx, lz, 3, g.get("madera", "spruce"))
+        # postigos en las ventanas y faroles colgando a los lados de las puertas
+        if g.get("postigo", True):
+            D.postigos(t, g.get("madera_postigo", g.get("madera", "spruce")))
+        D.faroles_puerta(t)
+        # un árbol de verdad (tronco, raíces, ramas y copa irregular) donde entre sin tapar nada
+        if g.get("arbol"):
+            especie, cuantos = g["arbol"]
+            AR.plantar_donde_entre(t, especie, cuantos, evitar=g.get("evitar", ()) + (g["caja"],),
+                                   semilla=len(nombre) * 97)
+        return t
+    return hacer
+
+
+DETALLE = {
+    "llanura": dict(arbol=("roble", 1), alero="dark_oak", zapata="spruce", enredadera=0.10, variar={W + "brick_slab": [W + "granite_slab", W + "polished_granite_slab"], W + "polished_granite": [W + "granite", W + "terracotta"]}, caja=(1, 4, 17, 16), muro=(h(1), h(5)), zocalo="stone_brick", pilastra=W + "quartz_pillar[axis=y]",
+                    capitel="smooth_quartz", paso=4, esquina=W + "stone_bricks", remate=W + "stone_brick_slab[type=bottom,waterlogged=false]",
+                    cornisa="smooth_quartz", y_cornisa=h(4), ventana="smooth_quartz", paisaje="pradera",
+                    desgaste={W + "smooth_quartz": [W + "quartz_block", W + "polished_diorite", W + "white_concrete"],
+                              W + "stone_bricks": [W + "mossy_stone_bricks", W + "cracked_stone_bricks"]},
+                    evitar=((6, 0, 11, 3), (17, 0, 19, 19)), faroles=((5, 0), (12, 0)), base_farol=W + "stone_bricks"),
+    "sabana": dict(arbol=("espinillo", 2), zapata="acacia", variar={W + "hay_block": [W + "hay_block"]}, caja=(2, 5, 16, 15), muro=(h(1), h(4)), zocalo="brick", pilastra=W + "stripped_acacia_log[axis=y]",
+                   paso=4, esquina=W + "acacia_log[axis=y]", cornisa="acacia", y_cornisa=h(4), ventana="acacia",
+                   paisaje="sabana", desgaste={W + "terracotta": [W + "brown_terracotta", W + "white_terracotta"]},
+                   evitar=((7, 0, 11, 4),), faroles=((6, 0), (12, 0)), cerco=W + "acacia_fence", madera="acacia",
+                   lenia=((1, 17),)),
+    "desierto": dict(zapata="jungle", caja=(2, 6, 18, 17), muro=(h(1), h(5)), zocalo="sandstone", pilastra=W + "cut_sandstone",
+                     capitel="smooth_sandstone", paso=4, esquina=W + "chiseled_sandstone", remate=W + "sandstone_wall",
+                     cornisa="smooth_sandstone", y_cornisa=h(6), ventana="smooth_sandstone", flores=False,
+                     paisaje="seco", evitar=((8, 0, 12, 5),), faroles=((7, 0), (13, 0)), cerco=W + "jungle_fence",
+                     base_farol=W + "chiseled_sandstone",
+                     desgaste={W + "smooth_sandstone": [W + "sandstone", W + "cut_sandstone"]}),
+    "mesa": dict(arbol=("espinillo", 1), zapata="jungle", caja=(2, 6, 18, 17), muro=(h(1), h(5)), zocalo="red_sandstone", pilastra=W + "cut_red_sandstone",
+                 capitel="smooth_red_sandstone", paso=4, esquina=W + "chiseled_red_sandstone", remate=W + "red_sandstone_wall",
+                 cornisa="smooth_red_sandstone", y_cornisa=h(6), ventana="smooth_red_sandstone", flores=False,
+                 paisaje="seco", evitar=((8, 0, 12, 5),), faroles=((7, 0), (13, 0)), cerco=W + "jungle_fence",
+                 base_farol=W + "chiseled_red_sandstone",
+                 desgaste={W + "smooth_red_sandstone": [W + "red_sandstone", W + "cut_red_sandstone"]}),
+    "taiga": dict(arbol=("pino", 3), zapata="spruce", alero="dark_oak", caja=(2, 5, 16, 15), muro=(h(1), h(4)), zocalo="cobblestone", esquina=W + "spruce_log[axis=y]",
+                  mensula=W + "spruce_fence", y_mensula=h(3), ventana="spruce", paisaje="bosque",
+                  evitar=((7, 0, 11, 4),), faroles=((6, 0), (12, 0)), base_farol=W + "cobblestone",
+                  desgaste={W + "cobblestone": [W + "mossy_cobblestone", W + "andesite"]}, lenia=((1, 18), (12, 19))),
+    "bosque": dict(arbol=("roble", 2), zapata="dark_oak", enredadera=0.15, alero="spruce", caja=(2, 5, 16, 15), muro=(h(1), h(4)), zocalo="cobblestone", esquina=W + "oak_log[axis=y]",
+                   mensula=W + "dark_oak_fence", y_mensula=h(3), ventana="oak", paisaje="bosque",
+                   evitar=((7, 0, 11, 4),), faroles=((6, 0), (12, 0)), cerco=W + "dark_oak_fence", base_farol=W + "mossy_cobblestone",
+                   desgaste={W + "cobblestone": [W + "mossy_cobblestone", W + "mossy_stone_bricks"]}, madera="oak",
+                   lenia=((1, 18),)),
+    "nevada": dict(arbol=("pino", 2), zapata="spruce", alero="dark_oak", caja=(2, 5, 16, 15), muro=(h(1), h(4)), zocalo="cobblestone", esquina=W + "spruce_log[axis=y]",
+                   mensula=W + "spruce_fence", y_mensula=h(3), ventana="spruce", flores=False, paisaje="nieve",
+                   evitar=((7, 0, 11, 4),), faroles=((6, 0), (12, 0)), base_farol=W + "stone_bricks",
+                   desgaste={W + "cobblestone": [W + "stone", W + "andesite"]}),
+    "pantano": dict(arbol=("sauce", 2), alero="spruce", zapata="dark_oak", enredadera=0.20, caja=(3, 7, 17, 17), muro=(FL + 3, FL + 6), mensula=W + "dark_oak_fence", y_mensula=FL + 5,
+                    ventana="dark_oak", flores=False, paisaje="humedo", evitar=((8, 0, 12, 2),)),
+    "selva": dict(arbol=("monte", 2), alero="jungle", zapata="jungle", enredadera=0.25, caja=(3, 7, 17, 17), muro=(FL + 3, FL + 6), mensula=W + "jungle_fence", y_mensula=FL + 5,
+                  ventana="jungle", flores=False, paisaje="humedo", evitar=((8, 0, 12, 2),)),
+    "serrana": dict(arbol=("pino", 2), alero="spruce", zapata="spruce", variar={W + "stone_brick_slab": [W + "andesite_slab", W + "cobblestone_slab"], W + "stone_brick_stairs": [W + "andesite_stairs", W + "cobblestone_stairs"]}, prob_variar=0.2, caja=(2, 5, 16, 15), muro=(h(1), h(4)), zocalo="cobblestone", esquina=W + "stone_bricks",
+                    remate=W + "stone_brick_wall", mensula=W + "spruce_fence", y_mensula=h(3), ventana="stone_brick",
+                    paisaje="sierra", evitar=((7, 0, 11, 4),), faroles=((6, 0), (12, 0)), base_farol=W + "cobblestone",
+                    desgaste={W + "cobblestone": [W + "mossy_cobblestone", W + "andesite", W + "stone"]}),
+}
+
 ESTILOS = {
-    "llanura": llanura,
-    "sabana": sabana,
-    "desierto": lambda: desierto(False),
-    "mesa": lambda: desierto(True),
-    "taiga": lambda: cabana("taiga"),
-    "bosque": lambda: cabana("bosque"),
-    "nevada": lambda: cabana("nevada"),
-    "pantano": lambda: palafito("pantano"),
-    "selva": lambda: palafito("selva"),
-    "serrana": serrana,
+    "llanura": _con_detalle(llanura, "llanura"),
+    "sabana": _con_detalle(sabana, "sabana"),
+    "desierto": _con_detalle(lambda: desierto(False), "desierto"),
+    "mesa": _con_detalle(lambda: desierto(True), "mesa"),
+    "taiga": _con_detalle(lambda: cabana("taiga"), "taiga"),
+    "bosque": _con_detalle(lambda: cabana("bosque"), "bosque"),
+    "nevada": _con_detalle(lambda: cabana("nevada"), "nevada"),
+    "pantano": _con_detalle(lambda: palafito("pantano"), "pantano"),
+    "selva": _con_detalle(lambda: palafito("selva"), "selva"),
+    "serrana": _con_detalle(serrana, "serrana"),
 }

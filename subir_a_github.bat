@@ -36,7 +36,11 @@ git config core.autocrlf true
 
 echo Preparando los archivos...
 git add -A >> "%LOG%" 2>&1
-git commit -q -m "Truco Ya 1.7.0: voces de los Fundadores, desafios del dia, modo trailer y documentacion completa" >> "%LOG%" 2>&1
+set "VER="
+for /f "tokens=2 delims==" %%v in ('findstr /b "mod_version" gradle.properties') do set "VER=%%v"
+set "MSG=Truco Ya !VER!"
+if exist "mensaje_commit.txt" set /p MSG=<mensaje_commit.txt
+git commit -q -m "!MSG!" >> "%LOG%" 2>&1
 echo COMMIT_EXIT !ERRORLEVEL! >> "%LOG%"
 
 echo Conectando con GitHub...

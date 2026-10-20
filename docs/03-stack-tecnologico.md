@@ -40,6 +40,7 @@ Así todo el contenido es original y se puede volver a generar.
 | **Python 3** con **NumPy**, **SciPy** y **Pillow** | Texturas (las 10 barajas de 40 cartas, ítems, bloques) y plantillas de estructuras `.nbt` (pulperías, estancia, Salamanca). |
 | **sherpa-onnx** (Kokoro, Piper, Whisper, GTCRN), **ONNX Runtime**, **pyworld**, **librosa** | Voces de los cantos y de los personajes con síntesis neuronal. Control de calidad con reconocimiento de voz (Whisper) y nota de oyente (DNSMOS). Limpieza de las grabaciones reales de los Fundadores (GTCRN). |
 | **FFmpeg** | Conversión de audio a OGG Vorbis, el formato de Minecraft. |
+| **nbtlib** + `tools/vista_estructuras.py` | Escribir las plantillas de estructuras (`.nbt`) y dibujarlas en isométrico, con las texturas de Minecraft, para revisarlas sin abrir el juego. |
 
 Dependencias: `tools/requirements.txt`. Los modelos de voz se descargan solos a `tools/.modelos/`, que no
 se sube al repositorio.

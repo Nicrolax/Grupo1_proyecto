@@ -13,8 +13,8 @@ un dibujo apenas marcado detrás de cada carta y un dorso propio (diseños origi
   sierra       perfil de cerros arriba y abajo; dorso: sierras en capas al anochecer y un cóndor
   fundadores   estrellas en las esquinas; dorso: los cuatro colores de los Fundadores, un mate y sus iniciales
 
-Genera textures/gui/cartas_<clave>.png (1280 x 960, cartas de 128 x 192, para el tapete) y
-textures/block/cartas_<clave>.png (640 x 480, para las cartas sobre la mesa en el mundo).
+Genera textures/gui/cartas_<clave>.png (1280 x 960, cartas de 128 x 192). La misma textura, con mipmaps,
+se usa en el tapete y para las cartas sobre la mesa en el mundo.
 Uso: python3 tools/barajas_temas.py [clave ...]
 """
 import math, os, sys
@@ -747,11 +747,8 @@ def main(claves):
     for clave in claves:
         a = atlas(clave)
         gui = os.path.join(TEX, "gui", f"cartas_{clave}.png")
-        mundo = os.path.join(TEX, "block", f"cartas_{clave}.png")
         os.makedirs(os.path.dirname(gui), exist_ok=True)
-        os.makedirs(os.path.dirname(mundo), exist_ok=True)
         a.save(gui, optimize=True)
-        a.resize((a.width // 2, a.height // 2), Image.LANCZOS).save(mundo, optimize=True)
         print("baraja", clave, "->", os.path.getsize(gui) // 1024, "KB")
 
 

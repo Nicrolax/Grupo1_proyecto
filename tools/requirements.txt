@@ -9,3 +9,4 @@ onnxruntime>=1.16
 sherpa-onnx>=1.10
 pyworld>=0.3
 noisereduce>=3.0
+nbtlib>=2.0

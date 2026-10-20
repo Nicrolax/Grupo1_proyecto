@@ -31,8 +31,24 @@ if __name__ == "__main__":
             os.remove(p)
     for nombre, fabrica in ESTILOS.items():
         fabrica().save("pulperia", nombre + ".nbt")
-    guarida().save("guarida.nbt")
-    estancia().save("estancia.nbt")
+    import estructuras_detalle as D
+    g = guarida()
+    D.zapatas(g, "dark_oak")
+    D.variar(g, {"minecraft:stone_bricks": ["minecraft:cracked_stone_bricks", "minecraft:mossy_stone_bricks"],
+                 "minecraft:cobblestone": ["minecraft:mossy_cobblestone"]}, 0.15)
+    g.save("guarida.nbt")
+    e = estancia()
+    D.zapatas(e, "dark_oak")
+    D.espesor_alero(e, "dark_oak")
+    D.variar(e, {"minecraft:brick_slab": ["minecraft:granite_slab", "minecraft:polished_granite_slab"],
+                 "minecraft:brick_stairs": ["minecraft:granite_stairs"],
+                 "minecraft:stone_bricks": ["minecraft:mossy_stone_bricks", "minecraft:cracked_stone_bricks"]}, 0.15)
+    D.ventanas(e, "smooth_quartz")
+    D.postigos(e, "spruce")
+    D.faroles_puerta(e)
+    sx, sy, sz = e.size
+    D.paisaje(e, (0, 0, sx - 1, sz - 1), "pradera", matas=False)
+    e.save("estancia.nbt")
     ruina().save("paso_animas.nbt")
     salamanca().save("salamanca.nbt")
     loot("guarida", [

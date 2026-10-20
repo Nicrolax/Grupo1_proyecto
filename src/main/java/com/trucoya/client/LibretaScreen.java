@@ -309,7 +309,7 @@ public class LibretaScreen extends Screen {
 
     /** Una carta del atlas de esa baraja (columna y fila del atlas; fila 4, columna 0 = el dorso). */
     private void carta(MatrixStack ms, Baraja b, int col, int fila, int x, int y, int w, int h, float luz) {
-        this.minecraft.getTextureManager().bind(b.atlasGui());
+        CartasTextura.usar(b.atlasGui());
         RenderSystem.enableBlend();
         RenderSystem.defaultBlendFunc();
         RenderSystem.color4f(luz, luz, luz, 1.0F);

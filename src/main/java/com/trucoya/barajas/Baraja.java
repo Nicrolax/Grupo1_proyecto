@@ -4,8 +4,8 @@ import net.minecraft.util.ResourceLocation;
 
 /**
  * Las barajas coleccionables. Cada una tiene su dibujo completo (las 40 cartas y el dorso):
- * tools/generar_cartas.py las pinta en textures/gui/cartas_&lt;clave&gt;.png (alta resolución, para el tapete)
- * y textures/block/cartas_&lt;clave&gt;.png (más chica, para las cartas sobre la mesa en el mundo).
+ * tools/barajas_temas.py las pinta en textures/gui/cartas_&lt;clave&gt;.png (alta resolución). La misma textura,
+ * con mipmaps (client.CartasTextura), sirve para el tapete y para las cartas sobre la mesa en el mundo.
  * El orden importa: es el número que se guarda (no cambiarlo, solo agregar al final).
  */
 public enum Baraja {
@@ -44,11 +44,6 @@ public enum Baraja {
     /** Atlas grande (1280 x 960, cartas de 128 x 192) para el tapete. */
     public ResourceLocation atlasGui() {
         return new ResourceLocation("trucoya", "textures/gui/cartas_" + clave + ".png");
-    }
-
-    /** Atlas chico (640 x 480, cartas de 64 x 96) para las cartas apoyadas en la mesa del mundo. */
-    public ResourceLocation atlasMundo() {
-        return new ResourceLocation("trucoya", "textures/block/cartas_" + clave + ".png");
     }
 
     public static Baraja de(int i) {

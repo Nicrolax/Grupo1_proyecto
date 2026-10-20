@@ -6,6 +6,11 @@ cd /d "%~dp0"
 set "LOG=%~dp0armar_jar_log.txt"
 set "GECKO=3.0.106"
 echo ==== Truco Ya: armar el .jar %date% %time% ==== > "%LOG%"
+rem archivos que una actualizacion dejo de usar (lista en borrar.txt)
+if exist "borrar.txt" (
+  for /f "usebackq delims=" %%f in ("borrar.txt") do if exist "%%f" del /q "%%f"
+  del /q "borrar.txt"
+)
 set "JDKDIR="
 for /d %%D in ("%~dp0.jdk\jdk8*") do set "JDKDIR=%%~fD"
 if not defined JDKDIR (

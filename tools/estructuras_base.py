@@ -51,6 +51,8 @@ class Template:
         self.size = (sx, sy, sz)
         self.blocks = {}
         self.entities = []
+        self.ventanas = []          # (x, y, z, afuera, alto): para ponerles alféizar y guardapolvo
+        self.puertas = []           # (x, y, z, facing): para los faroles de la entrada
         self.r = random.Random(seed)
 
     # ------------------------------------------------------------ básicos
@@ -154,6 +156,7 @@ class Template:
         """Ventana con reja en un muro; 'afuera' es la dirección hacia el exterior (north/south/east/west)."""
         for h in range(alto):
             self.set(x, y + h, z, reja)
+        self.ventanas.append((x, y, z, afuera, alto))
         if dintel:
             self.set(x, y + alto, z, dintel)
         if postigo:
@@ -168,6 +171,7 @@ class Template:
                                  f"powered=false,waterlogged=false]")
 
     def puerta(self, x, y, z, facing, madera="dark_oak", hinge="left"):
+        self.puertas.append((x, y, z, facing))
         self.set(x, y, z, f"minecraft:{madera}_door[facing={facing},half=lower,hinge={hinge},open=false,powered=false]")
         self.set(x, y + 1, z, f"minecraft:{madera}_door[facing={facing},half=upper,hinge={hinge},open=false,powered=false]")
 
@@ -274,25 +278,9 @@ class Template:
                         self.set(x, y, z, b)
 
     def ombu(self, cx, cz):
-        """Ombú: tronco grueso con raíces a la vista y una copa ancha y baja."""
-        tronco = "minecraft:dark_oak_wood[axis=y]"
-        hoja = "minecraft:dark_oak_leaves[distance=1,persistent=true]"
-        for dx in (0, 1):
-            for dz in (0, 1):
-                for y in range(FL + 1, FL + 6):
-                    self.set(cx + dx, y, cz + dz, tronco)
-        for dx, dz in ((-1, 0), (2, 1), (0, -1), (1, 2), (-1, 1), (2, 0)):
-            self.set(cx + dx, FL + 1, cz + dz, tronco)                       # raíces
-        for dx, dz in ((-2, 0), (3, 1), (1, -2), (0, 3)):
-            self.set(cx + dx, FL + 4, cz + dz, "minecraft:dark_oak_wood[axis=x]" if dx else
-                     "minecraft:dark_oak_wood[axis=z]")                      # ramas
-        for y, rad in ((FL + 5, 4.2), (FL + 6, 4.6), (FL + 7, 3.6), (FL + 8, 2.2)):
-            for dx in range(-5, 7):
-                for dz in range(-5, 7):
-                    d = ((dx - 0.5) ** 2 + (dz - 0.5) ** 2) ** 0.5
-                    if d <= rad and self.r.random() > 0.08:
-                        if self.get(cx + dx, y, cz + dz) in (None, AIR):
-                            self.set(cx + dx, y, cz + dz, hoja)
+        """Ombú: tronco enorme con raíces a la vista y una copa ancha y baja (ver estructuras_arboles.py)."""
+        import estructuras_arboles as A
+        A.arbol(self, cx, cz, "ombu", semilla=cx * 31 + cz)
 
     # --- conexiones: las plantillas de aldea se colocan sin recalcular formas, así que
     #     los paneles, rejas, cercos y muros deben guardarse ya conectados.

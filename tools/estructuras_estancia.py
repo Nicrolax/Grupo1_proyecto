@@ -35,7 +35,9 @@ def arbol(t, x, z, tronco, hoja, alto=7, radio=2):
 
 
 def eucalipto(t, x, z):
-    arbol(t, x, z, st("birch_log", axis="y"), st("oak_leaves", distance="1", persistent="true"), alto=9, radio=2)
+    """Eucalipto: tronco blanco, alto y finito, con la copa arriba (ver estructuras_arboles.py)."""
+    import estructuras_arboles as AR
+    AR.arbol(t, x, z, "eucalipto", alto=10, semilla=x * 101 + z)
 
 
 def naranjo(t, x, z):

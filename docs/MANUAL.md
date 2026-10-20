@@ -340,6 +340,38 @@ Mandinga en la mesa. Las plantillas de día y de noche: `tools/estructuras_paso.
 Comandos de prueba (operadores): `/truco salamanca visita` (que venga el Vizcacha ahora),
 `/truco salamanca partida` (directo al Paso, de noche), `/truco salamanca cancelar`.
 
+## Cartas más claras y estructuras con profundidad (1.7.1)
+
+**Cartas que se leen bien:**
+- Las cartas del tapete y las de la mesa usan la misma textura grande (128 x 192 por carta) **con mipmaps y filtro suave** (`client/CartasTextura.java`): se ven nítidas en cualquier tamaño y no titilan de lejos.
+- Sobre la mesa son más grandes (0,21 x 0,315 bloques), cada baza a su altura para que no se pisen. Tienen una luz mínima, así que se leen también de noche o dentro de un rancho oscuro.
+- En la vista compacta del tapete, las cartas crecen con la pantalla (hasta 56 x 84).
+- **Las bazas en pantalla:** arriba al centro se ven derechas y grandes las cartas jugadas en la mano, una columna por baza. Cada carta lleva el nombre de quien la tiró, el rótulo dice de quién fue cada baza, y un marco dorado indica a quién le toca tirar.
+- **Lupa:** al pasar el mouse por una carta de la mano o de las bazas, se ve en grande.
+- El número de cada carta es más grande y grueso, y se lee aunque la carta esté chica.
+
+**Estructuras con profundidad.** Todas las pulperías, la Estancia y la Guarida tienen ahora una pasada de detalle (`tools/estructuras_detalle.py`), con las técnicas de los grandes constructores de Minecraft:
+- zócalo saliente de escalones y pilares de esquina adelantados;
+- pilastras con capitel que marcan el ritmo de la fachada;
+- cornisa bajo el techo, y alero con espesor (losas invertidas bajo el borde del techo);
+- ménsulas y zapatas (escalones invertidos) donde los postes sostienen vigas y techos;
+- ventanas con alféizar, guardapolvo y flores al pie;
+- materiales mezclados y gastados: tejas de dos tonos, piedra con musgo y grietas, revoque con manchas;
+- enredaderas en algunos paños;
+- postigos abiertos a los costados de las ventanas y faroles colgando a los lados de las puertas;
+- **árboles orgánicos** (`tools/estructuras_arboles.py`): el ombú tiene tronco enorme, raíces que se hunden en el pasto, ramas y una copa ancha e irregular; también hay eucaliptos altos de tronco blanco en la Estancia y pinos por pisos en la nieve;
+- terreno vivo: manchas de tierra, grava y podzol, pasto alto, helechos, matas, piedras sueltas, postes con farol y pilas de leña.
+
+Nada de esto toca lo que importa para jugar: mesas, sillas, puertas, carteles y personajes quedan donde estaban, y donde hay gente o animales no crece nada.
+
+**Vista previa de estructuras sin abrir el juego:**
+
+```
+python3 tools/vista_estructuras.py plantilla.nbt salida.png [--girar 0-3] [--escala 16]
+```
+
+Dibuja la plantilla en isométrico con las texturas de Minecraft.
+
 ## Barajas coleccionables (1.6.0)
 
 Diez barajas españolas completas, cada una con su papel, sus colores, su marco, un dibujo apenas marcado

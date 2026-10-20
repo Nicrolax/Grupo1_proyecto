@@ -91,8 +91,9 @@ public class TapeteScreen extends Screen {
     }
 
     // medidas de la vista compacta
-    private static final int MANO_W = 34, MANO_H = 51;
-    private static final int MUESTRA_W = 24, MUESTRA_H = 36;
+    /** Tamaño de las cartas en la vista compacta: crece con la pantalla (mínimo 34 x 51). */
+    private int manoW = 34, manoH = 51;
+    private int muestraW = 24, muestraH = 36;
     private static final int BOTON_W = 66, BOTON_H = 14;
 
     private int left;
@@ -119,6 +120,10 @@ public class TapeteScreen extends Screen {
 
     @Override
     protected void init() {
+        manoH = Math.max(51, Math.min(84, (int) (this.height * 0.25F)));
+        manoW = manoH * 2 / 3;
+        muestraH = manoH * 3 / 4;
+        muestraW = muestraH * 2 / 3;
         if (!clasica) {
             initCompacta();
             return;
@@ -489,7 +494,7 @@ public class TapeteScreen extends Screen {
 
     private int handX(PlayerView v, int i) {
         if (!clasica) {
-            return manoX0() + i * (MANO_W + 5);
+            return manoX0() + i * (manoW + 5);
         }
         int n = v.hand.size();
         int total = n * HAND_W + (n - 1) * 6;
@@ -497,12 +502,13 @@ public class TapeteScreen extends Screen {
     }
 
     private int handY() {
-        return clasica ? top + PANEL_H - HAND_H - 10 : this.height - MANO_H - 8;
+        return clasica ? top + PANEL_H - HAND_H - 10 : this.height - manoH - 8;
     }
 
     /** Vista compacta, de izquierda a derecha: tantos y muestra (104), la mano (112), la botonera (204). */
     private int bloqueX0() {
-        return Math.max(4, (this.width - 430) / 2);
+        int total = 104 + 3 * manoW + 2 * 5 + 12 + 3 * (BOTON_W + 2);
+        return Math.max(4, (this.width - total) / 2);
     }
 
     private int manoX0() {
@@ -510,11 +516,11 @@ public class TapeteScreen extends Screen {
     }
 
     private int anchoMano() {
-        return clasica ? HAND_W : MANO_W;
+        return clasica ? HAND_W : manoW;
     }
 
     private int altoMano() {
-        return clasica ? HAND_H : MANO_H;
+        return clasica ? HAND_H : manoH;
     }
 
     private void drawHand(MatrixStack ms, PlayerView v, int mouseX, int mouseY) {
@@ -524,6 +530,11 @@ public class TapeteScreen extends Screen {
             int x = handX(v, i);
             int y = handY();
             boolean hover = canPlay && mouseX >= x && mouseX < x + cw && mouseY >= y && mouseY < y + ch;
+            if (!clasica && mouseX >= x && mouseX < x + cw && mouseY >= y - 4 && mouseY < y + ch) {
+                zoom = v.hand.get(i);           // pasando el mouse: la carta se ve grande
+                zoomX = x + cw / 2;
+                zoomY = this.height;
+            }
             if (hover) {
                 y -= 4;
             }
@@ -587,11 +598,7 @@ public class TapeteScreen extends Screen {
     private void bindCartas() {
         TableSnapshot s = snap();
         ResourceLocation atlas = s == null ? CARTAS : com.trucoya.barajas.Baraja.de(s.baraja).atlasGui();
-        this.minecraft.getTextureManager().bind(atlas);
-        net.minecraft.client.renderer.texture.Texture tex = this.minecraft.getTextureManager().getTexture(atlas);
-        if (tex != null) {
-            tex.setFilter(true, false);
-        }
+        CartasTextura.usar(atlas);   // con mipmaps: nítidas en cualquier tamaño
     }
 
     // ------------------------------------------------------------------ vista compacta
@@ -617,7 +624,7 @@ public class TapeteScreen extends Screen {
         }
         if (s.tableRunning && v != null) {
             // la botonera: solo lo que se puede hacer ahora, en tres columnas a la derecha de la mano
-            int x0 = manoX0() + 3 * MANO_W + 2 * 5 + 12;
+            int x0 = manoX0() + 3 * manoW + 2 * 5 + 12;
             int fila = 0, col = 0;
             // con la interfaz grande no entran tres columnas: se usan las que entren
             int columnas = Math.max(1, Math.min(3, (this.width - 4 - x0) / (BOTON_W + 2)));
@@ -688,13 +695,13 @@ public class TapeteScreen extends Screen {
         PlayerView v = s.view;
         if (v != null && s.tableRunning) {
             // franja de abajo, apenas oscura (la mesa del mundo se sigue viendo arriba)
-            this.fillGradient(ms, 0, h - MANO_H - 22, w, h, 0x00000000, 0xC0100C08);
+            this.fillGradient(ms, 0, h - manoH - 22, w, h, 0x00000000, 0xC0100C08);
             drawHand(ms, v, mouseX, mouseY);
             // la muestra y tus tantos, a la izquierda de la mano
-            int xm = manoX0() - MUESTRA_W - 10;
+            int xm = manoX0() - muestraW - 10;
             if (v.muestra != null) {
-                chico(ms, "muestra", xm + 1, h - MUESTRA_H - 18, 0xC0E8D8B0);
-                drawCard(ms, v.muestra, xm, h - MUESTRA_H - 9, MUESTRA_W, MUESTRA_H);
+                chico(ms, "muestra", xm + 1, h - muestraH - 18, 0xC0E8D8B0);
+                drawCard(ms, v.muestra, xm, h - muestraH - 9, muestraW, muestraH);
             }
             chico(ms, "envido " + v.envidoPoints, xm - 52, h - 30, 0xD0D8E8D0);
             if (v.hasFlor) {
@@ -718,6 +725,7 @@ public class TapeteScreen extends Screen {
                 ty += 8;
             }
             drawPot(ms, s, w - 128, 18, mouseX, mouseY);
+            mesaEnPantalla(ms, s, v, mouseX, mouseY);
         } else if (s.tableRunning) {
             centradoConFondo(ms, "Hay una partida en juego en esta mesa.", w / 2, h / 2, 0xFFD8E8D0);
         } else {
@@ -741,7 +749,7 @@ public class TapeteScreen extends Screen {
         }
         String sena = ClientTrucoState.currentSena();
         if (sena != null) {
-            centradoConFondo(ms, this.font.plainSubstrByWidth(sena, w - 40), w / 2, h - MANO_H - 34,
+            centradoConFondo(ms, this.font.plainSubstrByWidth(sena, w - 40), w / 2, h - manoH - 34,
                     ClientTrucoState.senaFromPartner() ? 0xFFFFF0C8 : 0xFFB0B0B0);
         }
         if (verHistorial) {
@@ -758,6 +766,100 @@ public class TapeteScreen extends Screen {
         }
         chico(ms, "V: vista grande · H: historial · Esc: cerrar (seguís sentado)", 4, h - 8, 0x70FFFFFF);
         super.render(ms, mouseX, mouseY, partialTicks);
+        if (zoom != null) {
+            dibujarZoom(ms, zoom, zoomX, zoomY);
+            zoom = null;
+        }
+    }
+
+    // ------------------------------------------------------------------ las bazas, claras, arriba al centro
+
+    /** La carta bajo el mouse, para mostrarla grande (se dibuja al final, encima de todo). */
+    @javax.annotation.Nullable
+    private Card zoom;
+    private int zoomX, zoomY;
+
+    /**
+     * Las cartas jugadas en esta mano, grandes y derechas en la pantalla (además de verse sobre la mesa del mundo):
+     * una columna por baza, con quién tiró cada carta y quién ganó la baza.
+     */
+    private void mesaEnPantalla(MatrixStack ms, TableSnapshot s, PlayerView v, int mouseX, int mouseY) {
+        int bazas = 0;
+        for (int t = 0; t < 3; t++) {
+            boolean alguna = false;
+            for (int seat = 0; seat < v.players; seat++) alguna |= v.table[t][seat] != null;
+            if (alguna || t == v.trickIndex) bazas = t + 1;
+        }
+        if (bazas == 0) {
+            return;
+        }
+        int ch = Math.max(34, Math.min(60, manoH * 2 / 3));
+        int cw = ch * 2 / 3;
+        int gw = v.players * (cw + 3) - 3;
+        int total = bazas * gw + (bazas - 1) * 12;
+        int maxAncho = this.width - 280;
+        if (total > maxAncho && maxAncho > 0) {          // pantalla angosta: más chicas
+            ch = Math.max(26, ch * maxAncho / total);
+            cw = ch * 2 / 3;
+            gw = v.players * (cw + 3) - 3;
+            total = bazas * gw + (bazas - 1) * 12;
+        }
+        int x0 = this.width / 2 - total / 2;
+        int y0 = 34;
+        fill(ms, x0 - 6, y0 - 4, x0 + total + 6, y0 + ch + 22, 0x80100C08);
+        String[] orden = {"1ª baza", "2ª baza", "3ª baza"};
+        for (int t = 0; t < bazas; t++) {
+            int gx = x0 + t * (gw + 12);
+            int r = v.trickResults[t];
+            int col = r == -2 ? 0xFFE8DCC0 : r == -1 ? 0xFFB0B0B0 : r == v.team ? 0xFF7CE07C : 0xFFF08070;
+            String rotulo = orden[t] + (r == -1 ? " · parda" : r >= 0 ? (r == v.team ? " · nuestra" : " · de ellos") : "");
+            chico(ms, rotulo, gx, y0 - 1, col);
+            for (int k = 0; k < v.players; k++) {
+                // el orden de la ronda empezando por la mano
+                int seat = (v.mano + k) % v.players;
+                int cx = gx + k * (cw + 3), cy = y0 + 7;
+                Card c = v.table[t][seat];
+                if (c != null) {
+                    fill(ms, cx + 1, cy + 2, cx + cw + 1, cy + ch + 2, 0x60000000);   // sombrita
+                    drawCard(ms, c, cx, cy, cw, ch);
+                    if (mouseX >= cx && mouseX < cx + cw && mouseY >= cy && mouseY < cy + ch) {
+                        zoom = c;
+                        zoomX = cx + cw / 2;
+                        zoomY = cy + ch + 6;
+                    }
+                } else if (t == v.trickIndex && !v.roundFinished) {
+                    int borde = seat == v.turn ? 0xC0E8B82A : 0x50FFFFFF;      // el que tiene que tirar, en dorado
+                    fill(ms, cx, cy, cx + cw, cy + 1, borde);
+                    fill(ms, cx, cy + ch - 1, cx + cw, cy + ch, borde);
+                    fill(ms, cx, cy, cx + 1, cy + ch, borde);
+                    fill(ms, cx + cw - 1, cy, cx + cw, cy + ch, borde);
+                }
+                String quien = seat == v.seat ? "Vos" : s.nameOf(seat);
+                quien = this.font.plainSubstrByWidth(quien, (int) ((cw + 2) / 0.6F));
+                ms.pushPose();
+                ms.translate(cx, cy + ch + 3, 0);
+                ms.scale(0.6F, 0.6F, 1.0F);
+                this.font.draw(ms, quien, 0, 0, seat % 2 == v.team ? 0xFF9CE89C : 0xFFF0B0A0);
+                ms.popPose();
+            }
+        }
+    }
+
+    /** La carta bajo el mouse, grande, para leerla bien (con sombra y borde). */
+    private void dibujarZoom(MatrixStack ms, Card c, int cx, int arriba) {
+        int ch = Math.min(this.height - 20, Math.max(96, manoH * 2));
+        int cw = ch * 2 / 3;
+        int x = Math.max(4, Math.min(this.width - cw - 4, cx - cw / 2));
+        int y = arriba;
+        if (y + ch > this.height - 4) {
+            y = Math.max(4, arriba - ch - manoH - 16);       // la de la mano: se muestra arriba
+        }
+        ms.pushPose();
+        ms.translate(0, 0, 400);
+        fill(ms, x + 3, y + 4, x + cw + 3, y + ch + 4, 0x80000000);
+        fill(ms, x - 1, y - 1, x + cw + 1, y + ch + 1, 0xFF201810);
+        drawCard(ms, c, x, y, cw, ch);
+        ms.popPose();
     }
 
     private void centradoConFondo(MatrixStack ms, String txt, int cx, int y, int color) {

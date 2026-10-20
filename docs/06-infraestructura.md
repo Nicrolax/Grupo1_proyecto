@@ -8,7 +8,7 @@ Fuente: [`uml/infraestructura.puml`](uml/infraestructura.puml).
 
 | Componente | Dónde corre | Qué contiene |
 |---|---|---|
-| **Cliente** | PC de cada jugador (Windows 10/11), JVM Java 8 | Minecraft Java 1.16.5, Forge 36.2.39, `trucoya-1.7.0.jar` y `geckolib-forge-1.16.5-3.0.106.jar` en `.minecraft\mods`. Dibuja el mundo, las pantallas y el audio. |
+| **Cliente** | PC de cada jugador (Windows 10/11), JVM Java 8 | Minecraft Java 1.16.5, Forge 36.2.39, `trucoya-1.7.1.jar` y `geckolib-forge-1.16.5-3.0.106.jar` en `.minecraft\mods`. Dibuja el mundo, las pantallas y el audio. |
 | **Servidor dedicado** | PC del grupo o un VPS, JVM Java 8 (`-Xmx3G`) | `forge-1.16.5-36.2.39.jar` (servidor), con el mod y GeckoLib en `mods/`. Es la **autoridad** de todo: partidos, IA, progreso. |
 | **Servidor integrado** | La misma JVM del cliente, al jugar solo | Igual que el dedicado, pero comunicado en memoria (sin red). |
 | **Almacenamiento** ("base de datos") | Disco del servidor, carpeta `world/` | Formato NBT: `region/*.mca` (bloques y mesas), `playerdata/*.dat` (el progreso de cada jugador va dentro de `PlayerPersisted`) y `data/trucoya_salamanca.dat` (`WorldSavedData`). |

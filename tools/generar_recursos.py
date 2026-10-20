@@ -262,7 +262,7 @@ def back():
     return img.resize((CW, CH), Image.LANCZOS)
 
 
-# Los atlas de las barajas (textures/gui y textures/block/cartas_<clave>.png) se hacen con barajas_temas.py.
+# Los atlas de las barajas (textures/gui/cartas_<clave>.png) se hacen con barajas_temas.py.
 import generar_cartas  # noqa: E402
 generar_cartas.main()
 

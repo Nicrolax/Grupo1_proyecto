@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "trucoya:mate"
+    },
+    "title": {
+      "translate": "advancements.trucoya.iniciacion.el_ceba.title"
+    },
+    "description": {
+      "translate": "advancements.trucoya.iniciacion.el_ceba.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "trucoya:root",
+  "criteria": {
+    "hazana": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 10
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "trucoya:anotador"
+    },
+    "title": {
+      "translate": "advancements.trucoya.iniciacion.cartas_sobre_la_mesa.title"
+    },
+    "description": {
+      "translate": "advancements.trucoya.iniciacion.cartas_sobre_la_mesa.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "trucoya:iniciacion/toma_asiento",
+  "criteria": {
+    "hazana": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 10
+  }
+}

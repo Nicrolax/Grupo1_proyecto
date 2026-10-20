@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:clock"
+    },
+    "title": {
+      "translate": "advancements.trucoya.iniciacion.siete_dias_seguidos.title"
+    },
+    "description": {
+      "translate": "advancements.trucoya.iniciacion.siete_dias_seguidos.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "trucoya:iniciacion/toma_asiento",
+  "criteria": {
+    "hazana": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 50
+  }
+}

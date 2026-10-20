@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "trucoya:libreta_truquero"
+    },
+    "title": {
+      "translate": "advancements.trucoya.historia.primer_sello.title"
+    },
+    "description": {
+      "translate": "advancements.trucoya.historia.primer_sello.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "trucoya:root",
+  "criteria": {
+    "hazana": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 15
+  }
+}

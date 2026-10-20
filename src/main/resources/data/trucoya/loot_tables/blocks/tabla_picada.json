@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "trucoya:tabla_picada"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "trucoya:tabla_picada",
+          "properties": {
+            "comidas": "0"
+          }
+        }
+      ]
+    }
+  ]
+}

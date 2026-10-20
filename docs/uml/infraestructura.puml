@@ -1,0 +1,73 @@
+@startuml infraestructura
+title Diagrama de infraestructura (despliegue) — Truco Ya
+skinparam shadowing false
+skinparam node {
+  BackgroundColor #FFFDF6
+  BorderColor #5A2A1A
+}
+skinparam artifact {
+  BackgroundColor #FBF6EA
+}
+
+node "PC del jugador 1\n(Windows 10/11)" as PC1 {
+  node "JVM Java 8" as JVM1 {
+    artifact "Minecraft Java 1.16.5\n(cliente)" as MC1
+    artifact "Forge 36.2.39" as F1
+    artifact "trucoya-1.7.0.jar" as M1
+    artifact "geckolib-forge-1.16.5-3.0.106.jar" as G1
+  }
+  folder ".minecraft\\mods\n.minecraft\\config" as CFG1
+}
+
+node "PC del jugador 2..4" as PC2 {
+  artifact "Minecraft + Forge\n+ Truco Ya + GeckoLib" as C2
+}
+
+node "Servidor dedicado\n(PC del grupo o VPS)" as SRV {
+  node "JVM Java 8\n-Xmx3G" as JVMS {
+    artifact "forge-1.16.5-36.2.39.jar\n(servidor)" as FS
+    artifact "mods/trucoya-1.7.0.jar" as MS
+    artifact "mods/geckolib-…-3.0.106.jar" as GS
+  }
+  database "world/\n(NBT: region/*.mca,\nplayerdata/*.dat,\ndata/trucoya_salamanca.dat)" as DB
+  file "world/serverconfig/\ntrucoya-server.toml" as TOML
+  file "server.properties\neula.txt" as PROP
+}
+
+cloud "Servicios de Mojang / Microsoft" as MOJ {
+  node "sessionserver.mojang.com\n(autenticación)" as AUTH
+}
+
+cloud "Desarrollo (solo al compilar)" as DEV {
+  node "maven.minecraftforge.net" as MAVEN
+  node "dl.cloudsmith.io\n(GeckoLib)" as CLOUD
+  node "services.gradle.org" as GRADLE
+  node "api.adoptium.net\n(JDK 8)" as ADOPT
+  node "github.com\nNicrolax/Grupo1_proyecto\n+ GitHub Actions" as GH
+}
+
+MC1 --> FS : TCP 25565\nprotocolo de Minecraft 1.16.5\n+ canal Forge «trucoya:main» (v7)
+C2 --> FS : TCP 25565
+JVMS --> DB : lectura/escritura\nal guardar el mundo
+JVMS --> TOML : lee la configuración
+FS --> AUTH : HTTPS 443\n(online-mode=true)
+MC1 --> AUTH : HTTPS 443\n(inicio de sesión)
+PC1 ..> MAVEN : HTTPS 443 (gradlew)
+PC1 ..> CLOUD : HTTPS 443
+PC1 ..> GRADLE : HTTPS 443
+PC1 ..> ADOPT : HTTPS 443 (probar.bat)
+PC1 ..> GH : HTTPS 443 (git push)
+
+note right of MC1
+  Un jugador solo: el servidor
+  integrado corre en la misma JVM
+  y la conexión es en memoria
+  (sin red).
+end note
+note bottom of FS
+  LAN: IP local, puerto 25565.
+  Internet: abrir el 25565 TCP en el
+  router o usar una VPN de juego
+  (Radmin VPN / ZeroTier).
+end note
+@enduml

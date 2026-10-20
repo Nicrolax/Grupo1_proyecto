@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "trucoya:galleta"
+    ]
+  },
+  "criteria": {
+    "tiene_material": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:wheat"
+          }
+        ]
+      }
+    },
+    "tiene_receta": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "trucoya:galleta"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "tiene_material",
+      "tiene_receta"
+    ]
+  ]
+}

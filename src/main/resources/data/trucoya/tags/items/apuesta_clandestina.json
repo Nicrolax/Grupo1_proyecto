@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:gold_ingot",
+    "minecraft:gold_block",
+    "minecraft:gold_nugget",
+    "minecraft:emerald",
+    "minecraft:emerald_block",
+    "minecraft:diamond",
+    "minecraft:diamond_block",
+    "minecraft:netherite_ingot",
+    "minecraft:netherite_block",
+    "minecraft:netherite_scrap",
+    "trucoya:baraja_de_oro"
+  ]
+}

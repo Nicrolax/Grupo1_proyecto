@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "trucoya:facon_ledesma"
+    },
+    "title": {
+      "translate": "advancements.trucoya.historia.alma_libre.title"
+    },
+    "description": {
+      "translate": "advancements.trucoya.historia.alma_libre.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "trucoya:historia/la_salamanca",
+  "criteria": {
+    "hazana": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 200
+  }
+}

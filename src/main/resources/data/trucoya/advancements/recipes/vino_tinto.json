@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "trucoya:vino_tinto"
+    ]
+  },
+  "criteria": {
+    "tiene_material": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:sweet_berries"
+          }
+        ]
+      }
+    },
+    "tiene_receta": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "trucoya:vino_tinto"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "tiene_material",
+      "tiene_receta"
+    ]
+  ]
+}

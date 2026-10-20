@@ -1,0 +1,14 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "trucoya:item/pava"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "trucoya:estado": 2
+      },
+      "model": "trucoya:item/pava_caliente"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "trucoya:queso"
+    ]
+  },
+  "criteria": {
+    "tiene_material": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:milk_bucket"
+          }
+        ]
+      }
+    },
+    "tiene_receta": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "trucoya:queso"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "tiene_material",
+      "tiene_receta"
+    ]
+  ]
+}

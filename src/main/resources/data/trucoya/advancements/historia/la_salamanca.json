@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "trucoya:farol_animas"
+    },
+    "title": {
+      "translate": "advancements.trucoya.historia.la_salamanca.title"
+    },
+    "description": {
+      "translate": "advancements.trucoya.historia.la_salamanca.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "trucoya:historia/el_ultimo_truco",
+  "criteria": {
+    "hazana": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 60
+  }
+}

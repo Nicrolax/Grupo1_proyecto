@@ -1,0 +1,16 @@
+{
+  "duracion": 7.0,
+  "marcas": {
+    "salto": 3.0
+  },
+  "subtitulos": [],
+  "carteles": [
+    {
+      "t": 0.9,
+      "fin": 6.2,
+      "titulo": "ESA NOCHE",
+      "sub": "camino al Paso de las Ánimas",
+      "grande": false
+    }
+  ]
+}

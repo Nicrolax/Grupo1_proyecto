@@ -1,0 +1,69 @@
+{
+  "duracion": 42.4,
+  "marcas": {
+    "rayo1": 3.0,
+    "rayo2": 4.4,
+    "salamanca": 5.0,
+    "entra": 6.5
+  },
+  "subtitulos": [
+    {
+      "t": 7.5,
+      "fin": 11.81,
+      "texto": "Mirá quién se acordó del camino... Setenta años tardaste, Vizcacha.",
+      "sonido": "escena.llegada_1",
+      "quien": "mandinga"
+    },
+    {
+      "t": 13.2,
+      "fin": 16.38,
+      "texto": "Vengo por el Negro, Mandinga.",
+      "sonido": "escena.llegada_2",
+      "quien": "vizcacha"
+    },
+    {
+      "t": 16.6,
+      "fin": 21.41,
+      "texto": "¿Y con qué pensás pagar? Lo único que me interesa es esa baraja.",
+      "sonido": "escena.llegada_3",
+      "quien": "mandinga"
+    },
+    {
+      "t": 22.0,
+      "fin": 26.91,
+      "texto": "Una partida, a treinta. Si ganamos, el Negro queda libre.",
+      "sonido": "escena.llegada_4",
+      "quien": "vizcacha"
+    },
+    {
+      "t": 27.0,
+      "fin": 31.42,
+      "texto": "Y si pierden, el Negro se queda conmigo... y la próxima me traen la baraja.",
+      "sonido": "escena.llegada_5",
+      "quien": "mandinga"
+    },
+    {
+      "t": 32.2,
+      "fin": 35.67,
+      "texto": "Vizcacha... hermano. No tendrías que haber venido.",
+      "sonido": "escena.llegada_6",
+      "quien": "ledesma"
+    },
+    {
+      "t": 37.4,
+      "fin": 41.94,
+      "texto": "Sentate, gurí. La noche es larga, y el diablo no tiene apuro.",
+      "sonido": "escena.llegada_7",
+      "quien": "mandinga"
+    }
+  ],
+  "carteles": [
+    {
+      "t": 0.6,
+      "fin": 4.8,
+      "titulo": "EL PASO DE LAS ÁNIMAS",
+      "sub": "medianoche",
+      "grande": false
+    }
+  ]
+}

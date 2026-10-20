@@ -1,0 +1,31 @@
+{
+  "duracion": 15.0,
+  "marcas": {
+    "negro": 9.0,
+    "ruina": 10.5
+  },
+  "subtitulos": [
+    {
+      "t": 0.8,
+      "fin": 3.78,
+      "texto": "Je, je... ¿Eso es todo lo que traías, Vizcacha?",
+      "sonido": "escena.derrota_1",
+      "quien": "mandinga"
+    },
+    {
+      "t": 4.6,
+      "fin": 8.8,
+      "texto": "El Negro se queda conmigo. Volvé cuando aprendas a jugar.",
+      "sonido": "escena.derrota_2",
+      "quien": "mandinga"
+    },
+    {
+      "t": 9.4,
+      "fin": 14.44,
+      "texto": "Otra noche será, gurí. Yo te espero acá, en el Paso.",
+      "sonido": "escena.derrota_3",
+      "quien": "vizcacha"
+    }
+  ],
+  "carteles": []
+}

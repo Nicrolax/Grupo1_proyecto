@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "trucoya:baraja_de_oro"
+    },
+    "title": {
+      "translate": "advancements.trucoya.historia.el_ultimo_truco.title"
+    },
+    "description": {
+      "translate": "advancements.trucoya.historia.el_ultimo_truco.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "trucoya:historia/el_mapa_del_baqueano",
+  "criteria": {
+    "hazana": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 150
+  }
+}

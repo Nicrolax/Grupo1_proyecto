@@ -1,0 +1,12 @@
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam class {
+  BackgroundColor #FFFDF6
+  BorderColor #5A2A1A
+  ArrowColor #5A2A1A
+}
+skinparam package {
+  BackgroundColor #FBF6EA
+  BorderColor #8A6A1E
+}
+hide empty members

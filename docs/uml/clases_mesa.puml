@@ -1,0 +1,119 @@
+@startuml clases_mesa
+title Diagrama de clases 2 — Integración con Minecraft: la mesa y los paisanos
+!include estilo.iuml
+skinparam linetype polyline
+skinparam nodesep 25
+skinparam ranksep 45
+
+package "Minecraft / Forge / GeckoLib (externo)" #EEEEEE {
+  abstract class Block
+  abstract class HorizontalBlock
+  abstract class TileEntity
+  interface ITickableTileEntity
+  abstract class Entity
+  abstract class AbstractVillagerEntity
+  interface IAnimatable
+}
+
+package "com.trucoya.block" {
+  class MesaTrucoBlock
+  class SillaCriollaBlock
+  class AnotadorBlock
+}
+
+package "com.trucoya.tileentity" {
+  class MesaTrucoTileEntity {
+    - cfgPlayers : int
+    - cfgTarget : int
+    - cfgFlor : boolean
+    - match : TrucoMatch
+    - seatKind : Kind[]
+    - seatId : UUID[]
+    - bots : TrucoBot[]
+    - baraja : int
+    - salamanca : boolean
+    + vista : VistaMesa
+    + openFor(p : ServerPlayerEntity) : void
+    + requestStart(p, players : int, target : int, flor : boolean) : void
+    + handleAction(p, a : ActionType) : void
+    + handleCard(p, cardId : int) : void
+    + handleSena(p, s : Sena) : void
+    + handleBet(p) : void
+    + inviteNpc(g : GauchoEntity, p) : String
+    + iniciarTorneo(p) : void
+    + tick() : void
+    + getUpdateTag() : CompoundNBT
+    + save(nbt : CompoundNBT) : CompoundNBT
+  }
+  enum "MesaTrucoTileEntity.Kind" as Kind {
+    HUMAN
+    NPC
+    BOT
+  }
+  class "MesaTrucoTileEntity.VistaMesa" as VistaMesa {
+    + enJuego : boolean
+    + jugadas : int[12]
+    + muestra : int
+    + enMano : int[4]
+    + baraja : int
+    + leer(tag : CompoundNBT) : void
+  }
+}
+
+package "com.trucoya.entity" {
+  class GauchoEntity {
+    - rol : Rol
+    - nivel : int
+    - tablePos : BlockPos
+    - pedido : CompoundNBT
+    + nombre() : String
+    + say(texto : String) : void
+    + ofrecePedido() : boolean
+    + puedePedir() : boolean
+    # mobInteract(p, hand) : ActionResultType
+    # updateTrades() : void
+  }
+  enum "GauchoEntity.Rol" as Rol {
+    PAISANO
+    CANTINERO
+    FORASTERO
+    VIZCACHA
+    PAISANA
+    MATRERO
+    PEON
+    PAYADOR
+    FUNDADOR
+    MANDINGA
+    LEDESMA
+  }
+  class "GauchoEntity.IrALaSillaGoal" as IrALaSilla
+  class SeatEntity
+}
+
+package "com.trucoya.core" #FFF7E0 {
+  class TrucoMatch
+  class TrucoBot
+  class TableSnapshot
+}
+
+MesaTrucoBlock --|> Block
+SillaCriollaBlock --|> HorizontalBlock
+AnotadorBlock --|> Block
+MesaTrucoTileEntity --|> TileEntity
+MesaTrucoTileEntity ..|> ITickableTileEntity
+GauchoEntity --|> AbstractVillagerEntity
+GauchoEntity ..|> IAnimatable
+SeatEntity --|> Entity
+MesaTrucoBlock ..> MesaTrucoTileEntity : «create»
+SillaCriollaBlock ..> SeatEntity : «create» al sentarse
+MesaTrucoTileEntity *-- "0..1" TrucoMatch : partido en curso
+MesaTrucoTileEntity *-- "0..4" TrucoBot : asientos de NPC/bot
+MesaTrucoTileEntity *-- "2..4" Kind
+MesaTrucoTileEntity *-- "1" VistaMesa : vista pública
+MesaTrucoTileEntity ..> TableSnapshot : «create» una por jugador
+MesaTrucoTileEntity "0..1" o-- "0..4" GauchoEntity : sentados
+GauchoEntity --> "1" Rol
+GauchoEntity *-- IrALaSilla
+GauchoEntity ..> MesaTrucoTileEntity : inviteNpc()
+GauchoEntity --> "0..1" SeatEntity : vehículo
+@enduml

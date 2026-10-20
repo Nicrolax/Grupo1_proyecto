@@ -1,0 +1,140 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "particle": "trucoya:block/picada_tabla",
+    "tabla": "trucoya:block/picada_tabla",
+    "salame": "trucoya:block/picada_salame",
+    "queso": "trucoya:block/picada_queso",
+    "galleta": "trucoya:block/picada_galleta"
+  },
+  "elements": [
+    {
+      "from": [
+        1,
+        0,
+        2
+      ],
+      "to": [
+        15,
+        1.5,
+        14
+      ],
+      "faces": {
+        "north": {
+          "texture": "#tabla"
+        },
+        "south": {
+          "texture": "#tabla"
+        },
+        "east": {
+          "texture": "#tabla"
+        },
+        "west": {
+          "texture": "#tabla"
+        },
+        "up": {
+          "texture": "#tabla"
+        },
+        "down": {
+          "texture": "#tabla"
+        }
+      }
+    },
+    {
+      "from": [
+        13,
+        0.5,
+        6.5
+      ],
+      "to": [
+        16,
+        1,
+        9.5
+      ],
+      "faces": {
+        "north": {
+          "texture": "#tabla"
+        },
+        "south": {
+          "texture": "#tabla"
+        },
+        "east": {
+          "texture": "#tabla"
+        },
+        "west": {
+          "texture": "#tabla"
+        },
+        "up": {
+          "texture": "#tabla"
+        },
+        "down": {
+          "texture": "#tabla"
+        }
+      }
+    },
+    {
+      "from": [
+        8,
+        1.5,
+        8
+      ],
+      "to": [
+        11,
+        3.5,
+        11
+      ],
+      "faces": {
+        "north": {
+          "texture": "#queso"
+        },
+        "south": {
+          "texture": "#queso"
+        },
+        "east": {
+          "texture": "#queso"
+        },
+        "west": {
+          "texture": "#queso"
+        },
+        "up": {
+          "texture": "#queso"
+        },
+        "down": {
+          "texture": "#queso"
+        }
+      }
+    },
+    {
+      "from": [
+        11.5,
+        1.5,
+        9
+      ],
+      "to": [
+        13.5,
+        3,
+        12
+      ],
+      "faces": {
+        "north": {
+          "texture": "#salame"
+        },
+        "south": {
+          "texture": "#salame"
+        },
+        "east": {
+          "texture": "#salame"
+        },
+        "west": {
+          "texture": "#salame"
+        },
+        "up": {
+          "texture": "#salame"
+        },
+        "down": {
+          "texture": "#salame"
+        }
+      }
+    }
+  ]
+}

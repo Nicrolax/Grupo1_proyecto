@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "trucoya:block/yerbal_stage0"
+    },
+    "age=1": {
+      "model": "trucoya:block/yerbal_stage0"
+    },
+    "age=2": {
+      "model": "trucoya:block/yerbal_stage1"
+    },
+    "age=3": {
+      "model": "trucoya:block/yerbal_stage1"
+    },
+    "age=4": {
+      "model": "trucoya:block/yerbal_stage2"
+    },
+    "age=5": {
+      "model": "trucoya:block/yerbal_stage2"
+    },
+    "age=6": {
+      "model": "trucoya:block/yerbal_stage3"
+    },
+    "age=7": {
+      "model": "trucoya:block/yerbal_stage3"
+    }
+  }
+}

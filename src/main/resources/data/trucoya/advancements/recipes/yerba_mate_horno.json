@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "trucoya:yerba_mate_horno"
+    ]
+  },
+  "criteria": {
+    "tiene_material": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "trucoya:hojas_yerba"
+          }
+        ]
+      }
+    },
+    "tiene_receta": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "trucoya:yerba_mate_horno"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "tiene_material",
+      "tiene_receta"
+    ]
+  ]
+}

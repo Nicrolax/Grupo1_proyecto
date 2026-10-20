@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "trucoya:tabla_picada"
+    },
+    "title": {
+      "translate": "advancements.trucoya.iniciacion.picada_completa.title"
+    },
+    "description": {
+      "translate": "advancements.trucoya.iniciacion.picada_completa.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "trucoya:iniciacion/el_ceba",
+  "criteria": {
+    "hazana": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 10
+  }
+}

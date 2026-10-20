@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "trucoya:hojas_yerba"
+  },
+  "result": "trucoya:yerba_mate",
+  "experience": 0.2,
+  "cookingtime": 100
+}

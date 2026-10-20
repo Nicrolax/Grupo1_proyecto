@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "trucoya:tabla_picada"
+    ]
+  },
+  "criteria": {
+    "tiene_material": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "trucoya:salame"
+          }
+        ]
+      }
+    },
+    "tiene_receta": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "trucoya:tabla_picada"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "tiene_material",
+      "tiene_receta"
+    ]
+  ]
+}

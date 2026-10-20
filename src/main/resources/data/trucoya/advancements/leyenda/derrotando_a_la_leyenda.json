@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "trucoya:baraja_de_oro"
+    },
+    "title": {
+      "translate": "advancements.trucoya.leyenda.derrotando_a_la_leyenda.title"
+    },
+    "description": {
+      "translate": "advancements.trucoya.leyenda.derrotando_a_la_leyenda.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "trucoya:leyenda/remontada_historica",
+  "criteria": {
+    "hazana": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 100
+  }
+}

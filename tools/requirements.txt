@@ -1,0 +1,11 @@
+# Dependencias de las herramientas que generan texturas, estructuras, voces y música (Python 3.10+).
+# Además hace falta ffmpeg en el PATH. Los modelos de voz se bajan solos a tools/.modelos/ (no se suben a git).
+numpy>=1.24
+scipy>=1.10
+Pillow>=10.0
+librosa>=0.10
+soundfile>=0.12
+onnxruntime>=1.16
+sherpa-onnx>=1.10
+pyworld>=0.3
+noisereduce>=3.0

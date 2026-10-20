@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "trucoya:block/silla_criolla",
+      "y": 0
+    },
+    "facing=east": {
+      "model": "trucoya:block/silla_criolla",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "trucoya:block/silla_criolla",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "trucoya:block/silla_criolla",
+      "y": 270
+    }
+  }
+}

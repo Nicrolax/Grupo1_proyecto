@@ -1,0 +1,73 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "particle": "trucoya:block/anotador_tabla",
+    "tabla": "trucoya:block/anotador_tabla"
+  },
+  "elements": [
+    {
+      "from": [
+        3,
+        0,
+        3
+      ],
+      "to": [
+        13,
+        0.75,
+        13
+      ],
+      "faces": {
+        "north": {
+          "texture": "#tabla"
+        },
+        "south": {
+          "texture": "#tabla"
+        },
+        "east": {
+          "texture": "#tabla"
+        },
+        "west": {
+          "texture": "#tabla"
+        },
+        "up": {
+          "texture": "#tabla"
+        },
+        "down": {
+          "texture": "#tabla"
+        }
+      }
+    },
+    {
+      "from": [
+        7.75,
+        0.75,
+        3.25
+      ],
+      "to": [
+        8.25,
+        0.9,
+        12.75
+      ],
+      "faces": {
+        "north": {
+          "texture": "#tabla"
+        },
+        "south": {
+          "texture": "#tabla"
+        },
+        "east": {
+          "texture": "#tabla"
+        },
+        "west": {
+          "texture": "#tabla"
+        },
+        "up": {
+          "texture": "#tabla"
+        },
+        "down": {
+          "texture": "#tabla"
+        }
+      }
+    }
+  ]
+}

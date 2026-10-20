@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "trucoya:baraja_llanura"
+    },
+    "title": {
+      "translate": "advancements.trucoya.historia.coleccionista.title"
+    },
+    "description": {
+      "translate": "advancements.trucoya.historia.coleccionista.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "trucoya:historia/primer_sello",
+  "criteria": {
+    "hazana": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 40
+  }
+}

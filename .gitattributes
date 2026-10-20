@@ -1,0 +1,15 @@
+# Finales de línea: los .bat de Windows siempre con CRLF, el resto como en el repositorio.
+* text=auto
+*.bat text eol=crlf
+*.cmd text eol=crlf
+gradlew text eol=lf
+*.sh text eol=lf
+
+# Binarios (no se comparan como texto)
+*.png binary
+*.ogg binary
+*.nbt binary
+*.jar binary
+*.m4a binary
+*.mp3 binary
+*.pdf binary

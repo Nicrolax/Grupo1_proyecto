@@ -1,0 +1,110 @@
+{
+  "duracion": 110.0,
+  "subtitulos": [
+    {
+      "t": 1.4,
+      "fin": 6.05,
+      "texto": "Setenta inviernos esperé a alguien como vos, gurí.",
+      "sonido": "cinematica.final_1"
+    },
+    {
+      "t": 6.6,
+      "fin": 12.15,
+      "texto": "La Baraja de Oro es tuya. El Negro Ledesma estaría orgulloso.",
+      "sonido": "cinematica.final_2"
+    },
+    {
+      "t": 20.6,
+      "fin": 24.75,
+      "texto": "Mirá quiénes vienen por el camino... los que armaron todo esto.",
+      "sonido": "cinematica.final_3"
+    },
+    {
+      "t": 28.2,
+      "fin": 35.91,
+      "texto": "¡No lo puedo creer! Le ganaste al Viejo Vizcacha. Nadie le ganaba hace setenta años, ¿te das cuenta?",
+      "sonido": "cinematica.final_4"
+    },
+    {
+      "t": 37.7,
+      "fin": 43.17,
+      "texto": "Te vi jugar la última mano y no sabía si mirar o taparme los ojos. Pero ganaste, que es lo que importa.",
+      "sonido": "cinematica.final_5"
+    },
+    {
+      "t": 47.2,
+      "fin": 56.72,
+      "texto": "Che, muy lindo todo, pero esto se festeja con un asado. ¿Alguien trajo carne? ... ¿Nadie? Bueno, voy yo.",
+      "sonido": "cinematica.final_6"
+    },
+    {
+      "t": 56.7,
+      "fin": 62.56,
+      "texto": "Gracias por jugar, en serio. Hicimos este juego entre amigos, con muchas ganas, y ahora vos también sos parte de esta mesa.",
+      "sonido": "cinematica.final_7"
+    },
+    {
+      "t": 68.4,
+      "fin": 74.92,
+      "texto": "Siéntense, muchachos. La noche es larga, y el truco no se termina nunca.",
+      "sonido": "cinematica.final_8"
+    },
+    {
+      "t": 104.0,
+      "fin": 109.41,
+      "texto": "Setenta años, Vizcacha... ¿Todavía tenés mi baraja?",
+      "sonido": "cinematica.final_9"
+    }
+  ],
+  "carteles": [
+    {
+      "t": 13.9,
+      "fin": 18.6,
+      "titulo": "ESA MISMA TARDE",
+      "sub": "en la Estancia del Caudillo",
+      "grande": false
+    },
+    {
+      "t": 79.0,
+      "fin": 84.6,
+      "titulo": "TRUCO YA",
+      "sub": "El Camino del Truco",
+      "grande": true
+    },
+    {
+      "t": 85.0,
+      "fin": 87.8,
+      "titulo": "NICOLÁS BENTANCOUR",
+      "sub": "creado por",
+      "grande": false
+    },
+    {
+      "t": 88.0,
+      "fin": 90.8,
+      "titulo": "AGUSTÍN PERDOMO",
+      "sub": "creado por",
+      "grande": false
+    },
+    {
+      "t": 91.0,
+      "fin": 93.8,
+      "titulo": "MATÍAS PIÑEYRO",
+      "sub": "creado por",
+      "grande": false
+    },
+    {
+      "t": 94.0,
+      "fin": 96.8,
+      "titulo": "THIAGO RODRÍGUEZ",
+      "sub": "creado por",
+      "grande": false
+    },
+    {
+      "t": 97.0,
+      "fin": 100.0,
+      "titulo": "¡GRACIAS POR JUGAR!",
+      "sub": "El Viejo Vizcacha te espera para la revancha",
+      "grande": true
+    }
+  ]
+}

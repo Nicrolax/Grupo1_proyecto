@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:fox_spawn_egg"
+    },
+    "title": {
+      "translate": "advancements.trucoya.tigre.puro_cuento.title"
+    },
+    "description": {
+      "translate": "advancements.trucoya.tigre.puro_cuento.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "trucoya:iniciacion/cartas_sobre_la_mesa",
+  "criteria": {
+    "hazana": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 20
+  }
+}

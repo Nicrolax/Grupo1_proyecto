@@ -1,0 +1,261 @@
+@startuml clases_nucleo
+title Diagrama de clases 1 — Motor del truco uruguayo (paquete com.trucoya.core)
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam shadowing false
+skinparam class {
+  BackgroundColor #FFFDF6
+  BorderColor #5A2A1A
+  ArrowColor #5A2A1A
+}
+hide empty members
+
+package "com.trucoya.core" {
+
+class TrucoMatch {
+  - config : MatchConfig
+  - score : int[2]
+  - round : Round
+  - dealer : int
+  - over : boolean
+  - winner : int
+  + TrucoMatch(config : MatchConfig, seed : long)
+  + start() : void
+  + startNextRound() : ActionResult
+  + legalActions(seat : int) : List<ActionType>
+  + isLegal(seat : int, a : ActionType) : boolean
+  + act(seat : int, a : ActionType) : ActionResult
+  + playCardById(seat : int, cardId : int) : ActionResult
+  + drainEvents() : List<GameEvent>
+  + viewFor(seat : int) : PlayerView
+  + getScore(team : int) : int
+  + getTrucoLevel() : int
+  + isOver() : boolean
+  ~ award(team : int, points : int, reason : String) : void
+}
+
+class Round {
+  - dealer : int
+  - mano : int
+  - muestra : Card
+  - trickIndex : int
+  - turn : int
+  - trucoLevel : int
+  - envidoClosed : boolean
+  - florSung : boolean[]
+  - finished : boolean
+  - winnerTeam : int
+  ~ legalActions(seat : int) : List<ActionType>
+  ~ act(seat : int, a : ActionType) : ActionResult
+  ~ playCard(seat : int, idx : int) : ActionResult
+  ~ decideRoundByTricks() : int
+  {static} ~ trucoValue(level : int) : int
+}
+
+class "Round.Pending" as Pending {
+  ~ kind : PendingKind
+  ~ callerSeat : int
+  ~ awaitingTeam : int
+  ~ proposedLevel : int
+  ~ lastCall : ActionType
+}
+
+enum "Round.PendingKind" as PendingKind {
+  TRUCO
+  ENVIDO
+  FLOR
+}
+
+class MatchConfig {
+  - players : int
+  - targetScore : int
+  - florEnabled : boolean
+  - faltaMode : FaltaMode
+  + {static} defaults1v1() : MatchConfig
+  + {static} defaults2v2() : MatchConfig
+  + getHalf() : int
+}
+
+enum "MatchConfig.FaltaMode" as FaltaMode
+
+class Card {
+  - number : int
+  - suit : Suit
+  - id : int
+  + {static} DECK_SIZE : int = 40
+  + {static} of(number : int, suit : Suit) : Card
+  + {static} byId(id : int) : Card
+  + baseEnvidoValue() : int
+}
+
+enum Suit {
+  ESPADA
+  BASTO
+  ORO
+  COPA
+}
+
+class Deck {
+  - cards : List<Card>
+  - position : int
+  + Deck(random : Random)
+  + {static} withFlor(dealer : int, players : int, conFlor : Set<Integer>, r : Random) : Deck
+  + draw() : Card
+  + remaining() : int
+}
+
+class CardRules {
+  - muestra : Card
+  + isPieza(c : Card) : boolean
+  + trickRank(c : Card) : int
+  + compare(a : Card, b : Card) : int
+  + hasFlor(hand : List<Card>) : boolean
+  + florPoints(hand : List<Card>) : int
+  + envidoPoints(hand : List<Card>) : int
+}
+
+class TrickRules <<utility>> {
+  + {static} winner(r1 : int, r2 : int, r3 : int, manoTeam : int) : int
+}
+
+enum ActionType {
+  PLAY_CARD
+  TRUCO
+  RETRUCO
+  VALE_CUATRO
+  ENVIDO
+  REAL_ENVIDO
+  FALTA_ENVIDO
+  FLOR
+  CONTRAFLOR
+  CONTRAFLOR_AL_RESTO
+  CON_FLOR_ME_ACHICO
+  QUIERO
+  NO_QUIERO
+  ME_VOY_AL_MAZO
+  + trucoLevel() : int
+}
+
+class ActionResult {
+  - success : boolean
+  - reason : String
+  + {static} ok() : ActionResult
+  + {static} fail(reason : String) : ActionResult
+}
+
+class GameEvent {
+  - type : Type
+  - seat : int
+  - team : int
+  - card : Card
+  - action : ActionType
+  - value : int
+  - points : int
+  - text : String
+}
+
+enum "GameEvent.Type" as EvType {
+  ROUND_STARTED
+  CARD_PLAYED
+  CALL
+  TRICK_RESOLVED
+  TANTO_DECLARED
+  ENVIDO_RESOLVED
+  FLOR_RESOLVED
+  POINTS_AWARDED
+  STAGE_CHANGED
+  MATCH_ENDED
+  ...
+}
+
+class PlayerView {
+  + seat : int
+  + team : int
+  + score : int[]
+  + muestra : Card
+  + hand : List<Card>
+  + table : Card[][]
+  + legalActions : List<ActionType>
+  + write(out : DataOutput) : void
+  + {static} read(in : DataInput) : PlayerView
+  + isLegal(a : ActionType) : boolean
+}
+
+class TableSnapshot {
+  + view : PlayerView
+  + names : List<String>
+  + log : List<String>
+  + tableRunning : boolean
+  + pot : List<PotEntry>
+  + baraja : int
+  + toBytes() : byte[]
+  + {static} fromBytes(data : byte[]) : TableSnapshot
+}
+
+class "TableSnapshot.PotEntry" as PotEntry
+
+class TrucoBot {
+  - level : int
+  - knownEnvido : int[4]
+  - florState : int[4]
+  + TrucoBot(r : Random, level : int)
+  + observe(e : GameEvent, m : TrucoMatch) : void
+  + learnSena(seat : int, s : Sena, muestra : Card) : void
+  + play(m : TrucoMatch, seat : int) : ActionResult
+  + decide(m : TrucoMatch, seat : int) : Decision
+  + {static} strengthOf(cards : List<Card>, r : CardRules) : double
+}
+
+class "TrucoBot.Decision" as Decision {
+  + action : ActionType
+  + handIndex : int
+}
+
+enum Sena {
+  DOS
+  CUATRO
+  ...
+  FLOR
+  NADA
+  + getGesture() : String
+}
+
+class Prestigio <<utility>> {
+  + {static} UMBRAL : int[]
+  + {static} nivel(puntos : int) : int
+  + {static} rango(nivel : int) : String
+  + {static} victoria(nivelRival : int) : int
+}
+
+}
+
+TrucoMatch *-- "1" MatchConfig
+TrucoMatch *-- "0..1" Round : mano actual >
+TrucoMatch *-- "*" GameEvent : eventos pendientes >
+TrucoMatch ..> PlayerView : «create»
+TrucoMatch ..> Deck : usa para repartir
+Round --> "1" TrucoMatch : match
+Round *-- "1" CardRules
+Round *-- "0..2" Pending : pendiente / truco suspendido
+Round o-- "2..12" Card : manos y bazas
+Round ..> TrickRules
+Pending --> PendingKind
+Pending --> ActionType
+MatchConfig --> FaltaMode
+Deck o-- "40" Card
+Card --> "1" Suit
+CardRules --> "1" Card : muestra
+GameEvent --> EvType
+GameEvent --> "0..1" Card
+GameEvent --> "0..1" ActionType
+PlayerView --> "*" Card
+PlayerView --> "*" ActionType : legales
+TableSnapshot *-- "0..1" PlayerView
+TableSnapshot *-- "*" PotEntry
+TrucoBot ..> TrucoMatch : lee y juega
+TrucoBot ..> Decision : «create»
+TrucoBot ..> Sena
+TrucoBot ..> CardRules
+Decision --> ActionType
+TrucoMatch ..> ActionResult
+@enduml

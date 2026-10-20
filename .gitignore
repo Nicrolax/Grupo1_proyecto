@@ -1,0 +1,19 @@
+build/
+run/
+.gradle/
+out/
+*.iml
+.idea/
+bin/
+.classpath
+.project
+.settings/
+.jdk/
+*_log.txt
+tools/.modelos/
+servidor/
+__pycache__/
+*.pyc
+actualizacion.zip
+Claude outputs/
+/*_sonido_completo.ogg

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "comidas=0": {
+      "model": "trucoya:block/tabla_picada_0"
+    },
+    "comidas=1": {
+      "model": "trucoya:block/tabla_picada_1"
+    },
+    "comidas=2": {
+      "model": "trucoya:block/tabla_picada_2"
+    },
+    "comidas=3": {
+      "model": "trucoya:block/tabla_picada_3"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+@startuml estados_salamanca
+title Diagrama de estados — Capítulo «La Salamanca» (enum Salamanca.Fase)
+skinparam shadowing false
+hide empty description
+[*] --> LLEGA : atardecer con la etapa ESPERA\n(o /truco salamanca visita)
+LLEGA --> VISITA : el Vizcacha llega a caballo
+VISITA --> MONTAR : termina la escena
+MONTAR --> CABALGATA : el jugador monta el tordillo
+CABALGATA --> VIAJE : siguen al Vizcacha
+VIAJE --> LLEGADA : escena del viaje bajo la tormenta
+LLEGADA --> ESPERA_MESA : la tapera se vuelve la Salamanca
+ESPERA_MESA --> PARTIDA : el jugador se sienta (2 contra 2)
+PARTIDA --> AMANECER : ganaron
+PARTIDA --> DERROTA : perdieron
+AMANECER --> SALIDA : el alma de Ledesma queda libre\n(facón y Baraja del Mandinga)
+SALIDA --> [*] : el Vizcacha se va (etapa LIBRE)
+DERROTA --> [*] : sigue en la etapa ABIERTA (revancha)
+CABALGATA --> [*] : 8 min sin llegar / desconexión → abortar()
+PARTIDA --> [*] : abandono / desconexión → abortar()\n(la Salamanca vuelve a ser tapera)
+@enduml

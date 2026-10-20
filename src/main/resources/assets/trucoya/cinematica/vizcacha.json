@@ -1,0 +1,74 @@
+{
+  "duracion": 90.0,
+  "subtitulos": [
+    {
+      "t": 1.6,
+      "fin": 6.79,
+      "texto": "Así que vos sos el que anda ganando en todas las pulperías...",
+      "sonido": "cinematica.narracion_1"
+    },
+    {
+      "t": 6.6,
+      "fin": 11.59,
+      "texto": "Mirá, gurí. Antes de las cartas... yo conocí la guerra.",
+      "sonido": "cinematica.narracion_2"
+    },
+    {
+      "t": 16.0,
+      "fin": 24.88,
+      "texto": "Fue en el invierno del cuarenta, en el Paso de las Ánimas. La noche antes de la pelea, jugábamos al truco junto al fogón.",
+      "sonido": "cinematica.narracion_3"
+    },
+    {
+      "t": 25.0,
+      "fin": 31.67,
+      "texto": "El Negro Ledesma cantó la flor más linda que vi en mi vida... y se ganó mi facón.",
+      "sonido": "cinematica.narracion_4"
+    },
+    {
+      "t": 35.0,
+      "fin": 41.75,
+      "texto": "Al alba sonó el clarín. Éramos trescientos jinetes contra el mundo entero.",
+      "sonido": "cinematica.narracion_5"
+    },
+    {
+      "t": 47.0,
+      "fin": 51.85,
+      "texto": "La tierra temblaba bajo los cascos... y el cielo se partía en truenos.",
+      "sonido": "cinematica.narracion_6"
+    },
+    {
+      "t": 59.0,
+      "fin": 65.1,
+      "texto": "Ahí cayó el Negro. Lo último que hizo fue darme su baraja. La Baraja de Oro.",
+      "sonido": "cinematica.narracion_7"
+    },
+    {
+      "t": 70.6,
+      "fin": 75.49,
+      "texto": "Desde ese día juré no jugar más que contra quien la mereciera.",
+      "sonido": "cinematica.narracion_8"
+    },
+    {
+      "t": 77.2,
+      "fin": 83.57,
+      "texto": "Setenta inviernos esperé. Sentate, gurí... vamos a ver si sos digno.",
+      "sonido": "cinematica.narracion_9"
+    }
+  ],
+  "grito": 41.6,
+  "carteles": [
+    {
+      "t": 14.2,
+      "fin": 19.5,
+      "titulo": "PASO DE LAS ÁNIMAS",
+      "sub": "Invierno del cuarenta"
+    },
+    {
+      "t": 83.6,
+      "fin": 88.6,
+      "titulo": "EL ÚLTIMO TRUCO",
+      "sub": "del Viejo Vizcacha"
+    }
+  ]
+}

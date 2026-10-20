@@ -1,0 +1,192 @@
+@startuml clases_progreso
+title Diagrama de clases 4 — Progresión, historia y contenido (com.trucoya.progreso, barajas, item, trailer)
+!include estilo.iuml
+
+package "com.trucoya.progreso" {
+  class JugadorData <<utility>> {
+    + {static} PRESTIGIO : String
+    + {static} GANADOS : String
+    + {static} get(p, clave : String) : int
+    + {static} set(p, clave : String, v : int) : void
+    + {static} increment(p, clave : String) : int
+    + {static} addPrestigio(p, delta : int, motivo : String) : void
+    + {static} nivel(p) : int
+  }
+  class Historia <<utility>> {
+    + {static} NIVEL_VIZCACHA : int = 4
+    + {static} ganoEnPulperia(p, r : Region) : void
+    + {static} revisarMapa(p) : void
+    + {static} abrirLibreta(p) : void
+  }
+  enum "Historia.Region" as Region {
+    LLANURA
+    SABANA
+    DESIERTO
+    MONTE
+    NIEVE
+    SIERRA
+    + nivelCampeon : int
+    + {static} de(c : Biome.Category) : Region
+  }
+  class Pedidos <<utility>> {
+    + {static} MAXIMO : int = 3
+    + {static} crear(g : GauchoEntity, r : Random) : CompoundNBT
+    + {static} hablar(g, p, oferta) : boolean
+    + {static} aceptar(g, p, oferta) : void
+    + {static} evento(p, reto : int, r : Region) : void
+    + {static} cancelarId(p, id : int) : boolean
+  }
+  class "Pedidos.Cosa" as Cosa {
+    ~ cant : int
+    ~ premio : int
+    ~ frase : String
+  }
+  class Diario <<utility>> {
+    + {static} evento(p, tipo : int) : void
+    + {static} paraLibreta(p) : List<String>
+    + {static} racha(p) : int
+  }
+  class Salamanca <<utility>> {
+    - {static} corrida : Corrida
+    + {static} visita(p) : String
+    + {static} irAlPaso(p) : String
+    + {static} partidaEmpezo(w : World, mesa : BlockPos) : void
+    + {static} partidaTermino(w : World, mesa : BlockPos, ganaron : boolean) : void
+    + {static} protegido(p) : boolean
+  }
+  class "Salamanca.Corrida" as Corrida {
+    ~ jugador : UUID
+    ~ fase : Fase
+    ~ t : int
+    ~ origen : BlockPos
+  }
+  enum "Salamanca.Fase" as Fase {
+    LLEGA
+    VISITA
+    MONTAR
+    CABALGATA
+    VIAJE
+    LLEGADA
+    ESPERA_MESA
+    PARTIDA
+    AMANECER
+    SALIDA
+    DERROTA
+  }
+  class SalamancaSitio <<utility>> {
+    + {static} origen(w) : BlockPos
+    + {static} poner(w, origen, noche : boolean) : boolean
+  }
+  class "SalamancaSitio.Datos" as Datos {
+    ~ origen : BlockPos
+    ~ noche : boolean
+  }
+  class Cuadreras <<utility>>
+  class CinematicaServidor <<utility>> {
+    + {static} iniciarFinal(p) : void
+    + {static} proteger(p, ticks : int) : void
+    + {static} enCurso(p) : boolean
+  }
+  class Fundadores <<utility>>
+  class Logros <<utility>> {
+    + {static} award(p, ruta : String) : void
+  }
+  class TrucoCommands <<utility>>
+}
+
+package "com.trucoya.barajas" {
+  enum Baraja {
+    CRIOLLA
+    ORO
+    MANDINGA
+    LLANURA
+    ...
+    FUNDADORES
+    + clave : String
+    + nombre : String
+    + seRegala() : boolean
+    + atlasGui() : ResourceLocation
+    + atlasMundo() : ResourceLocation
+  }
+  class Coleccion <<utility>> {
+    + {static} tiene(p, b : Baraja) : boolean
+    + {static} elegida(p) : Baraja
+    + {static} ganar(p, b : Baraja) : void
+    + {static} elegir(p, b : Baraja) : void
+  }
+}
+
+package "com.trucoya.item" {
+  class BarajaItem {
+    - baraja : Baraja
+    + use(w, p, hand) : ActionResult<ItemStack>
+  }
+  class BarajaDeOroItem
+  class EncomiendaItem {
+    + {static} crear(pedido : int, region : int, de : String) : ItemStack
+  }
+  class LibretaItem
+}
+
+package "com.trucoya.trailer" {
+  class Camino {
+    + segundos : float
+    + duracion() : double
+    + posicion(t : double) : Vector3d
+    + mira(t : double) : Vector3d
+  }
+  class "Camino.Marca" as Marca {
+    + x : double
+    + y : double
+    + z : double
+    + yaw : float
+    + pitch : float
+  }
+  class TrailerServidor <<utility>> {
+    + {static} marcar(p) : int
+    + {static} empezar(p, segundos : float) : String
+  }
+}
+
+class TrucoConfig <<utility>> {
+  + {static} SALAMANCA_CIELO : EnumValue<Cielo>
+  + {static} PEDIDOS : BooleanValue
+}
+
+abstract class "net.minecraft.item.Item" as Item #EEEEEE
+abstract class "WorldSavedData" as WSD #EEEEEE
+
+Historia +-- Region
+Historia ..> JugadorData
+Historia ..> Coleccion : da la baraja de la región
+Pedidos +-- Cosa
+Pedidos "1" *-- "14" Cosa : catálogo
+Pedidos ..> JugadorData
+Pedidos ..> EncomiendaItem
+Pedidos ..> Diario
+Diario ..> JugadorData
+Salamanca *-- "0..1" Corrida : una por servidor
+Corrida --> Fase
+Salamanca ..> SalamancaSitio
+Salamanca ..> TrucoConfig : cambiaElCielo
+SalamancaSitio +-- Datos
+Datos --|> WSD
+Salamanca ..> Coleccion : baraja del Mandinga
+CinematicaServidor ..> Coleccion : baraja de los Fundadores
+Coleccion ..> Baraja
+Coleccion ..> JugadorData
+BarajaItem --|> Item
+BarajaItem --> "1" Baraja
+BarajaDeOroItem --|> BarajaItem
+EncomiendaItem --|> Item
+LibretaItem --|> Item
+LibretaItem ..> Historia : abrirLibreta()
+Camino *-- "2..16" Marca
+TrailerServidor ..> Camino
+TrailerServidor ..> CinematicaServidor : proteger()
+TrucoCommands ..> Pedidos
+TrucoCommands ..> Salamanca
+TrucoCommands ..> TrailerServidor
+Cuadreras ..> Pedidos
+Cuadreras ..> Diario
+@enduml

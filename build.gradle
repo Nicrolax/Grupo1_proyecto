@@ -1,0 +1,118 @@
+// Truco Ya - Minecraft 1.16.5 / Forge 36.2.39
+// Basado en la estructura del MDK oficial de Forge 1.16.5 (ForgeGradle 5.1, mappings oficiales de Mojang).
+plugins {
+    id 'eclipse'
+    id 'maven-publish'
+    id 'net.minecraftforge.gradle' version '5.1.+'
+}
+
+version = mod_version
+group = 'com.trucoya'
+archivesBaseName = 'trucoya'
+
+// Minecraft 1.16.5 se ejecuta sobre Java 8.
+java.toolchain.languageVersion = JavaLanguageVersion.of(8)
+
+println "Java: ${System.getProperty('java.version')}, JVM: ${System.getProperty('java.vm.version')} (${System.getProperty('java.vendor')}), Arch: ${System.getProperty('os.arch')}"
+
+minecraft {
+    mappings channel: 'official', version: '1.16.5'
+
+    runs {
+        client {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            mods {
+                trucoya {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        server {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            mods {
+                trucoya {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        data {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            args '--mod', 'trucoya', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            mods {
+                trucoya {
+                    source sourceSets.main
+                }
+            }
+        }
+    }
+}
+
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+
+repositories {
+    maven {
+        name = 'GeckoLib'
+        url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+    }
+    maven {
+        name = 'JEI (progwml6)'
+        url = 'https://dvs1.progwml6.com/files/maven/'
+    }
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+
+    // GeckoLib 3 (animaciones de modelos 3D: cartas, mate, NPCs). Se usa a partir de la Fase 2.
+    implementation fg.deobf("software.bernie.geckolib:geckolib-forge-1.16.5:${geckolib_version}")
+
+    // JEI opcional (solo para visualizar recetas). Descomentar cuando se integre en la Fase 2.
+    // compileOnly fg.deobf("mezz.jei:jei-1.16.5:${jei_version}:api")
+    // runtimeOnly fg.deobf("mezz.jei:jei-1.16.5:${jei_version}")
+}
+
+jar {
+    manifest {
+        attributes([
+                "Specification-Title"     : "trucoya",
+                "Specification-Vendor"    : "trucoya",
+                "Specification-Version"   : "1",
+                "Implementation-Title"    : project.name,
+                "Implementation-Version"  : project.jar.archiveVersion,
+                "Implementation-Vendor"   : "trucoya",
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        ])
+    }
+}
+
+jar.finalizedBy('reobfJar')
+
+// Suite de pruebas del motor de Truco (sin dependencias externas): ./gradlew coreTests
+task coreTests(type: JavaExec) {
+    group = 'verification'
+    description = 'Ejecuta las pruebas del motor de Truco Uruguayo (Fase 1).'
+    dependsOn 'testClasses'
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.trucoya.core.TrucoCoreTests'
+}
+check.dependsOn coreTests
+
+// Copia el classpath de compilación (Forge mapeado + librerías) a build/cp.
+// Sirve para compilar y verificar el código fuera de Gradle: ./gradlew exportClasspath
+task exportClasspath(type: Copy) {
+    group = 'build'
+    from sourceSets.main.compileClasspath
+    into "$buildDir/cp"
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}

@@ -1,0 +1,40 @@
+# Integración continua: en cada push y pull request compila el mod y corre las pruebas del motor de Truco.
+name: Compilar y probar
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: JDK 8 (Temurin)
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '8'
+          cache: gradle
+
+      - name: Permiso de ejecución para Gradle
+        run: chmod +x gradlew
+
+      - name: Pruebas del motor de Truco
+        run: ./gradlew coreTests --no-daemon --console=plain
+
+      - name: Compilar el mod (.jar)
+        run: ./gradlew build -x test --no-daemon --console=plain
+
+      - name: Guardar el .jar
+        uses: actions/upload-artifact@v4
+        with:
+          name: trucoya-jar
+          path: build/libs/trucoya-*.jar
+          if-no-files-found: error

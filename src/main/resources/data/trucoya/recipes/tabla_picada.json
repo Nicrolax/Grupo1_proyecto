@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "trucoya:salame"
+    },
+    {
+      "item": "trucoya:queso"
+    },
+    {
+      "item": "trucoya:galleta"
+    },
+    {
+      "tag": "minecraft:wooden_slabs"
+    }
+  ],
+  "result": {
+    "item": "trucoya:tabla_picada"
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "duracion": 46.8,
+  "marcas": {
+    "mandinga_a": 3.0,
+    "mandinga_b": 6.0,
+    "ledesma_camina": 5.5,
+    "ledesma_a": 31.0,
+    "ledesma_b": 35.0,
+    "ruina": 33.0,
+    "facon": 37.0
+  },
+  "subtitulos": [
+    {
+      "t": 0.9,
+      "fin": 3.1,
+      "texto": "¡No! ¡No puede ser!",
+      "sonido": "escena.amanecer_1",
+      "quien": "mandinga"
+    },
+    {
+      "t": 7.0,
+      "fin": 9.15,
+      "texto": "Setenta años, hermano.",
+      "sonido": "escena.amanecer_2",
+      "quien": "ledesma"
+    },
+    {
+      "t": 10.4,
+      "fin": 13.63,
+      "texto": "Perdoname, Negro. Tardé mucho.",
+      "sonido": "escena.amanecer_3",
+      "quien": "vizcacha"
+    },
+    {
+      "t": 13.8,
+      "fin": 17.08,
+      "texto": "Llegaste. Eso es lo único que importa.",
+      "sonido": "escena.amanecer_4",
+      "quien": "ledesma"
+    },
+    {
+      "t": 17.6,
+      "fin": 21.94,
+      "texto": "Tomá. Este facón es tuyo: te lo gané con una flor que no era mía.",
+      "sonido": "escena.amanecer_5",
+      "quien": "ledesma"
+    },
+    {
+      "t": 23.6,
+      "fin": 27.42,
+      "texto": "Siempre supe que esa flor era demasiado linda.",
+      "sonido": "escena.amanecer_6",
+      "quien": "vizcacha"
+    },
+    {
+      "t": 27.6,
+      "fin": 30.81,
+      "texto": "Gracias, gurí. Cuidámelo a este viejo.",
+      "sonido": "escena.amanecer_7",
+      "quien": "ledesma"
+    },
+    {
+      "t": 36.8,
+      "fin": 41.82,
+      "texto": "Tomá, gurí. El facón del Negro. Te lo ganaste.",
+      "sonido": "escena.amanecer_8",
+      "quien": "vizcacha"
+    },
+    {
+      "t": 41.9,
+      "fin": 45.5,
+      "texto": "Ahora sí... puedo descansar tranquilo.",
+      "sonido": "escena.amanecer_9",
+      "quien": "vizcacha"
+    }
+  ],
+  "carteles": []
+}

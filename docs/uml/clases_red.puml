@@ -1,0 +1,69 @@
+@startuml clases_red
+title Diagrama de clases 3 — Red cliente-servidor y pantallas
+!include estilo.iuml
+skinparam linetype polyline
+skinparam nodesep 25
+skinparam ranksep 45
+
+package "Minecraft / Forge (externo)" #EEEEEE {
+  abstract class Screen
+  abstract class "TileEntityRenderer<T>" as TER
+  abstract class "GeoEntityRenderer<T>" as GER
+  class SimpleChannel
+}
+
+package "com.trucoya.network" {
+  class TrucoNetwork <<utility>> {
+    + {static} CHANNEL : SimpleChannel
+    + {static} register() : void
+  }
+  class TableActionPacket <<C→S>>
+  class TableViewPacket <<S→C>>
+  class BubblePacket <<S→C>>
+  class SenaNoticePacket <<S→C>>
+  class LibretaPacket <<S→C>>
+  class LibretaAccionPacket <<C→S>>
+  class CinematicaPacket <<S→C>>
+  class CinematicaFinPacket <<C→S>>
+  class EscenaPacket <<S→C>>
+  class TrailerPacket <<S→C>>
+}
+
+package "com.trucoya.client" {
+  class ClientTrucoState <<utility>> {
+    + {static} snapshot : TableSnapshot
+    + {static} tablePos : BlockPos
+  }
+  class TapeteScreen
+  class SenasScreen
+  class LibretaScreen
+  class MesaTrucoRenderer
+  class GauchoRenderer
+}
+
+package "com.trucoya.tileentity" {
+  class MesaTrucoTileEntity
+  class "MesaTrucoTileEntity.VistaMesa" as VistaMesa
+}
+package "com.trucoya.core" #FFF7E0 {
+  class TableSnapshot
+}
+
+TapeteScreen --|> Screen
+SenasScreen --|> Screen
+LibretaScreen --|> Screen
+MesaTrucoRenderer --|> TER
+GauchoRenderer --|> GER
+TrucoNetwork *-- SimpleChannel
+TableActionPacket ..> MesaTrucoTileEntity : handleAction / handleCard
+MesaTrucoTileEntity ..> TableViewPacket : envía
+TableViewPacket --> "1" TableSnapshot
+TableViewPacket ..> ClientTrucoState : actualiza
+ClientTrucoState --> "0..1" TableSnapshot
+TapeteScreen ..> ClientTrucoState : lee
+TapeteScreen ..> TableActionPacket : envía
+MesaTrucoRenderer ..> VistaMesa : dibuja las cartas
+MesaTrucoTileEntity *-- VistaMesa
+LibretaScreen ..> LibretaPacket : muestra
+LibretaScreen ..> LibretaAccionPacket : envía
+@enduml

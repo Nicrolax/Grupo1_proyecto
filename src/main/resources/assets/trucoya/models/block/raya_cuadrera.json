@@ -1,0 +1,110 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "tex": "trucoya:block/raya_cuadrera",
+    "particle": "trucoya:block/raya_cuadrera"
+  },
+  "elements": [
+    {
+      "from": [
+        7,
+        0,
+        7
+      ],
+      "to": [
+        9,
+        16,
+        9
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            2,
+            16
+          ],
+          "texture": "#tex"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            2,
+            16
+          ],
+          "texture": "#tex"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            2,
+            16
+          ],
+          "texture": "#tex"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            2,
+            16
+          ],
+          "texture": "#tex"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            2,
+            2
+          ],
+          "texture": "#tex"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            2,
+            2
+          ],
+          "texture": "#tex"
+        }
+      }
+    },
+    {
+      "from": [
+        8,
+        8,
+        9
+      ],
+      "to": [
+        8.01,
+        16,
+        21
+      ],
+      "shade": false,
+      "faces": {
+        "east": {
+          "uv": [
+            4,
+            0,
+            16,
+            8
+          ],
+          "texture": "#tex"
+        },
+        "west": {
+          "uv": [
+            16,
+            0,
+            4,
+            8
+          ],
+          "texture": "#tex"
+        }
+      }
+    }
+  ]
+}

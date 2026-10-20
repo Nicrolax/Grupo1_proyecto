@@ -1,0 +1,31 @@
+@startuml estados_mano
+title Diagrama de estados — Una mano de truco uruguayo (clase Round)
+skinparam shadowing false
+hide empty description
+[*] --> PrimeraBaza : startRound()\n3 cartas a cada uno + muestra
+state "Primera baza" as PrimeraBaza {
+  [*] --> Libre
+  Libre --> EnvidoPendiente : ENVIDO / REAL_ENVIDO / FALTA_ENVIDO
+  EnvidoPendiente --> EnvidoPendiente : se sube el envido
+  EnvidoPendiente --> Libre : QUIERO (se cantan los tantos)\n/ NO_QUIERO
+  Libre --> FlorPendiente : FLOR (y el rival también tiene)
+  FlorPendiente --> FlorPendiente : CONTRAFLOR / CONTRAFLOR_AL_RESTO
+  FlorPendiente --> Libre : QUIERO / CON_FLOR_ME_ACHICO
+}
+state "Bazas 2 y 3" as Bazas
+state "Truco pendiente" as TrucoPendiente
+PrimeraBaza --> Bazas : todos jugaron la primera carta
+PrimeraBaza --> TrucoPendiente : TRUCO
+Bazas --> TrucoPendiente : TRUCO / RETRUCO / VALE_CUATRO
+TrucoPendiente --> Bazas : QUIERO (sube trucoLevel)
+TrucoPendiente --> Terminada : NO_QUIERO
+PrimeraBaza --> Terminada : ME_VOY_AL_MAZO
+Bazas --> Terminada : ME_VOY_AL_MAZO
+Bazas --> Terminada : TrickRules.winner() define\n(en pardas gana la mano)
+Terminada --> [*] : award(puntos)\nTrucoMatch revisa el objetivo
+note right of Terminada
+  Puntos del truco:
+  sin cantar 1 · truco 2
+  retruco 3 · vale cuatro 4
+end note
+@enduml

@@ -1,0 +1,20 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "trucoya:item/mate"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "trucoya:estado": 1
+      },
+      "model": "trucoya:item/mate_cargado"
+    },
+    {
+      "predicate": {
+        "trucoya:estado": 2
+      },
+      "model": "trucoya:item/mate_cebado"
+    }
+  ]
+}

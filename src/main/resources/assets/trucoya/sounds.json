@@ -1,0 +1,1241 @@
+{
+  "card_play": {
+    "category": "block",
+    "subtitle": "subtitles.trucoya.card_play",
+    "sounds": [
+      "trucoya:sfx/card_play"
+    ]
+  },
+  "card_shuffle": {
+    "category": "block",
+    "subtitle": "subtitles.trucoya.card_shuffle",
+    "sounds": [
+      "trucoya:sfx/card_shuffle"
+    ]
+  },
+  "poroto": {
+    "category": "block",
+    "subtitle": "subtitles.trucoya.poroto",
+    "sounds": [
+      "trucoya:sfx/poroto"
+    ]
+  },
+  "disco.milonga": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "trucoya:disco/milonga",
+        "stream": true
+      }
+    ]
+  },
+  "disco.candombe": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "trucoya:disco/candombe",
+        "stream": true
+      }
+    ]
+  },
+  "disco.vals": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "trucoya:disco/vals",
+        "stream": true
+      }
+    ]
+  },
+  "disco.payada": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "trucoya:disco/payada",
+        "stream": true
+      }
+    ]
+  },
+  "cinematica.musica": {
+    "category": "music",
+    "sounds": [
+      {
+        "name": "trucoya:cinematica/musica",
+        "stream": true
+      }
+    ]
+  },
+  "cinematica.carga": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/carga"
+    ]
+  },
+  "cinematica.narracion_1": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/narracion_1"
+    ]
+  },
+  "cinematica.narracion_2": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/narracion_2"
+    ]
+  },
+  "cinematica.narracion_3": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/narracion_3"
+    ]
+  },
+  "cinematica.narracion_4": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/narracion_4"
+    ]
+  },
+  "cinematica.narracion_5": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/narracion_5"
+    ]
+  },
+  "cinematica.narracion_6": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/narracion_6"
+    ]
+  },
+  "cinematica.narracion_7": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/narracion_7"
+    ]
+  },
+  "cinematica.narracion_8": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/narracion_8"
+    ]
+  },
+  "cinematica.narracion_9": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/narracion_9"
+    ]
+  },
+  "voz.hombre.truco": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.truco",
+    "sounds": [
+      "trucoya:voz/hombre/truco_1",
+      "trucoya:voz/hombre/truco_2",
+      "trucoya:voz/hombre/truco_3",
+      "trucoya:voz/hombre/truco_4",
+      "trucoya:voz/hombre/truco_5"
+    ]
+  },
+  "voz.hombre.retruco": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.retruco",
+    "sounds": [
+      "trucoya:voz/hombre/retruco_1",
+      "trucoya:voz/hombre/retruco_2",
+      "trucoya:voz/hombre/retruco_3",
+      "trucoya:voz/hombre/retruco_4",
+      "trucoya:voz/hombre/retruco_5"
+    ]
+  },
+  "voz.hombre.vale_cuatro": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.vale_cuatro",
+    "sounds": [
+      "trucoya:voz/hombre/vale_cuatro_1",
+      "trucoya:voz/hombre/vale_cuatro_2",
+      "trucoya:voz/hombre/vale_cuatro_3",
+      "trucoya:voz/hombre/vale_cuatro_4",
+      "trucoya:voz/hombre/vale_cuatro_5"
+    ]
+  },
+  "voz.hombre.envido": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.envido",
+    "sounds": [
+      "trucoya:voz/hombre/envido_1",
+      "trucoya:voz/hombre/envido_2",
+      "trucoya:voz/hombre/envido_3",
+      "trucoya:voz/hombre/envido_4",
+      "trucoya:voz/hombre/envido_5"
+    ]
+  },
+  "voz.hombre.real_envido": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.real_envido",
+    "sounds": [
+      "trucoya:voz/hombre/real_envido_1",
+      "trucoya:voz/hombre/real_envido_2",
+      "trucoya:voz/hombre/real_envido_3",
+      "trucoya:voz/hombre/real_envido_4",
+      "trucoya:voz/hombre/real_envido_5"
+    ]
+  },
+  "voz.hombre.falta_envido": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.falta_envido",
+    "sounds": [
+      "trucoya:voz/hombre/falta_envido_1",
+      "trucoya:voz/hombre/falta_envido_2",
+      "trucoya:voz/hombre/falta_envido_3",
+      "trucoya:voz/hombre/falta_envido_4",
+      "trucoya:voz/hombre/falta_envido_5"
+    ]
+  },
+  "voz.hombre.flor": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.flor",
+    "sounds": [
+      "trucoya:voz/hombre/flor_1",
+      "trucoya:voz/hombre/flor_2",
+      "trucoya:voz/hombre/flor_3",
+      "trucoya:voz/hombre/flor_4",
+      "trucoya:voz/hombre/flor_5"
+    ]
+  },
+  "voz.hombre.contraflor": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.contraflor",
+    "sounds": [
+      "trucoya:voz/hombre/contraflor_1",
+      "trucoya:voz/hombre/contraflor_2",
+      "trucoya:voz/hombre/contraflor_3",
+      "trucoya:voz/hombre/contraflor_4",
+      "trucoya:voz/hombre/contraflor_5"
+    ]
+  },
+  "voz.hombre.contraflor_al_resto": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.contraflor_al_resto",
+    "sounds": [
+      "trucoya:voz/hombre/contraflor_al_resto_1",
+      "trucoya:voz/hombre/contraflor_al_resto_2",
+      "trucoya:voz/hombre/contraflor_al_resto_3",
+      "trucoya:voz/hombre/contraflor_al_resto_4",
+      "trucoya:voz/hombre/contraflor_al_resto_5"
+    ]
+  },
+  "voz.hombre.quiero": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.quiero",
+    "sounds": [
+      "trucoya:voz/hombre/quiero_1",
+      "trucoya:voz/hombre/quiero_2",
+      "trucoya:voz/hombre/quiero_3",
+      "trucoya:voz/hombre/quiero_4",
+      "trucoya:voz/hombre/quiero_5"
+    ]
+  },
+  "voz.hombre.con_flor_me_achico": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.con_flor_me_achico",
+    "sounds": [
+      "trucoya:voz/hombre/con_flor_me_achico_1",
+      "trucoya:voz/hombre/con_flor_me_achico_2",
+      "trucoya:voz/hombre/con_flor_me_achico_3",
+      "trucoya:voz/hombre/con_flor_me_achico_4",
+      "trucoya:voz/hombre/con_flor_me_achico_5"
+    ]
+  },
+  "voz.hombre.no_quiero": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.no_quiero",
+    "sounds": [
+      "trucoya:voz/hombre/no_quiero_1",
+      "trucoya:voz/hombre/no_quiero_2",
+      "trucoya:voz/hombre/no_quiero_3",
+      "trucoya:voz/hombre/no_quiero_4",
+      "trucoya:voz/hombre/no_quiero_5"
+    ]
+  },
+  "voz.hombre.me_voy_al_mazo": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.me_voy_al_mazo",
+    "sounds": [
+      "trucoya:voz/hombre/me_voy_al_mazo_1",
+      "trucoya:voz/hombre/me_voy_al_mazo_2",
+      "trucoya:voz/hombre/me_voy_al_mazo_3",
+      "trucoya:voz/hombre/me_voy_al_mazo_4",
+      "trucoya:voz/hombre/me_voy_al_mazo_5"
+    ]
+  },
+  "voz.gaucho.truco": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.truco",
+    "sounds": [
+      "trucoya:voz/gaucho/truco_1",
+      "trucoya:voz/gaucho/truco_2",
+      "trucoya:voz/gaucho/truco_3",
+      "trucoya:voz/gaucho/truco_4",
+      "trucoya:voz/gaucho/truco_5"
+    ]
+  },
+  "voz.gaucho.retruco": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.retruco",
+    "sounds": [
+      "trucoya:voz/gaucho/retruco_1",
+      "trucoya:voz/gaucho/retruco_2",
+      "trucoya:voz/gaucho/retruco_3",
+      "trucoya:voz/gaucho/retruco_4",
+      "trucoya:voz/gaucho/retruco_5"
+    ]
+  },
+  "voz.gaucho.vale_cuatro": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.vale_cuatro",
+    "sounds": [
+      "trucoya:voz/gaucho/vale_cuatro_1",
+      "trucoya:voz/gaucho/vale_cuatro_2",
+      "trucoya:voz/gaucho/vale_cuatro_3",
+      "trucoya:voz/gaucho/vale_cuatro_4",
+      "trucoya:voz/gaucho/vale_cuatro_5"
+    ]
+  },
+  "voz.gaucho.envido": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.envido",
+    "sounds": [
+      "trucoya:voz/gaucho/envido_1",
+      "trucoya:voz/gaucho/envido_2",
+      "trucoya:voz/gaucho/envido_3",
+      "trucoya:voz/gaucho/envido_4",
+      "trucoya:voz/gaucho/envido_5"
+    ]
+  },
+  "voz.gaucho.real_envido": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.real_envido",
+    "sounds": [
+      "trucoya:voz/gaucho/real_envido_1",
+      "trucoya:voz/gaucho/real_envido_2",
+      "trucoya:voz/gaucho/real_envido_3",
+      "trucoya:voz/gaucho/real_envido_4",
+      "trucoya:voz/gaucho/real_envido_5"
+    ]
+  },
+  "voz.gaucho.falta_envido": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.falta_envido",
+    "sounds": [
+      "trucoya:voz/gaucho/falta_envido_1",
+      "trucoya:voz/gaucho/falta_envido_2",
+      "trucoya:voz/gaucho/falta_envido_3",
+      "trucoya:voz/gaucho/falta_envido_4",
+      "trucoya:voz/gaucho/falta_envido_5"
+    ]
+  },
+  "voz.gaucho.flor": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.flor",
+    "sounds": [
+      "trucoya:voz/gaucho/flor_1",
+      "trucoya:voz/gaucho/flor_2",
+      "trucoya:voz/gaucho/flor_3",
+      "trucoya:voz/gaucho/flor_4",
+      "trucoya:voz/gaucho/flor_5"
+    ]
+  },
+  "voz.gaucho.contraflor": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.contraflor",
+    "sounds": [
+      "trucoya:voz/gaucho/contraflor_1",
+      "trucoya:voz/gaucho/contraflor_2",
+      "trucoya:voz/gaucho/contraflor_3",
+      "trucoya:voz/gaucho/contraflor_4",
+      "trucoya:voz/gaucho/contraflor_5"
+    ]
+  },
+  "voz.gaucho.contraflor_al_resto": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.contraflor_al_resto",
+    "sounds": [
+      "trucoya:voz/gaucho/contraflor_al_resto_1",
+      "trucoya:voz/gaucho/contraflor_al_resto_2",
+      "trucoya:voz/gaucho/contraflor_al_resto_3",
+      "trucoya:voz/gaucho/contraflor_al_resto_4",
+      "trucoya:voz/gaucho/contraflor_al_resto_5"
+    ]
+  },
+  "voz.gaucho.quiero": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.quiero",
+    "sounds": [
+      "trucoya:voz/gaucho/quiero_1",
+      "trucoya:voz/gaucho/quiero_2",
+      "trucoya:voz/gaucho/quiero_3",
+      "trucoya:voz/gaucho/quiero_4",
+      "trucoya:voz/gaucho/quiero_5"
+    ]
+  },
+  "voz.gaucho.con_flor_me_achico": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.con_flor_me_achico",
+    "sounds": [
+      "trucoya:voz/gaucho/con_flor_me_achico_1",
+      "trucoya:voz/gaucho/con_flor_me_achico_2",
+      "trucoya:voz/gaucho/con_flor_me_achico_3",
+      "trucoya:voz/gaucho/con_flor_me_achico_4",
+      "trucoya:voz/gaucho/con_flor_me_achico_5"
+    ]
+  },
+  "voz.gaucho.no_quiero": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.no_quiero",
+    "sounds": [
+      "trucoya:voz/gaucho/no_quiero_1",
+      "trucoya:voz/gaucho/no_quiero_2",
+      "trucoya:voz/gaucho/no_quiero_3",
+      "trucoya:voz/gaucho/no_quiero_4",
+      "trucoya:voz/gaucho/no_quiero_5"
+    ]
+  },
+  "voz.gaucho.me_voy_al_mazo": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.me_voy_al_mazo",
+    "sounds": [
+      "trucoya:voz/gaucho/me_voy_al_mazo_1",
+      "trucoya:voz/gaucho/me_voy_al_mazo_2",
+      "trucoya:voz/gaucho/me_voy_al_mazo_3",
+      "trucoya:voz/gaucho/me_voy_al_mazo_4",
+      "trucoya:voz/gaucho/me_voy_al_mazo_5"
+    ]
+  },
+  "voz.viejo.truco": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.truco",
+    "sounds": [
+      "trucoya:voz/viejo/truco_1",
+      "trucoya:voz/viejo/truco_2",
+      "trucoya:voz/viejo/truco_3",
+      "trucoya:voz/viejo/truco_4",
+      "trucoya:voz/viejo/truco_5"
+    ]
+  },
+  "voz.viejo.retruco": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.retruco",
+    "sounds": [
+      "trucoya:voz/viejo/retruco_1",
+      "trucoya:voz/viejo/retruco_2",
+      "trucoya:voz/viejo/retruco_3",
+      "trucoya:voz/viejo/retruco_4",
+      "trucoya:voz/viejo/retruco_5"
+    ]
+  },
+  "voz.viejo.vale_cuatro": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.vale_cuatro",
+    "sounds": [
+      "trucoya:voz/viejo/vale_cuatro_1",
+      "trucoya:voz/viejo/vale_cuatro_2",
+      "trucoya:voz/viejo/vale_cuatro_3",
+      "trucoya:voz/viejo/vale_cuatro_4",
+      "trucoya:voz/viejo/vale_cuatro_5"
+    ]
+  },
+  "voz.viejo.envido": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.envido",
+    "sounds": [
+      "trucoya:voz/viejo/envido_1",
+      "trucoya:voz/viejo/envido_2",
+      "trucoya:voz/viejo/envido_3",
+      "trucoya:voz/viejo/envido_4",
+      "trucoya:voz/viejo/envido_5"
+    ]
+  },
+  "voz.viejo.real_envido": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.real_envido",
+    "sounds": [
+      "trucoya:voz/viejo/real_envido_1",
+      "trucoya:voz/viejo/real_envido_2",
+      "trucoya:voz/viejo/real_envido_3",
+      "trucoya:voz/viejo/real_envido_4",
+      "trucoya:voz/viejo/real_envido_5"
+    ]
+  },
+  "voz.viejo.falta_envido": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.falta_envido",
+    "sounds": [
+      "trucoya:voz/viejo/falta_envido_1",
+      "trucoya:voz/viejo/falta_envido_2",
+      "trucoya:voz/viejo/falta_envido_3",
+      "trucoya:voz/viejo/falta_envido_4",
+      "trucoya:voz/viejo/falta_envido_5"
+    ]
+  },
+  "voz.viejo.flor": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.flor",
+    "sounds": [
+      "trucoya:voz/viejo/flor_1",
+      "trucoya:voz/viejo/flor_2",
+      "trucoya:voz/viejo/flor_3",
+      "trucoya:voz/viejo/flor_4",
+      "trucoya:voz/viejo/flor_5"
+    ]
+  },
+  "voz.viejo.contraflor": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.contraflor",
+    "sounds": [
+      "trucoya:voz/viejo/contraflor_1",
+      "trucoya:voz/viejo/contraflor_2",
+      "trucoya:voz/viejo/contraflor_3",
+      "trucoya:voz/viejo/contraflor_4",
+      "trucoya:voz/viejo/contraflor_5"
+    ]
+  },
+  "voz.viejo.contraflor_al_resto": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.contraflor_al_resto",
+    "sounds": [
+      "trucoya:voz/viejo/contraflor_al_resto_1",
+      "trucoya:voz/viejo/contraflor_al_resto_2",
+      "trucoya:voz/viejo/contraflor_al_resto_3",
+      "trucoya:voz/viejo/contraflor_al_resto_4",
+      "trucoya:voz/viejo/contraflor_al_resto_5"
+    ]
+  },
+  "voz.viejo.quiero": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.quiero",
+    "sounds": [
+      "trucoya:voz/viejo/quiero_1",
+      "trucoya:voz/viejo/quiero_2",
+      "trucoya:voz/viejo/quiero_3",
+      "trucoya:voz/viejo/quiero_4",
+      "trucoya:voz/viejo/quiero_5"
+    ]
+  },
+  "voz.viejo.con_flor_me_achico": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.con_flor_me_achico",
+    "sounds": [
+      "trucoya:voz/viejo/con_flor_me_achico_1",
+      "trucoya:voz/viejo/con_flor_me_achico_2",
+      "trucoya:voz/viejo/con_flor_me_achico_3",
+      "trucoya:voz/viejo/con_flor_me_achico_4",
+      "trucoya:voz/viejo/con_flor_me_achico_5"
+    ]
+  },
+  "voz.viejo.no_quiero": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.no_quiero",
+    "sounds": [
+      "trucoya:voz/viejo/no_quiero_1",
+      "trucoya:voz/viejo/no_quiero_2",
+      "trucoya:voz/viejo/no_quiero_3",
+      "trucoya:voz/viejo/no_quiero_4",
+      "trucoya:voz/viejo/no_quiero_5"
+    ]
+  },
+  "voz.viejo.me_voy_al_mazo": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.me_voy_al_mazo",
+    "sounds": [
+      "trucoya:voz/viejo/me_voy_al_mazo_1",
+      "trucoya:voz/viejo/me_voy_al_mazo_2",
+      "trucoya:voz/viejo/me_voy_al_mazo_3",
+      "trucoya:voz/viejo/me_voy_al_mazo_4",
+      "trucoya:voz/viejo/me_voy_al_mazo_5"
+    ]
+  },
+  "voz.mujer.truco": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.truco",
+    "sounds": [
+      "trucoya:voz/mujer/truco_1",
+      "trucoya:voz/mujer/truco_2",
+      "trucoya:voz/mujer/truco_3",
+      "trucoya:voz/mujer/truco_4",
+      "trucoya:voz/mujer/truco_5"
+    ]
+  },
+  "voz.mujer.retruco": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.retruco",
+    "sounds": [
+      "trucoya:voz/mujer/retruco_1",
+      "trucoya:voz/mujer/retruco_2",
+      "trucoya:voz/mujer/retruco_3",
+      "trucoya:voz/mujer/retruco_4",
+      "trucoya:voz/mujer/retruco_5"
+    ]
+  },
+  "voz.mujer.vale_cuatro": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.vale_cuatro",
+    "sounds": [
+      "trucoya:voz/mujer/vale_cuatro_1",
+      "trucoya:voz/mujer/vale_cuatro_2",
+      "trucoya:voz/mujer/vale_cuatro_3",
+      "trucoya:voz/mujer/vale_cuatro_4",
+      "trucoya:voz/mujer/vale_cuatro_5"
+    ]
+  },
+  "voz.mujer.envido": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.envido",
+    "sounds": [
+      "trucoya:voz/mujer/envido_1",
+      "trucoya:voz/mujer/envido_2",
+      "trucoya:voz/mujer/envido_3",
+      "trucoya:voz/mujer/envido_4",
+      "trucoya:voz/mujer/envido_5"
+    ]
+  },
+  "voz.mujer.real_envido": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.real_envido",
+    "sounds": [
+      "trucoya:voz/mujer/real_envido_1",
+      "trucoya:voz/mujer/real_envido_2",
+      "trucoya:voz/mujer/real_envido_3",
+      "trucoya:voz/mujer/real_envido_4",
+      "trucoya:voz/mujer/real_envido_5"
+    ]
+  },
+  "voz.mujer.falta_envido": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.falta_envido",
+    "sounds": [
+      "trucoya:voz/mujer/falta_envido_1",
+      "trucoya:voz/mujer/falta_envido_2",
+      "trucoya:voz/mujer/falta_envido_3",
+      "trucoya:voz/mujer/falta_envido_4",
+      "trucoya:voz/mujer/falta_envido_5"
+    ]
+  },
+  "voz.mujer.flor": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.flor",
+    "sounds": [
+      "trucoya:voz/mujer/flor_1",
+      "trucoya:voz/mujer/flor_2",
+      "trucoya:voz/mujer/flor_3",
+      "trucoya:voz/mujer/flor_4",
+      "trucoya:voz/mujer/flor_5"
+    ]
+  },
+  "voz.mujer.contraflor": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.contraflor",
+    "sounds": [
+      "trucoya:voz/mujer/contraflor_1",
+      "trucoya:voz/mujer/contraflor_2",
+      "trucoya:voz/mujer/contraflor_3",
+      "trucoya:voz/mujer/contraflor_4",
+      "trucoya:voz/mujer/contraflor_5"
+    ]
+  },
+  "voz.mujer.contraflor_al_resto": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.contraflor_al_resto",
+    "sounds": [
+      "trucoya:voz/mujer/contraflor_al_resto_1",
+      "trucoya:voz/mujer/contraflor_al_resto_2",
+      "trucoya:voz/mujer/contraflor_al_resto_3",
+      "trucoya:voz/mujer/contraflor_al_resto_4",
+      "trucoya:voz/mujer/contraflor_al_resto_5"
+    ]
+  },
+  "voz.mujer.quiero": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.quiero",
+    "sounds": [
+      "trucoya:voz/mujer/quiero_1",
+      "trucoya:voz/mujer/quiero_2",
+      "trucoya:voz/mujer/quiero_3",
+      "trucoya:voz/mujer/quiero_4",
+      "trucoya:voz/mujer/quiero_5"
+    ]
+  },
+  "voz.mujer.con_flor_me_achico": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.con_flor_me_achico",
+    "sounds": [
+      "trucoya:voz/mujer/con_flor_me_achico_1",
+      "trucoya:voz/mujer/con_flor_me_achico_2",
+      "trucoya:voz/mujer/con_flor_me_achico_3",
+      "trucoya:voz/mujer/con_flor_me_achico_4",
+      "trucoya:voz/mujer/con_flor_me_achico_5"
+    ]
+  },
+  "voz.mujer.no_quiero": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.no_quiero",
+    "sounds": [
+      "trucoya:voz/mujer/no_quiero_1",
+      "trucoya:voz/mujer/no_quiero_2",
+      "trucoya:voz/mujer/no_quiero_3",
+      "trucoya:voz/mujer/no_quiero_4",
+      "trucoya:voz/mujer/no_quiero_5"
+    ]
+  },
+  "voz.mujer.me_voy_al_mazo": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.me_voy_al_mazo",
+    "sounds": [
+      "trucoya:voz/mujer/me_voy_al_mazo_1",
+      "trucoya:voz/mujer/me_voy_al_mazo_2",
+      "trucoya:voz/mujer/me_voy_al_mazo_3",
+      "trucoya:voz/mujer/me_voy_al_mazo_4",
+      "trucoya:voz/mujer/me_voy_al_mazo_5"
+    ]
+  },
+  "voz.paisana.truco": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.truco",
+    "sounds": [
+      "trucoya:voz/paisana/truco_1",
+      "trucoya:voz/paisana/truco_2",
+      "trucoya:voz/paisana/truco_3",
+      "trucoya:voz/paisana/truco_4",
+      "trucoya:voz/paisana/truco_5"
+    ]
+  },
+  "voz.paisana.retruco": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.retruco",
+    "sounds": [
+      "trucoya:voz/paisana/retruco_1",
+      "trucoya:voz/paisana/retruco_2",
+      "trucoya:voz/paisana/retruco_3",
+      "trucoya:voz/paisana/retruco_4",
+      "trucoya:voz/paisana/retruco_5"
+    ]
+  },
+  "voz.paisana.vale_cuatro": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.vale_cuatro",
+    "sounds": [
+      "trucoya:voz/paisana/vale_cuatro_1",
+      "trucoya:voz/paisana/vale_cuatro_2",
+      "trucoya:voz/paisana/vale_cuatro_3",
+      "trucoya:voz/paisana/vale_cuatro_4",
+      "trucoya:voz/paisana/vale_cuatro_5"
+    ]
+  },
+  "voz.paisana.envido": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.envido",
+    "sounds": [
+      "trucoya:voz/paisana/envido_1",
+      "trucoya:voz/paisana/envido_2",
+      "trucoya:voz/paisana/envido_3",
+      "trucoya:voz/paisana/envido_4",
+      "trucoya:voz/paisana/envido_5"
+    ]
+  },
+  "voz.paisana.real_envido": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.real_envido",
+    "sounds": [
+      "trucoya:voz/paisana/real_envido_1",
+      "trucoya:voz/paisana/real_envido_2",
+      "trucoya:voz/paisana/real_envido_3",
+      "trucoya:voz/paisana/real_envido_4",
+      "trucoya:voz/paisana/real_envido_5"
+    ]
+  },
+  "voz.paisana.falta_envido": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.falta_envido",
+    "sounds": [
+      "trucoya:voz/paisana/falta_envido_1",
+      "trucoya:voz/paisana/falta_envido_2",
+      "trucoya:voz/paisana/falta_envido_3",
+      "trucoya:voz/paisana/falta_envido_4",
+      "trucoya:voz/paisana/falta_envido_5"
+    ]
+  },
+  "voz.paisana.flor": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.flor",
+    "sounds": [
+      "trucoya:voz/paisana/flor_1",
+      "trucoya:voz/paisana/flor_2",
+      "trucoya:voz/paisana/flor_3",
+      "trucoya:voz/paisana/flor_4",
+      "trucoya:voz/paisana/flor_5"
+    ]
+  },
+  "voz.paisana.contraflor": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.contraflor",
+    "sounds": [
+      "trucoya:voz/paisana/contraflor_1",
+      "trucoya:voz/paisana/contraflor_2",
+      "trucoya:voz/paisana/contraflor_3",
+      "trucoya:voz/paisana/contraflor_4",
+      "trucoya:voz/paisana/contraflor_5"
+    ]
+  },
+  "voz.paisana.contraflor_al_resto": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.contraflor_al_resto",
+    "sounds": [
+      "trucoya:voz/paisana/contraflor_al_resto_1",
+      "trucoya:voz/paisana/contraflor_al_resto_2",
+      "trucoya:voz/paisana/contraflor_al_resto_3",
+      "trucoya:voz/paisana/contraflor_al_resto_4",
+      "trucoya:voz/paisana/contraflor_al_resto_5"
+    ]
+  },
+  "voz.paisana.quiero": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.quiero",
+    "sounds": [
+      "trucoya:voz/paisana/quiero_1",
+      "trucoya:voz/paisana/quiero_2",
+      "trucoya:voz/paisana/quiero_3",
+      "trucoya:voz/paisana/quiero_4",
+      "trucoya:voz/paisana/quiero_5"
+    ]
+  },
+  "voz.paisana.con_flor_me_achico": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.con_flor_me_achico",
+    "sounds": [
+      "trucoya:voz/paisana/con_flor_me_achico_1",
+      "trucoya:voz/paisana/con_flor_me_achico_2",
+      "trucoya:voz/paisana/con_flor_me_achico_3",
+      "trucoya:voz/paisana/con_flor_me_achico_4",
+      "trucoya:voz/paisana/con_flor_me_achico_5"
+    ]
+  },
+  "voz.paisana.no_quiero": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.no_quiero",
+    "sounds": [
+      "trucoya:voz/paisana/no_quiero_1",
+      "trucoya:voz/paisana/no_quiero_2",
+      "trucoya:voz/paisana/no_quiero_3",
+      "trucoya:voz/paisana/no_quiero_4",
+      "trucoya:voz/paisana/no_quiero_5"
+    ]
+  },
+  "voz.paisana.me_voy_al_mazo": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.me_voy_al_mazo",
+    "sounds": [
+      "trucoya:voz/paisana/me_voy_al_mazo_1",
+      "trucoya:voz/paisana/me_voy_al_mazo_2",
+      "trucoya:voz/paisana/me_voy_al_mazo_3",
+      "trucoya:voz/paisana/me_voy_al_mazo_4",
+      "trucoya:voz/paisana/me_voy_al_mazo_5"
+    ]
+  },
+  "cinematica.final_musica": {
+    "category": "music",
+    "sounds": [
+      {
+        "name": "trucoya:cinematica/final_musica",
+        "stream": true
+      }
+    ]
+  },
+  "cinematica.final_1": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/final_1"
+    ]
+  },
+  "cinematica.final_2": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/final_2"
+    ]
+  },
+  "cinematica.final_3": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/final_3"
+    ]
+  },
+  "cinematica.final_4": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/final_4"
+    ]
+  },
+  "cinematica.final_5": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/final_5"
+    ]
+  },
+  "cinematica.final_6": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/final_6"
+    ]
+  },
+  "cinematica.final_7": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/final_7"
+    ]
+  },
+  "cinematica.final_8": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/final_8"
+    ]
+  },
+  "escena.visita_1": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/esc_visita_1"
+    ]
+  },
+  "escena.visita_2": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/esc_visita_2"
+    ]
+  },
+  "escena.visita_3": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/esc_visita_3"
+    ]
+  },
+  "escena.visita_4": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/esc_visita_4"
+    ]
+  },
+  "escena.visita_5": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/esc_visita_5"
+    ]
+  },
+  "escena.visita_6": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/esc_visita_6"
+    ]
+  },
+  "escena.visita_7": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/esc_visita_7"
+    ]
+  },
+  "escena.visita_8": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/esc_visita_8"
+    ]
+  },
+  "escena.visita_9": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/esc_visita_9"
+    ]
+  },
+  "escena.visita_10": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/esc_visita_10"
+    ]
+  },
+  "escena.visita_11": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/esc_visita_11"
+    ]
+  },
+  "escena.visita_12": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/esc_visita_12"
+    ]
+  },
+  "escena.visita_13": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/esc_visita_13"
+    ]
+  },
+  "escena.llegada_1": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/esc_llegada_1"
+    ]
+  },
+  "escena.llegada_2": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/esc_llegada_2"
+    ]
+  },
+  "escena.llegada_3": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/esc_llegada_3"
+    ]
+  },
+  "escena.llegada_4": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/esc_llegada_4"
+    ]
+  },
+  "escena.llegada_5": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/esc_llegada_5"
+    ]
+  },
+  "escena.llegada_6": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/esc_llegada_6"
+    ]
+  },
+  "escena.llegada_7": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/esc_llegada_7"
+    ]
+  },
+  "escena.amanecer_1": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/esc_amanecer_1"
+    ]
+  },
+  "escena.amanecer_2": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/esc_amanecer_2"
+    ]
+  },
+  "escena.amanecer_3": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/esc_amanecer_3"
+    ]
+  },
+  "escena.amanecer_4": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/esc_amanecer_4"
+    ]
+  },
+  "escena.amanecer_5": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/esc_amanecer_5"
+    ]
+  },
+  "escena.amanecer_6": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/esc_amanecer_6"
+    ]
+  },
+  "escena.amanecer_7": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/esc_amanecer_7"
+    ]
+  },
+  "escena.amanecer_8": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/esc_amanecer_8"
+    ]
+  },
+  "escena.amanecer_9": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/esc_amanecer_9"
+    ]
+  },
+  "escena.derrota_1": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/esc_derrota_1"
+    ]
+  },
+  "escena.derrota_2": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/esc_derrota_2"
+    ]
+  },
+  "escena.derrota_3": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/esc_derrota_3"
+    ]
+  },
+  "voz.diablo.truco": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.truco",
+    "sounds": [
+      "trucoya:voz/diablo/truco_1",
+      "trucoya:voz/diablo/truco_2",
+      "trucoya:voz/diablo/truco_3",
+      "trucoya:voz/diablo/truco_4",
+      "trucoya:voz/diablo/truco_5"
+    ]
+  },
+  "voz.diablo.retruco": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.retruco",
+    "sounds": [
+      "trucoya:voz/diablo/retruco_1",
+      "trucoya:voz/diablo/retruco_2",
+      "trucoya:voz/diablo/retruco_3",
+      "trucoya:voz/diablo/retruco_4",
+      "trucoya:voz/diablo/retruco_5"
+    ]
+  },
+  "voz.diablo.vale_cuatro": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.vale_cuatro",
+    "sounds": [
+      "trucoya:voz/diablo/vale_cuatro_1",
+      "trucoya:voz/diablo/vale_cuatro_2",
+      "trucoya:voz/diablo/vale_cuatro_3",
+      "trucoya:voz/diablo/vale_cuatro_4",
+      "trucoya:voz/diablo/vale_cuatro_5"
+    ]
+  },
+  "voz.diablo.envido": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.envido",
+    "sounds": [
+      "trucoya:voz/diablo/envido_1",
+      "trucoya:voz/diablo/envido_2",
+      "trucoya:voz/diablo/envido_3",
+      "trucoya:voz/diablo/envido_4",
+      "trucoya:voz/diablo/envido_5"
+    ]
+  },
+  "voz.diablo.real_envido": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.real_envido",
+    "sounds": [
+      "trucoya:voz/diablo/real_envido_1",
+      "trucoya:voz/diablo/real_envido_2",
+      "trucoya:voz/diablo/real_envido_3",
+      "trucoya:voz/diablo/real_envido_4",
+      "trucoya:voz/diablo/real_envido_5"
+    ]
+  },
+  "voz.diablo.falta_envido": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.falta_envido",
+    "sounds": [
+      "trucoya:voz/diablo/falta_envido_1",
+      "trucoya:voz/diablo/falta_envido_2",
+      "trucoya:voz/diablo/falta_envido_3",
+      "trucoya:voz/diablo/falta_envido_4",
+      "trucoya:voz/diablo/falta_envido_5"
+    ]
+  },
+  "voz.diablo.flor": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.flor",
+    "sounds": [
+      "trucoya:voz/diablo/flor_1",
+      "trucoya:voz/diablo/flor_2",
+      "trucoya:voz/diablo/flor_3",
+      "trucoya:voz/diablo/flor_4",
+      "trucoya:voz/diablo/flor_5"
+    ]
+  },
+  "voz.diablo.contraflor": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.contraflor",
+    "sounds": [
+      "trucoya:voz/diablo/contraflor_1",
+      "trucoya:voz/diablo/contraflor_2",
+      "trucoya:voz/diablo/contraflor_3",
+      "trucoya:voz/diablo/contraflor_4",
+      "trucoya:voz/diablo/contraflor_5"
+    ]
+  },
+  "voz.diablo.contraflor_al_resto": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.contraflor_al_resto",
+    "sounds": [
+      "trucoya:voz/diablo/contraflor_al_resto_1",
+      "trucoya:voz/diablo/contraflor_al_resto_2",
+      "trucoya:voz/diablo/contraflor_al_resto_3",
+      "trucoya:voz/diablo/contraflor_al_resto_4",
+      "trucoya:voz/diablo/contraflor_al_resto_5"
+    ]
+  },
+  "voz.diablo.quiero": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.quiero",
+    "sounds": [
+      "trucoya:voz/diablo/quiero_1",
+      "trucoya:voz/diablo/quiero_2",
+      "trucoya:voz/diablo/quiero_3",
+      "trucoya:voz/diablo/quiero_4",
+      "trucoya:voz/diablo/quiero_5"
+    ]
+  },
+  "voz.diablo.con_flor_me_achico": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.con_flor_me_achico",
+    "sounds": [
+      "trucoya:voz/diablo/con_flor_me_achico_1",
+      "trucoya:voz/diablo/con_flor_me_achico_2",
+      "trucoya:voz/diablo/con_flor_me_achico_3",
+      "trucoya:voz/diablo/con_flor_me_achico_4",
+      "trucoya:voz/diablo/con_flor_me_achico_5"
+    ]
+  },
+  "voz.diablo.no_quiero": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.no_quiero",
+    "sounds": [
+      "trucoya:voz/diablo/no_quiero_1",
+      "trucoya:voz/diablo/no_quiero_2",
+      "trucoya:voz/diablo/no_quiero_3",
+      "trucoya:voz/diablo/no_quiero_4",
+      "trucoya:voz/diablo/no_quiero_5"
+    ]
+  },
+  "voz.diablo.me_voy_al_mazo": {
+    "category": "player",
+    "subtitle": "subtitles.trucoya.voice.me_voy_al_mazo",
+    "sounds": [
+      "trucoya:voz/diablo/me_voy_al_mazo_1",
+      "trucoya:voz/diablo/me_voy_al_mazo_2",
+      "trucoya:voz/diablo/me_voy_al_mazo_3",
+      "trucoya:voz/diablo/me_voy_al_mazo_4",
+      "trucoya:voz/diablo/me_voy_al_mazo_5"
+    ]
+  },
+  "cinematica.final_9": {
+    "category": "voice",
+    "sounds": [
+      "trucoya:cinematica/final_9"
+    ]
+  }
+}

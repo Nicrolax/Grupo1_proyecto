@@ -1,0 +1,63 @@
+@startuml casos_de_uso
+title Diagrama de casos de uso — Truco Ya
+left to right direction
+skinparam shadowing false
+skinparam packageStyle rectangle
+skinparam usecase {
+  BackgroundColor #FFFDF6
+  BorderColor #5A2A1A
+}
+actor "Jugador" as J
+actor "Compañero / rival\n(otro jugador)" as J2
+actor "Administrador\ndel servidor" as A
+actor "Paisano\n(IA del sistema)" as P <<sistema>>
+J2 -|> J
+
+rectangle "Truco Ya (mod de Minecraft)" {
+  usecase "CU-01 Armar la mesa\ny sentarse" as CU01
+  usecase "CU-02 Empezar un partido\n(1v1 o 2v2, 30/40, flor)" as CU02
+  usecase "CU-03 Jugar una mano\n(cartas, bazas, pardas)" as CU03
+  usecase "CU-04 Cantar envido / flor" as CU04
+  usecase "CU-05 Cantar truco o\nirse al mazo" as CU05
+  usecase "CU-06 Hacer una seña\nal compañero" as CU06
+  usecase "CU-07 Invitar a un paisano\na la mesa" as CU07
+  usecase "CU-08 Apostar esmeraldas" as CU08
+  usecase "CU-09 Consultar la Libreta\n(camino, barajas, pedidos,\ndesafíos, números)" as CU09
+  usecase "CU-10 Elegir la baraja" as CU10
+  usecase "CU-11 Aceptar y cumplir\nun pedido" as CU11
+  usecase "CU-12 Jugar el modo historia\n(sellos, torneos, Vizcacha,\nSalamanca)" as CU12
+  usecase "CU-13 Grabar el tráiler" as CU13
+  usecase "CU-14 Armar el servidor\ny configurarlo" as CU14
+  usecase "CU-15 Usar comandos\nde prueba" as CU15
+  usecase "Validar la jugada\nen el servidor" as VAL
+  usecase "Completar asientos\ncon paisanos" as BOT
+}
+
+J --> CU01
+J --> CU02
+J --> CU03
+J --> CU04
+J --> CU05
+J --> CU06
+J --> CU07
+J --> CU08
+J --> CU09
+J --> CU10
+J --> CU11
+J --> CU12
+J --> CU13
+A --> CU14
+A --> CU15
+CU02 ..> CU01 : <<include>>
+CU03 ..> VAL : <<include>>
+CU04 ..> VAL : <<include>>
+CU05 ..> VAL : <<include>>
+BOT ..> CU02 : <<extend>>\n[asientos libres]
+CU04 ..> CU03 : <<extend>>\n[primera baza]
+CU06 ..> CU03 : <<extend>>\n[2 contra 2]
+CU10 ..> CU09 : <<extend>>
+CU12 ..> CU03 : <<include>>
+CU07 --> P
+BOT --> P
+CU11 --> P
+@enduml

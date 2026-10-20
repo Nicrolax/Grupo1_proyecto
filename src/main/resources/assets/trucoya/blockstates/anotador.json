@@ -1,0 +1,649 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "trucoya:block/anotador_base"
+      }
+    },
+    {
+      "when": {
+        "blancos": "1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_1"
+      }
+    },
+    {
+      "when": {
+        "blancos": "2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_2"
+      }
+    },
+    {
+      "when": {
+        "blancos": "3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_3"
+      }
+    },
+    {
+      "when": {
+        "blancos": "4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_4"
+      }
+    },
+    {
+      "when": {
+        "blancos": "5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_5"
+      }
+    },
+    {
+      "when": {
+        "blancos": "6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_6"
+      }
+    },
+    {
+      "when": {
+        "blancos": "7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_7"
+      }
+    },
+    {
+      "when": {
+        "blancos": "8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_8"
+      }
+    },
+    {
+      "when": {
+        "blancos": "9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_9"
+      }
+    },
+    {
+      "when": {
+        "blancos": "10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_10"
+      }
+    },
+    {
+      "when": {
+        "blancos": "11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_11"
+      }
+    },
+    {
+      "when": {
+        "blancos": "12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_12"
+      }
+    },
+    {
+      "when": {
+        "blancos": "13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_13"
+      }
+    },
+    {
+      "when": {
+        "blancos": "14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_14"
+      }
+    },
+    {
+      "when": {
+        "blancos": "15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_15"
+      }
+    },
+    {
+      "when": {
+        "blancos": "16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_16"
+      }
+    },
+    {
+      "when": {
+        "blancos": "17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_17"
+      }
+    },
+    {
+      "when": {
+        "blancos": "18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_18"
+      }
+    },
+    {
+      "when": {
+        "blancos": "19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_19"
+      }
+    },
+    {
+      "when": {
+        "blancos": "20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_20"
+      }
+    },
+    {
+      "when": {
+        "blancos": "21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_21"
+      }
+    },
+    {
+      "when": {
+        "blancos": "22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_22"
+      }
+    },
+    {
+      "when": {
+        "blancos": "23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_23"
+      }
+    },
+    {
+      "when": {
+        "blancos": "24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_24"
+      }
+    },
+    {
+      "when": {
+        "blancos": "25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_25"
+      }
+    },
+    {
+      "when": {
+        "blancos": "26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_26"
+      }
+    },
+    {
+      "when": {
+        "blancos": "27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_27"
+      }
+    },
+    {
+      "when": {
+        "blancos": "28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_28"
+      }
+    },
+    {
+      "when": {
+        "blancos": "29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_29"
+      }
+    },
+    {
+      "when": {
+        "blancos": "30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_30"
+      }
+    },
+    {
+      "when": {
+        "blancos": "31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_31"
+      }
+    },
+    {
+      "when": {
+        "blancos": "32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_32"
+      }
+    },
+    {
+      "when": {
+        "blancos": "33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_33"
+      }
+    },
+    {
+      "when": {
+        "blancos": "34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_34"
+      }
+    },
+    {
+      "when": {
+        "blancos": "35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_35"
+      }
+    },
+    {
+      "when": {
+        "blancos": "36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_36"
+      }
+    },
+    {
+      "when": {
+        "blancos": "37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_37"
+      }
+    },
+    {
+      "when": {
+        "blancos": "38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_38"
+      }
+    },
+    {
+      "when": {
+        "blancos": "39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_39"
+      }
+    },
+    {
+      "when": {
+        "blancos": "40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_blanco_40"
+      }
+    },
+    {
+      "when": {
+        "negros": "1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_1"
+      }
+    },
+    {
+      "when": {
+        "negros": "2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_2"
+      }
+    },
+    {
+      "when": {
+        "negros": "3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_3"
+      }
+    },
+    {
+      "when": {
+        "negros": "4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_4"
+      }
+    },
+    {
+      "when": {
+        "negros": "5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_5"
+      }
+    },
+    {
+      "when": {
+        "negros": "6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_6"
+      }
+    },
+    {
+      "when": {
+        "negros": "7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_7"
+      }
+    },
+    {
+      "when": {
+        "negros": "8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_8"
+      }
+    },
+    {
+      "when": {
+        "negros": "9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_9"
+      }
+    },
+    {
+      "when": {
+        "negros": "10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_10"
+      }
+    },
+    {
+      "when": {
+        "negros": "11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_11"
+      }
+    },
+    {
+      "when": {
+        "negros": "12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_12"
+      }
+    },
+    {
+      "when": {
+        "negros": "13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_13"
+      }
+    },
+    {
+      "when": {
+        "negros": "14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_14"
+      }
+    },
+    {
+      "when": {
+        "negros": "15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_15"
+      }
+    },
+    {
+      "when": {
+        "negros": "16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_16"
+      }
+    },
+    {
+      "when": {
+        "negros": "17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_17"
+      }
+    },
+    {
+      "when": {
+        "negros": "18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_18"
+      }
+    },
+    {
+      "when": {
+        "negros": "19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_19"
+      }
+    },
+    {
+      "when": {
+        "negros": "20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_20"
+      }
+    },
+    {
+      "when": {
+        "negros": "21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_21"
+      }
+    },
+    {
+      "when": {
+        "negros": "22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_22"
+      }
+    },
+    {
+      "when": {
+        "negros": "23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_23"
+      }
+    },
+    {
+      "when": {
+        "negros": "24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_24"
+      }
+    },
+    {
+      "when": {
+        "negros": "25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_25"
+      }
+    },
+    {
+      "when": {
+        "negros": "26|27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_26"
+      }
+    },
+    {
+      "when": {
+        "negros": "27|28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_27"
+      }
+    },
+    {
+      "when": {
+        "negros": "28|29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_28"
+      }
+    },
+    {
+      "when": {
+        "negros": "29|30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_29"
+      }
+    },
+    {
+      "when": {
+        "negros": "30|31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_30"
+      }
+    },
+    {
+      "when": {
+        "negros": "31|32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_31"
+      }
+    },
+    {
+      "when": {
+        "negros": "32|33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_32"
+      }
+    },
+    {
+      "when": {
+        "negros": "33|34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_33"
+      }
+    },
+    {
+      "when": {
+        "negros": "34|35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_34"
+      }
+    },
+    {
+      "when": {
+        "negros": "35|36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_35"
+      }
+    },
+    {
+      "when": {
+        "negros": "36|37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_36"
+      }
+    },
+    {
+      "when": {
+        "negros": "37|38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_37"
+      }
+    },
+    {
+      "when": {
+        "negros": "38|39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_38"
+      }
+    },
+    {
+      "when": {
+        "negros": "39|40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_39"
+      }
+    },
+    {
+      "when": {
+        "negros": "40"
+      },
+      "apply": {
+        "model": "trucoya:block/porotos/poroto_negro_40"
+      }
+    }
+  ]
+}

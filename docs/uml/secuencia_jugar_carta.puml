@@ -1,0 +1,47 @@
+@startuml secuencia_jugar_carta
+title Diagrama de secuencia — Un jugador canta truco y el paisano responde
+skinparam shadowing false
+autonumber
+actor Jugador
+participant "TapeteScreen\n(cliente)" as UI
+participant "TrucoNetwork\n(canal trucoya:main)" as Net
+participant "MesaTrucoTileEntity\n(servidor)" as Mesa
+participant "TrucoMatch\n(core)" as Match
+participant "TrucoBot\n(paisano)" as Bot
+participant "Clientes cercanos" as Otros
+
+Jugador -> UI : clic en «Truco» (o tecla T)
+UI -> Net : TableActionPacket(pos, ACTION, TRUCO)
+Net -> Mesa : handleAction(jugador, TRUCO)
+Mesa -> Mesa : validSeat(jugador)\n(sentado y a ≤ 8 bloques)
+alt asiento válido
+  Mesa -> Match : act(seat, TRUCO)
+  Match -> Match : isLegal(seat, TRUCO)
+  alt jugada legal
+    Match --> Mesa : ActionResult.ok()
+    Mesa -> Match : drainEvents()
+    Match --> Mesa : [CALL(TRUCO)]
+    Mesa -> Bot : observe(evento)
+    Mesa -> Otros : BubblePacket «¡Truco!» y sonido
+    loop por cada humano sentado
+      Mesa -> Match : viewFor(seat)
+      Match --> Mesa : PlayerView (solo su mano)
+      Mesa -> Net : TableViewPacket(TableSnapshot)
+    end
+    Mesa -> Otros : sincronizarVista() (cartas sobre la mesa)
+    ... entre 1 y 2,25 s después (tick del servidor) ...
+    Mesa -> Bot : play(match, seat)
+    Bot -> Match : act(seat, QUIERO)
+    Match --> Bot : ActionResult.ok()
+    Mesa -> Net : TableViewPacket (vista nueva)
+    Net -> UI : refresh()
+    UI -> Jugador : «¡Quiero!» y los botones nuevos
+  else jugada ilegal
+    Match --> Mesa : ActionResult.fail(motivo)
+    Mesa -> Net : aviso y vista actual
+    Net -> UI : vuelve al estado real
+  end
+else no está sentado o está lejos
+  Mesa -> Mesa : se ignora el paquete
+end
+@enduml

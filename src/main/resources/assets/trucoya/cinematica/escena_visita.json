@@ -1,0 +1,100 @@
+{
+  "duracion": 71.6,
+  "marcas": {
+    "bajarse": 1.5
+  },
+  "subtitulos": [
+    {
+      "t": 1.6,
+      "fin": 6.49,
+      "texto": "Buenas tardes, gurí. Tranquilo, que hoy no vengo a jugarte.",
+      "sonido": "escena.visita_1",
+      "quien": "vizcacha"
+    },
+    {
+      "t": 6.6,
+      "fin": 11.85,
+      "texto": "Anoche, en el fogón... vos también lo viste, ¿no? Entre el humo.",
+      "sonido": "escena.visita_2",
+      "quien": "vizcacha"
+    },
+    {
+      "t": 12.0,
+      "fin": 16.72,
+      "texto": "Era el Negro Ledesma. Setenta años sin verle la cara.",
+      "sonido": "escena.visita_3",
+      "quien": "vizcacha"
+    },
+    {
+      "t": 17.2,
+      "fin": 22.23,
+      "texto": "Te debo la verdad. La Baraja de Oro nunca fue del Negro.",
+      "sonido": "escena.visita_4",
+      "quien": "vizcacha"
+    },
+    {
+      "t": 22.4,
+      "fin": 27.72,
+      "texto": "Se la ganó al Mandinga, en una salamanca. Y el diablo no regala nada.",
+      "sonido": "escena.visita_5",
+      "quien": "vizcacha"
+    },
+    {
+      "t": 28.0,
+      "fin": 33.64,
+      "texto": "El trato era claro: cuando el Negro muriera, su alma iba a ser de él.",
+      "sonido": "escena.visita_6",
+      "quien": "vizcacha"
+    },
+    {
+      "t": 33.6,
+      "fin": 38.6,
+      "texto": "Por eso, cuando cayó en el Paso, me la dio a mí. Para escondérsela.",
+      "sonido": "escena.visita_7",
+      "quien": "vizcacha"
+    },
+    {
+      "t": 39.0,
+      "fin": 45.35,
+      "texto": "Y el Mandinga se lo llevó. Lo tiene sentado a su mesa, de compañero, para siempre.",
+      "sonido": "escena.visita_8",
+      "quien": "vizcacha"
+    },
+    {
+      "t": 45.6,
+      "fin": 49.55,
+      "texto": "No estuve setenta años esperando un rival, gurí.",
+      "sonido": "escena.visita_9",
+      "quien": "vizcacha"
+    },
+    {
+      "t": 49.8,
+      "fin": 55.33,
+      "texto": "Estuve setenta años esperando a alguien que me acompañara a buscarlo.",
+      "sonido": "escena.visita_10",
+      "quien": "vizcacha"
+    },
+    {
+      "t": 55.6,
+      "fin": 57.75,
+      "texto": "Y ese sos vos.",
+      "sonido": "escena.visita_11",
+      "quien": "vizcacha"
+    },
+    {
+      "t": 59.0,
+      "fin": 64.68,
+      "texto": "Tomá este farol. Con su luz se ven las luces malas: ellas conocen el camino.",
+      "sonido": "escena.visita_12",
+      "quien": "vizcacha"
+    },
+    {
+      "t": 65.0,
+      "fin": 70.65,
+      "texto": "Te traje un pingo. Ensillá, que esta noche vamos al Paso de las Ánimas.",
+      "sonido": "escena.visita_13",
+      "quien": "vizcacha"
+    }
+  ],
+  "carteles": []
+}

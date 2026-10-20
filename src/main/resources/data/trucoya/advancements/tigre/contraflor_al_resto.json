@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:rose_bush"
+    },
+    "title": {
+      "translate": "advancements.trucoya.tigre.contraflor_al_resto.title"
+    },
+    "description": {
+      "translate": "advancements.trucoya.tigre.contraflor_al_resto.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "trucoya:tigre/flor_de_viaje",
+  "criteria": {
+    "hazana": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 30
+  }
+}

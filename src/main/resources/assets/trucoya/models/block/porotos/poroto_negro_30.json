@@ -1,0 +1,41 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "particle": "trucoya:block/poroto_negro",
+    "p": "trucoya:block/poroto_negro"
+  },
+  "elements": [
+    {
+      "from": [
+        6.5,
+        1.2,
+        11.1
+      ],
+      "to": [
+        7.3,
+        1.7,
+        11.9
+      ],
+      "faces": {
+        "north": {
+          "texture": "#p"
+        },
+        "south": {
+          "texture": "#p"
+        },
+        "east": {
+          "texture": "#p"
+        },
+        "west": {
+          "texture": "#p"
+        },
+        "up": {
+          "texture": "#p"
+        },
+        "down": {
+          "texture": "#p"
+        }
+      }
+    }
+  ]
+}

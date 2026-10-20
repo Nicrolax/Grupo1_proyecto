@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "trucoya:silla_criolla"
+    },
+    "title": {
+      "translate": "advancements.trucoya.iniciacion.toma_asiento.title"
+    },
+    "description": {
+      "translate": "advancements.trucoya.iniciacion.toma_asiento.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "trucoya:root",
+  "criteria": {
+    "hazana": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 5
+  }
+}

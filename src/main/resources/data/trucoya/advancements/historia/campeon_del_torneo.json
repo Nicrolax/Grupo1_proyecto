@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "trucoya:copa_torneo"
+    },
+    "title": {
+      "translate": "advancements.trucoya.historia.campeon_del_torneo.title"
+    },
+    "description": {
+      "translate": "advancements.trucoya.historia.campeon_del_torneo.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "trucoya:historia/primer_sello",
+  "criteria": {
+    "hazana": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 50
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "trucoya:ficha_clandestina"
+    },
+    "title": {
+      "translate": "advancements.trucoya.leyenda.noche_clandestina.title"
+    },
+    "description": {
+      "translate": "advancements.trucoya.leyenda.noche_clandestina.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "trucoya:tigre/creciendo_en_el_boliche",
+  "criteria": {
+    "hazana": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 40
+  }
+}

@@ -526,7 +526,9 @@ final class Escenario {
         }
         caballo(1, new Vector3d(-27.5, 0, -10.5), 90.0F);
         Vector3d pF = FOGON.add(0.45, 0.15, 0.0);
-        fantasma = gaucho(GauchoEntity.Rol.LEDESMA, 0, false, pF, yawHacia(pF, pV));
+        // mira al Vizcacha, apenas girado hacia el lado abierto de la ronda (donde está la cámara)
+        Vector3d hacia = pV.add(0, 0, 1.6);
+        fantasma = gaucho(GauchoEntity.Rol.LEDESMA, 0, false, pF, yawHacia(pF, hacia));
         fantasma.setDesvanecido(1.0F);
     }
 

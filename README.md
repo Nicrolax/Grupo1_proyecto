@@ -15,7 +15,7 @@ Piñeyro y Thiago Rodríguez.
 
 **Jugadores:**
 1. Instalar [Forge 1.16.5-36.2.39](https://files.minecraftforge.net) ("Installer").
-2. Copiar a `%appdata%\.minecraft\mods` los dos `.jar` de la carpeta [`entrega/`](entrega/): `trucoya-1.7.1.jar` y `geckolib-forge-1.16.5-3.0.106.jar`.
+2. Copiar a `%appdata%\.minecraft\mods` los dos `.jar` de la carpeta [`entrega/`](entrega/): `trucoya-1.7.2.jar` y `geckolib-forge-1.16.5-3.0.106.jar`.
 3. Abrir Minecraft con el perfil de Forge.
 4. Poner una **Mesa de Truco** y una **Silla Criolla**, sentarse y apretar **J**.
 
@@ -33,7 +33,7 @@ Piñeyro y Thiago Rodríguez.
 ```
 gradlew coreTests    # 33 pruebas del motor de truco
 gradlew runClient    # abre Minecraft con el mod
-gradlew build        # genera build/libs/trucoya-1.7.1.jar
+gradlew build        # genera build/libs/trucoya-1.7.2.jar
 ```
 
 ## Documentación del proyecto

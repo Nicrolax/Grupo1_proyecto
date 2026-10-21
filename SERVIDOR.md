@@ -18,7 +18,7 @@ Cada vez que llegue una actualización del mod, primero corré `actualizar.bat` 
 ## Lo que necesita cada jugador
 
 - Minecraft Java 1.16.5 con **Forge 36.2.39**: el instalador está en <https://files.minecraftforge.net>, versión 1.16.5 → 36.2.39, instalador "Installer → Install client".
-- Los dos `.jar` de `servidor\para_los_jugadores`: `trucoya-1.7.1.jar` y `geckolib-forge-1.16.5-3.0.106.jar`. Van en la carpeta `mods` de su `.minecraft`. En Windows es `%appdata%\.minecraft\mods`.
+- Los dos `.jar` de `servidor\para_los_jugadores`: `trucoya-1.7.2.jar` y `geckolib-forge-1.16.5-3.0.106.jar`. Van en la carpeta `mods` de su `.minecraft`. En Windows es `%appdata%\.minecraft\mods`.
 - Tienen que tener **la misma versión** del mod que el servidor; si no, el juego no los deja entrar.
 
 ## Conectarse

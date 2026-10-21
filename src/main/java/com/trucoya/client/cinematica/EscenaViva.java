@@ -316,19 +316,62 @@ public final class EscenaViva {
             }
             case Escenas.AMANECER: {
                 if (t < 6.0D) return p(local(17.2D, 4.3D, 16.2D), local(18.5D, 4.15D, 17.5D), 46);
-                if (t < 13.0D) return p(local(17.3D, 4.4D, 16.6D), local(17.3D, 4.2D, 19.5D), 55);
-                if (t < 17.5D) return p(local(18.9D, 4.55D, 19.1D), local(16.0D, 4.6D, 19.5D), 48);
-                if (t < 23.5D) return p(local(17.1D, 4.5D, 19.25D), local(16.0D, 4.6D, 19.5D), 50);
-                if (t < 27.5D) return p(local(17.4D, 4.5D, 19.4D), local(18.6D, 4.55D, 19.5D), 50);
-                if (t < 31.0D) return p(local(17.9D, 4.8D, 14.4D), local(16.0D, 4.6D, 19.5D), 52);
+                // Ledesma y el Vizcacha quedan parados entre la mesa (al norte, con las sillas) y el mostrador (al
+                // sur). Las cámaras los siguen en vivo y nunca miran por encima de los respaldares: o se ponen en el
+                // pasillo entre los dos, o bien altas del lado de la mesa (más arriba que cualquier silla).
+                Entity v = level.getEntity(guiaId);
+                Vector3d hL = ojos(actor("ledesma"), local(16.0D, 4.62D, 19.5D));
+                Vector3d hV = ojos(v, local(18.6D, 4.62D, 19.5D));
+                Vector3d d = hV.subtract(hL);
+                Vector3d un = new Vector3d(d.x, 0, d.z);
+                un = un.lengthSqr() < 0.25D ? new Vector3d(1, 0, 0) : un.normalize();
+                // el costado de la mesa (de donde viene la luz y el jugador)
+                Vector3d mesa = local(17.5D, 4.0D, 17.5D);
+                Vector3d sT = new Vector3d(-un.z, 0, un.x);
+                Vector3d medio = hL.add(hV).scale(0.5D);
+                if (mesa.subtract(medio).dot(sT) < 0) sT = sT.scale(-1.0D);
+                Vector3d arriba = new Vector3d(0, 1, 0);
+                if (t < 13.0D) {
+                    // los dos, de perfil, desde arriba de la mesa
+                    double k = u(t, 6.0D, 13.0D);
+                    return p(medio.add(sT.scale(2.9D - 0.4D * k)).add(arriba.scale(0.95D - 0.15D * k)),
+                            medio.add(0, -0.15D, 0), 56 - 4 * k);
+                }
+                if (t < 17.5D) {
+                    // Ledesma, de frente, desde el pasillo
+                    return p(hL.add(un.scale(1.3D)).add(sT.scale(0.35D)).add(0, 0.02D, 0), hL.add(0, -0.04D, 0), 46);
+                }
+                if (t < 23.5D) {
+                    double k = u(t, 17.5D, 23.5D);
+                    return p(hL.add(un.scale(1.6D - 0.4D * k)).add(sT.scale(0.55D - 0.2D * k)).add(0, 0.08D, 0),
+                            hL.add(0, -0.05D, 0), 46 - 6 * k);
+                }
+                if (t < 27.5D) {
+                    // el Vizcacha, de frente
+                    return p(hV.subtract(un.scale(1.3D)).add(sT.scale(0.35D)).add(0, 0.02D, 0), hV.add(0, -0.04D, 0), 46);
+                }
+                if (t < 31.0D) {
+                    // "Gracias, gurí": Ledesma de tres cuartos, del lado de la mesa
+                    double k = u(t, 27.5D, 31.0D);
+                    return p(hL.add(un.scale(0.85D)).add(sT.scale(0.95D)).add(0, 0.22D - 0.08D * k, 0),
+                            hL.add(0, -0.08D, 0), 48 - 4 * k);
+                }
                 double ruina = info.marca("ruina", 33.0D);
-                if (t < ruina) return p(local(19.5D, 5.2D, 15.5D), local(16.5D, 4.0D, 19.5D), 58);
-                if (t < ruina + 4.0D) {
-                    double k = u(t, ruina, ruina + 4.0D);
+                double vaSe = info.marca("ledesma_b", 35.0D) + 0.5D;
+                if (t < vaSe) {
+                    // se va con el sol: los dos en cuadro mientras Ledesma se desvanece y la Salamanca se deshace
+                    double k = u(t, 31.0D, vaSe);
+                    Vector3d mira = Toma.lerp(medio, hL, 0.35D).add(0, -0.2D, 0);
+                    return p(mira.add(sT.scale(2.4D + 0.6D * k)).add(arriba.scale(0.75D + 0.35D * k)), mira, 54 + 4 * k);
+                }
+                if (t < vaSe + 3.5D) {
+                    double k = u(t, vaSe, vaSe + 3.5D);
                     return p(local(4.0D, 6.5D + k, 26.0D), local(24.0D, 6.0D, 12.0D), 64);
                 }
-                if (t < ruina + 9.0D) return p(local(17.0D, 4.7D, 14.3D), local(18.6D, 4.5D, 19.5D), 52);
-                return p(local(17.6D, 4.5D, 18.0D), local(18.6D, 4.55D, 19.5D), 48);
+                if (t < Math.max(ruina + 9.0D, vaSe + 6.5D)) {
+                    return p(hV.add(sT.scale(2.6D)).subtract(un.scale(0.6D)).add(0, 0.35D, 0), hV.add(0, -0.1D, 0), 52);
+                }
+                return p(hV.subtract(un.scale(1.25D)).add(sT.scale(0.4D)).add(0, 0.05D, 0), hV.add(0, -0.05D, 0), 48);
             }
             case Escenas.DERROTA: {
                 if (t < 4.6D) return p(local(17.2D, 4.3D, 16.2D), local(18.5D, 4.15D, 17.5D), 46);

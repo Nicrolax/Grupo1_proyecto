@@ -291,6 +291,13 @@ public final class Cinematica {
         return r;
     }
 
+    private static Vector3d[] concat(Vector3d[] a, Vector3d[] b) {
+        Vector3d[] r = new Vector3d[a.length + b.length - 1];      // b[0] repite el último de a
+        System.arraycopy(a, 0, r, 0, a.length);
+        System.arraycopy(b, 1, r, a.length, b.length - 1);
+        return r;
+    }
+
     private static Vector3d[] rel(Vector3d o, double... v) {
         Vector3d[] r = pts(v);
         for (int i = 0; i < r.length; i++) {
@@ -470,13 +477,22 @@ public final class Cinematica {
             double t0 = 27.6D + TURNO_FUNDADOR * i;
             tomas.add(Toma.camino(R, t0, t0 + TURNO_FUNDADOR, new Vector3d[] {a, b}, new Vector3d[] {cara, cara}, 44, 38, 0.003));
         }
-        // la ronda alrededor del fuego
-        Vector3d[] orbita = new Vector3d[6];
+        // la ronda alrededor del fuego: media vuelta por detrás de los Fundadores, hacia el lado del Vizcacha
+        double finOrbita = FANTASMA_DESDE - 0.6D;
+        Vector3d[] orbita = new Vector3d[5];
         for (int i = 0; i < orbita.length; i++) {
-            double ang = Math.toRadians(-40 + 32 * i);
+            double ang = Math.toRadians(-40 + 40 * i);
             orbita[i] = f.add(5.5D * Math.cos(ang), 2.1D, 5.5D * Math.sin(ang));
         }
-        tomas.add(Toma.camino(R, 51.6D + CORRE, 64.0D + CORRE, orbita, rel(f, 0, 1.1, 0), 56, 54, 0.004));
+        Vector3d desde = f.add(5.5D * Math.cos(Math.toRadians(135)), 2.0D, 5.5D * Math.sin(Math.toRadians(135)));
+        Vector3d[] alLado = {orbita[orbita.length - 1], f.add(0.5D, 2.4D, 6.2D), desde};
+        tomas.add(Toma.camino(R, 51.6D + CORRE, finOrbita, concat(orbita, alLado), rel(f, 0, 1.1, 0), 56, 52, 0.004));
+        // el fantasma del Negro Ledesma: de frente, desde el lado abierto de la ronda (entre el Vizcacha y los
+        // Fundadores), así no lo tapa ninguna silla; la cámara se acerca despacio
+        Vector3d cara = f.add(0.45D, 1.55D, 0.0D);
+        Vector3d cerca = f.add(3.6D * Math.cos(Math.toRadians(135)), 1.75D, 3.6D * Math.sin(Math.toRadians(135)));
+        tomas.add(Toma.camino(R, finOrbita, 64.0D + CORRE, new Vector3d[] {desde, cerca},
+                new Vector3d[] {f.add(0, 1.1, 0), cara}, 52, 40, 0.002));
         // títulos: la cámara sube al cielo
         tomas.add(Toma.camino(R, 64.0D + CORRE, duracion + 1.0D,
                 rel(f, 5, 2.0, 5, 13, 11, 13, 22, 27, 22),

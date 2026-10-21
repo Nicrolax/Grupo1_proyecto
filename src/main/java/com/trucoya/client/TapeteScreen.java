@@ -71,6 +71,8 @@ public class TapeteScreen extends Screen {
     private static boolean selFlor = true;
     /** Historial de la mano visible (tecla H). */
     private static boolean verHistorial;
+    /** Dónde puede empezar el historial (debajo del anotador y de los tantos cantados). */
+    private int historialY = 40;
     /**
      * Vista clásica (el tapete grande, con las cartas jugadas dibujadas) o la compacta (por defecto): solo una
      * franja abajo con tu mano y los cantos, y la mesa de verdad a la vista, con las cartas sobre el paño.
@@ -726,6 +728,7 @@ public class TapeteScreen extends Screen {
             }
             drawPot(ms, s, w - 128, 18, mouseX, mouseY);
             mesaEnPantalla(ms, s, v, mouseX, mouseY);
+            historialY = ty + 4;
         } else if (s.tableRunning) {
             centradoConFondo(ms, "Hay una partida en juego en esta mesa.", w / 2, h / 2, 0xFFD8E8D0);
         } else {
@@ -755,11 +758,13 @@ public class TapeteScreen extends Screen {
         if (verHistorial) {
             List<String> log = s.log;
             int from = Math.max(0, log.size() - 8);
-            int x0 = w - 214;
-            fill(ms, x0, 40, w - 4, 44 + (log.size() - from) * 8 + 4, 0xC0101010);
-            int y = 44;
+            // a la izquierda, debajo del anotador (el costado derecho es de las bazas)
+            int x0 = 4, ancho = Math.min(210, w / 2 - 40);
+            int y0 = Math.max(40, historialY);
+            fill(ms, x0, y0, x0 + ancho, y0 + 4 + (log.size() - from) * 8 + 4, 0xC0101010);
+            int y = y0 + 4;
             for (int i = from; i < log.size(); i++) {
-                chico(ms, this.font.plainSubstrByWidth(log.get(i), (int) (206 / 0.7F)), x0 + 4, y,
+                chico(ms, this.font.plainSubstrByWidth(log.get(i), (int) ((ancho - 8) / 0.7F)), x0 + 4, y,
                         i == log.size() - 1 ? 0xFFFFFFFF : 0xFFB8D0B0);
                 y += 8;
             }
@@ -772,7 +777,7 @@ public class TapeteScreen extends Screen {
         }
     }
 
-    // ------------------------------------------------------------------ las bazas, claras, arriba al centro
+    // ------------------------------------------------------------------ las bazas, claras, contra el costado derecho
 
     /** La carta bajo el mouse, para mostrarla grande (se dibuja al final, encima de todo). */
     @javax.annotation.Nullable
@@ -781,7 +786,7 @@ public class TapeteScreen extends Screen {
 
     /**
      * Las cartas jugadas en esta mano, grandes y derechas en la pantalla (además de verse sobre la mesa del mundo):
-     * una columna por baza, con quién tiró cada carta y quién ganó la baza.
+     * un grupo por baza, contra el costado derecho, con quién tiró cada carta y quién ganó la baza.
      */
     private void mesaEnPantalla(MatrixStack ms, TableSnapshot s, PlayerView v, int mouseX, int mouseY) {
         int bazas = 0;
@@ -793,31 +798,53 @@ public class TapeteScreen extends Screen {
         if (bazas == 0) {
             return;
         }
-        int ch = Math.max(34, Math.min(60, manoH * 2 / 3));
+        // recostadas contra el costado derecho (el centro queda libre para ver la carta que tira el rival en la
+        // mesa del mundo). Se busca la grilla (1, 2 o 3 bazas por fila) que deja las cartas más grandes; se calcula
+        // siempre para las tres bazas, así el tamaño no cambia a mitad de la mano.
+        final int sepX = 10, sepY = 6, rotulos = 7 + 9;
+        int arriba = 34;
+        if (!s.pot.isEmpty()) {
+            arriba = Math.max(arriba, 18 + ((Math.min(14, s.pot.size()) + 6) / 7) * 17 + 8);
+        }
+        int abajo = this.height - manoH - 30;
+        for (net.minecraft.client.gui.widget.Widget b : this.buttons) {
+            if (b.visible && b.x + b.getWidth() > this.width / 2) abajo = Math.min(abajo, b.y - 6);   // la botonera
+        }
+        int maxAncho = Math.min(300, (int) (this.width * 0.45F));
+        int altoLibre = Math.max(60, abajo - arriba);
+        int ch = 0, cols = 3;
+        for (int c = 3; c >= 1; c--) {
+            int filas = (3 + c - 1) / c;
+            int cwAncho = (maxAncho - (c - 1) * sepX - c * (v.players - 1) * 3) / (c * v.players);
+            int chAlto = (altoLibre - filas * rotulos - (filas - 1) * sepY) / filas;
+            int prueba = Math.min(60, Math.min(cwAncho * 3 / 2, chAlto));
+            if (prueba > ch + 2) {          // a igualdad, menos filas
+                ch = prueba;
+                cols = c;
+            }
+        }
+        ch = Math.max(26, ch);
         int cw = ch * 2 / 3;
         int gw = v.players * (cw + 3) - 3;
-        int total = bazas * gw + (bazas - 1) * 12;
-        int maxAncho = this.width - 280;
-        if (total > maxAncho && maxAncho > 0) {          // pantalla angosta: más chicas
-            ch = Math.max(26, ch * maxAncho / total);
-            cw = ch * 2 / 3;
-            gw = v.players * (cw + 3) - 3;
-            total = bazas * gw + (bazas - 1) * 12;
-        }
-        int x0 = this.width / 2 - total / 2;
-        int y0 = 34;
-        fill(ms, x0 - 6, y0 - 4, x0 + total + 6, y0 + ch + 22, 0x80100C08);
+        int filasUsadas = (bazas + cols - 1) / cols;
+        int anchoUsado = Math.min(bazas, cols) * gw + (Math.min(bazas, cols) - 1) * sepX;
+        int anchoGrilla = cols * gw + (cols - 1) * sepX;
+        int x0 = this.width - 8 - anchoGrilla;
+        int y0 = arriba + 2;
+        int altoFila = ch + rotulos + sepY;
+        fill(ms, x0 - 6, y0 - 4, x0 + anchoUsado + 6, y0 + filasUsadas * altoFila - sepY + 2, 0x80100C08);
         String[] orden = {"1ª baza", "2ª baza", "3ª baza"};
         for (int t = 0; t < bazas; t++) {
-            int gx = x0 + t * (gw + 12);
+            int gx = x0 + (t % cols) * (gw + sepX);
+            int gy = y0 + (t / cols) * altoFila;
             int r = v.trickResults[t];
             int col = r == -2 ? 0xFFE8DCC0 : r == -1 ? 0xFFB0B0B0 : r == v.team ? 0xFF7CE07C : 0xFFF08070;
             String rotulo = orden[t] + (r == -1 ? " · parda" : r >= 0 ? (r == v.team ? " · nuestra" : " · de ellos") : "");
-            chico(ms, rotulo, gx, y0 - 1, col);
+            chico(ms, this.font.plainSubstrByWidth(rotulo, (int) (Math.max(gw, 40) / 0.7F)), gx, gy - 1, col);
             for (int k = 0; k < v.players; k++) {
                 // el orden de la ronda empezando por la mano
                 int seat = (v.mano + k) % v.players;
-                int cx = gx + k * (cw + 3), cy = y0 + 7;
+                int cx = gx + k * (cw + 3), cy = gy + 7;
                 Card c = v.table[t][seat];
                 if (c != null) {
                     fill(ms, cx + 1, cy + 2, cx + cw + 1, cy + ch + 2, 0x60000000);   // sombrita

@@ -340,13 +340,28 @@ Mandinga en la mesa. Las plantillas de día y de noche: `tools/estructuras_paso.
 Comandos de prueba (operadores): `/truco salamanca visita` (que venga el Vizcacha ahora),
 `/truco salamanca partida` (directo al Paso, de noche), `/truco salamanca cancelar`.
 
+## Afinado: bazas al costado y el final de la Salamanca (1.7.2)
+
+- **Las bazas, contra el costado derecho.** El cuadro con las cartas de la primera, segunda y tercera baza ya no
+  está arriba al centro: queda recostado contra el borde derecho, debajo del pozo, y el centro de la pantalla
+  queda libre para ver la carta que tira el rival en la mesa. El tapete elige solo cómo acomodarlas (las tres en
+  fila, de a dos o una debajo de otra) para que las cartas salgan lo más grandes posible sin tapar la botonera,
+  y el tamaño no cambia a mitad de la mano. El historial (H) pasó a la izquierda, debajo del anotador.
+- **El amanecer de la Salamanca, bien encuadrado.** En la despedida, Ledesma y el Vizcacha quedan parados entre la
+  mesa y el mostrador; antes la cámara los buscaba desde el lado de la puerta y se veía el respaldo de una silla.
+  Ahora las tomas siguen en vivo a los dos personajes y se ponen en el pasillo entre ellos (de frente a quien
+  habla) o altas del lado de la mesa, por encima de los respaldos. La última toma de Ledesma lo muestra de
+  cuerpo entero mientras se desvanece con el sol.
+- **El fantasma de Ledesma en "El Último Truco".** En la ronda alrededor del fogón, la cámara termina la vuelta
+  del lado abierto (entre el Vizcacha y los Fundadores) y se acerca de frente al fantasma, así no lo tapa nadie.
+
 ## Cartas más claras y estructuras con profundidad (1.7.1)
 
 **Cartas que se leen bien:**
 - Las cartas del tapete y las de la mesa usan la misma textura grande (128 x 192 por carta) **con mipmaps y filtro suave** (`client/CartasTextura.java`): se ven nítidas en cualquier tamaño y no titilan de lejos.
 - Sobre la mesa son más grandes (0,21 x 0,315 bloques), cada baza a su altura para que no se pisen. Tienen una luz mínima, así que se leen también de noche o dentro de un rancho oscuro.
 - En la vista compacta del tapete, las cartas crecen con la pantalla (hasta 56 x 84).
-- **Las bazas en pantalla:** arriba al centro se ven derechas y grandes las cartas jugadas en la mano, una columna por baza. Cada carta lleva el nombre de quien la tiró, el rótulo dice de quién fue cada baza, y un marco dorado indica a quién le toca tirar.
+- **Las bazas en pantalla:** contra el costado derecho (desde 1.7.2) se ven derechas y grandes las cartas jugadas en la mano, un grupo por baza. Cada carta lleva el nombre de quien la tiró, el rótulo dice de quién fue cada baza, y un marco dorado indica a quién le toca tirar.
 - **Lupa:** al pasar el mouse por una carta de la mano o de las bazas, se ve en grande.
 - El número de cada carta es más grande y grueso, y se lee aunque la carta esté chica.
 

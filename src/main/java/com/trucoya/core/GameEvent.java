@@ -63,6 +63,9 @@ public final class GameEvent {
         return new GameEvent(Type.TRICK_RESOLVED, seat, team, null, null, trick, -1, 0, team < 0 ? "Parda" : null);
     }
 
+    /** Valor de TANTO_DECLARED cuando el que canta no supera al que va ganando y dice "son buenas" (no muestra el número). */
+    public static final int SON_BUENAS = -2;
+
     static GameEvent tantoDeclared(int seat, int value, boolean flor) {
         return new GameEvent(Type.TANTO_DECLARED, seat, seat % 2, null, flor ? ActionType.FLOR : ActionType.ENVIDO,
                 -1, value, 0, null);

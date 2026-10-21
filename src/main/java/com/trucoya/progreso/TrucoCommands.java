@@ -201,6 +201,12 @@ public final class TrucoCommands {
                             Salamanca.cancelar("comando");
                             return 1;
                         })))
+                // /truco fundadores: (operadores) que vengan los cuatro Fundadores a felicitar, como al vencer al Mandinga
+                .then(Commands.literal("fundadores").requires(src -> src.hasPermission(2)).executes(ctx -> {
+                    Fundadores.felicitar(ctx.getSource().getPlayerOrException(), true);
+                    ctx.getSource().sendSuccess(new StringTextComponent("Ya vienen los cuatro Fundadores."), false);
+                    return 1;
+                }))
                 // /truco completar [todo]: (operadores) llena la Libreta del Truquero de una
                 .then(Commands.literal("completar").requires(src -> src.hasPermission(2))
                         .executes(ctx -> completar(ctx.getSource(), false))
@@ -258,6 +264,7 @@ public final class TrucoCommands {
             Salamanca.vioElFinal(p);
             com.trucoya.barajas.Coleccion.ganar(p, com.trucoya.barajas.Baraja.ORO);
             com.trucoya.barajas.Coleccion.ganar(p, com.trucoya.barajas.Baraja.FUNDADORES);
+            dar(p, new ItemStack(ModItems.BARAJA_DE_ORO.get()), true);   // la misma que da ganarle de verdad
         }
         p.sendMessage(new StringTextComponent("✦ Libreta completa ✦  seis sellos, nivel " + JugadorData.nivel(p)
                 + ", torneo, cuadrera" + (conMapa ? " y el Mapa del Baqueano." : ".")

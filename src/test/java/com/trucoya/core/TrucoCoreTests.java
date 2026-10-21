@@ -45,7 +45,7 @@ public final class TrucoCoreTests {
         run("IA niveles 1-5: siempre jugadas legales (1v1 y 2v2)", TrucoCoreTests::testBotLevels);
         run("IA nivel 5 le gana claramente al nivel 1", TrucoCoreTests::testBotStrength);
         run("IA: señas descubiertas y envido revelado", TrucoCoreTests::testBotKnowledge);
-        run("Tantos cantados: se muestran los de todos", TrucoCoreTests::testTantosCantados);
+        run("Tantos cantados: en orden y con son buenas", TrucoCoreTests::testTantosCantados);
         run("IA nivel 6 (Vizcacha): legal y al menos pareja con el 5", TrucoCoreTests::testBotNivel6);
         run("Torneo: partidos cortos a 20 (10 malas + 10 buenas)", TrucoCoreTests::testPartidoA20);
         run("Prestigio Criollo: niveles y puntos", TrucoCoreTests::testPrestigio);
@@ -956,8 +956,30 @@ public final class TrucoCoreTests {
             }
         }
         eq(33, dicho[0], "tantos del asiento 0");
-        eq(30, dicho[1], "tantos del asiento 1 (el que pierde también se muestra)");
+        eq(GameEvent.SON_BUENAS, dicho[1], "el que no le gana no muestra su número: dice son buenas");
         eq(m.getMano(), primero, "canta primero la mano");
+
+        // 2 contra 2: canta la mano 33; los dos rivales no le ganan y dicen "son buenas"; su compañero se calla
+        Card[] p0 = hand(c(7, Suit.ORO), c(6, Suit.ORO), c(4, Suit.BASTO));       // 33
+        Card[] p1 = hand(c(7, Suit.ESPADA), c(1, Suit.BASTO), c(3, Suit.ESPADA)); // 30
+        Card[] p2 = hand(c(2, Suit.BASTO), c(5, Suit.BASTO), c(12, Suit.ESPADA)); // 27
+        Card[] p3 = hand(c(6, Suit.ESPADA), c(5, Suit.ESPADA), c(10, Suit.ORO));  // 31
+        TrucoMatch m4 = new TrucoMatch(new MatchConfig(4, 30, false, MatchConfig.FaltaMode.LEADER_NEEDS_TO_WIN), 1L);
+        ok(m4.startRound(3, deck(4, 3, MUESTRA_COPA, p0, p1, p2, p3)));
+        m4.drainEvents();
+        ok(m4.act(0, ActionType.ENVIDO));
+        ok(m4.act(1, ActionType.QUIERO));
+        int[] d4 = {-1, -1, -1, -1};
+        int ganador = -1;
+        for (GameEvent e : m4.drainEvents()) {
+            if (e.getType() == GameEvent.Type.TANTO_DECLARED) d4[e.getSeat()] = e.getValue();
+            if (e.getType() == GameEvent.Type.ENVIDO_RESOLVED) ganador = e.getSeat();
+        }
+        eq(33, d4[0], "2v2: la mano canta 33");
+        eq(GameEvent.SON_BUENAS, d4[1], "2v2: el rival con 30 dice son buenas");
+        eq(-1, d4[2], "2v2: el compañero del que gana no canta");
+        eq(GameEvent.SON_BUENAS, d4[3], "2v2: el otro rival (31) también dice son buenas");
+        eq(0, ganador, "2v2: gana la mano");
     }
 
     private static void testBotNivel6() {

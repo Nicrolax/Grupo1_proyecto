@@ -44,7 +44,7 @@ Resultado actual: **33 de 33 correctas**.
 | 1 | Armar la mesa | Buscar en el inventario creativo la pestaña «Truco Ya». Poner la Mesa de Truco y dos Sillas Criollas pegadas, y clic derecho en una silla. | El jugador queda sentado mirando a la mesa. | RF-01 |
 | 2 | Empezar | Tecla J, 1 contra 1, a 30, con flor, «Empezar». | Se reparten tres cartas y aparece la muestra. Las piezas se destacan y se sienta un paisano. | RF-02, RF-03, RF-10 |
 | 3 | Solo lo legal | Mirar los botones en cada momento. | Solo aparecen los botones válidos. «Envido» desaparece después de la primera baza y cada botón muestra su atajo. | RF-04 |
-| 4 | Envido | Cantar «Envido» (E). | El paisano responde. Si quiere, cada uno canta sus tantos; el ganador queda en dorado y los puntos en el anotador. | RF-05 |
+| 4 | Envido | Cantar «Envido» (E). | El paisano responde. Si quiere, se cantan los tantos desde la mano (el que no gana dice «son buenas»); el ganador queda en dorado y los puntos en el anotador. | RF-05 |
 | 5 | Truco | Cantar «Truco» (T) y jugar la mano. | El paisano quiere, no quiere o sube. Los puntos se anotan según el nivel. | RF-07, RF-08 |
 | 6 | Mesa en el mundo | Tecla V (vista compacta / clásica) o salir del tapete y mirar la mesa. | Las cartas jugadas están apoyadas frente a cada silla y la muestra sobre el mazo. | RF-13 |
 | 7 | Partido completo | Jugar hasta 30, o 20 en un torneo. | Malas y buenas se marcan con fósforos y el partido termina; sube el prestigio (`/truco prestigio`). | RF-08, RF-15 |

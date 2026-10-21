@@ -58,9 +58,10 @@ El tapete está pensado para verse limpio: solo aparecen los botones de lo que s
 momento (el atajo se ve al pasar el mouse), el tanteador es un anotador con fósforos (cuadrados de
 5: malas | buenas) y el historial queda escondido hasta que apretás H.
 
-**Tantos a la vista:** cuando se quiere el envido (o se disputa la flor), cada jugador canta sus
-tantos empezando por la mano, como en la mesa de verdad: los números aparecen al lado de cada
-uno (dorado el que gana) y quedan hasta que se reparte de nuevo. También se anotan en el historial.
+**Tantos a la vista:** cuando se quiere el envido (o se disputa la flor), los tantos se cantan
+empezando por la mano, como en la mesa de verdad: el que no supera al que va ganando dice «son buenas»
+(sin mostrar su número) y el compañero del que va ganando no habla. Lo dicho aparece al lado de cada
+uno (dorado el que gana) y queda hasta que se reparte de nuevo. También se anota en el historial.
 
 **Vista compacta (1.6.0):** el tapete ya no tapa la pantalla. Se ve la mesa de verdad y, abajo, una franja con
 lo tuyo: tantos y muestra a la izquierda, tu mano en el medio y los botones a la derecha (solo los que se pueden
@@ -339,6 +340,31 @@ Mandinga en la mesa. Las plantillas de día y de noche: `tools/estructuras_paso.
 
 Comandos de prueba (operadores): `/truco salamanca visita` (que venga el Vizcacha ahora),
 `/truco salamanca partida` (directo al Paso, de noche), `/truco salamanca cancelar`.
+
+## Los Fundadores al final, "son buenas" y arreglos (1.7.3)
+
+- **Los cuatro Fundadores te felicitan.** Cuando le ganás al Mandinga en la Salamanca, después del amanecer llegan
+  los cuatro creadores juntos a caballo, se paran en media ronda delante tuyo y cada uno te felicita **con su
+  propia voz**: las frases nuevas se hicieron clonando las grabaciones que mandaron (`grabaciones/`), con el
+  modelo XTTS-v2 (`clonar_voces.bat` en la PC, `tools/clonar_voces.py` y `tools/felicitaciones.py`). Después te
+  regalan la Baraja de los Fundadores y se van. Si ya habías vencido al Mandinga antes de esta versión, vienen la
+  próxima vez que entres. Para probarlo: `/truco fundadores` (operadores).
+- **"Son buenas".** Al querer un envido (o comparar flores), los tantos se cantan como en la mesa de verdad: la
+  mano dice su número; cada rival del que va ganando o lo supera y dice el suyo, o dice **"son buenas"** sin
+  mostrar nada; el compañero del que va ganando no habla. En el 2 contra 2, si cantás 33 y los dos rivales tienen
+  menos, los dos dicen "son buenas". El empate es para el más cerca de la mano.
+- **El caballo del Vizcacha va de frente.** En Minecraft un caballo con un jinete que no es jugador copia el giro del
+  jinete y el jinete el del caballo, y los dos quedaban trabados mirando para donde aparecieron: parecía que el
+  caballo iba marcha atrás. Ahora los jinetes del mod miran hacia donde camina el caballo. Los caballos de los
+  Fundadores van en pelo, porque con montura esperan que el jinete los maneje y no caminan.
+- **El Vizcacha te viene a buscar seguro.** Antes había un solo minuto al atardecer, y si justo estabas bajo techo,
+  sentado a una mesa o durmiendo, no venía. Ahora el primer atardecer tiene tres horas de juego, y si ese día no
+  pudo, a partir del día siguiente viene a cualquier hora en cuanto estés a cielo abierto. Si estás adentro, te
+  avisa: "Se oye un galope a lo lejos...".
+- **El anotador de porotos no tapa las cartas:** con el anotador encima de la mesa, las cartas van apoyadas arriba.
+- **Las bazas, bien al costado:** en pantallas grandes quedan en una columna contra el borde derecho, centradas
+  a lo alto; si no entran, de a dos por fila.
+- `/truco completar todo` también te da la Baraja de Oro (antes solo la habilitaba en la colección).
 
 ## Afinado: bazas al costado y el final de la Salamanca (1.7.2)
 

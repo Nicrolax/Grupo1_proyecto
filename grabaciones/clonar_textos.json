@@ -1,0 +1,8 @@
+{
+  "lineas": [
+    {"id": "felicita_nicolas", "quien": "nicolas", "texto": "¡Bo, lo lograste! Le ganaste al Mandinga y el Negro Ledesma por fin descansa en paz. ¡Qué partidazo!"},
+    {"id": "felicita_agustin", "quien": "agustin", "texto": "Te miramos toda la noche desde el monte. Jugaste con una cabeza bárbara. ¡Tremendo trabajo, de verdad!"},
+    {"id": "felicita_matias", "quien": "matias", "texto": "Ta, ahora sí: esto se festeja con un asado como la gente. Y esta vez la carne la traigo yo, prometido."},
+    {"id": "felicita_thiago", "quien": "thiago", "texto": "Gracias por llegar hasta el final. Hicimos este juego con mucho cariño, y vos le diste vida. ¡Felicitaciones, campeón!"}
+  ]
+}

@@ -146,6 +146,8 @@ public class GauchoEntity extends AbstractVillagerEntity implements IAnimatable 
     // Visita: llega a caballo hasta un jugador, le dice algo, le da algo y se va (los Fundadores, la historia).
     @Nullable
     private UUID visitaA;
+    /** De visita con los otros tres Fundadores (la maneja progreso.Fundadores): quieto, sin vagar. */
+    private boolean visitaGrupal;
     private final java.util.List<String> visitaLineas = new java.util.ArrayList<>();
     private ItemStack visitaRegalo = ItemStack.EMPTY;
     private int visitaPaso;
@@ -201,7 +203,7 @@ public class GauchoEntity extends AbstractVillagerEntity implements IAnimatable 
             @Override
             public boolean canUse() {
                 return getRol() != Rol.VIZCACHA && !deLaSalamanca() && targetChair == null && leaveTimer < 0
-                        && super.canUse();
+                        && !visitaGrupal && super.canUse();
             }
         });
         this.goalSelector.addGoal(6, new LookAtGoal(this, PlayerEntity.class, 8.0F));
@@ -313,7 +315,7 @@ public class GauchoEntity extends AbstractVillagerEntity implements IAnimatable 
     /** Libre para acudir a una mesa. */
     public boolean isAvailable() {
         return this.isAlive() && !this.isPassenger() && targetChair == null && leaveTimer < 0 && !this.isTrading()
-                && this.getTarget() == null && visitaA == null && !deLaSalamanca();
+                && this.getTarget() == null && visitaA == null && !visitaGrupal && !deLaSalamanca();
     }
 
     // ------------------------------------------------------------------ visitas
@@ -331,7 +333,11 @@ public class GauchoEntity extends AbstractVillagerEntity implements IAnimatable 
     }
 
     public boolean estaDeVisita() {
-        return visitaA != null;
+        return visitaA != null || visitaGrupal;
+    }
+
+    public void setDeVisitaGrupal(boolean b) {
+        this.visitaGrupal = b;
     }
 
     /** Se despide y se va (a caballo si tiene uno). */
@@ -581,6 +587,32 @@ public class GauchoEntity extends AbstractVillagerEntity implements IAnimatable 
 
     // ------------------------------------------------------------------ ciclo
 
+    /**
+     * A caballo, el cuerpo del jinete mira hacia donde va el caballo. En Minecraft el caballo copia la rotación del
+     * cuerpo de un jinete que es un mob, y el jinete copia la del caballo: los dos quedaban trabados mirando hacia
+     * donde aparecieron y el caballo parecía andar de costado o marcha atrás. Corre en el servidor y en el cliente.
+     */
+    @Override
+    public void rideTick() {
+        super.rideTick();
+        net.minecraft.entity.Entity v = this.getVehicle();
+        if (v instanceof AbstractHorseEntity) {
+            AbstractHorseEntity h = (AbstractHorseEntity) v;
+            Vector3d mov = h.getDeltaMovement();
+            float rumbo = h.yRot;
+            if (mov.x * mov.x + mov.z * mov.z > 0.0004D) {
+                rumbo = (float) (MathHelper.atan2(mov.z, mov.x) * (180D / Math.PI)) - 90.0F;
+            }
+            this.yBodyRot = rumbo;
+            h.yBodyRot = rumbo;
+            if (!this.level.isClientSide) {
+                h.yRot = rumbo;
+            }
+            // la cabeza puede mirar a los costados, pero no para atrás
+            this.yHeadRot = rumbo + MathHelper.clamp(MathHelper.wrapDegrees(this.yHeadRot - rumbo), -60.0F, 60.0F);
+        }
+    }
+
     @Override
     public void tick() {
         super.tick();
@@ -617,6 +649,13 @@ public class GauchoEntity extends AbstractVillagerEntity implements IAnimatable 
         if (visitaA != null) {
             tickVisita();
             return;
+        }
+        if (visitaGrupal) {
+            return;
+        }
+        // un Fundador solo existe para visitar: si quedó suelto (se reinició el servidor a mitad de una visita), se va
+        if (getRol() == Rol.FUNDADOR && leaveTimer < 0 && this.tickCount > 200 && !actorCinematica) {
+            despedirse();
         }
 
         if (isGuardia() && this.tickCount % 10 == 0) {

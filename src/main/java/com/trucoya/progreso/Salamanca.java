@@ -295,6 +295,7 @@ public final class Salamanca {
         if (hg == null || hj == null || g == null) {
             return "No se pudo hacer aparecer al Vizcacha.";
         }
+        hg.setTamed(true);   // domado: si no, con jinete encima se pone a corcovear y a correr para cualquier lado
         c.guia = g.getUUID();
         c.caballoGuia = hg.getUUID();
         c.caballoJugador = hj.getUUID();
@@ -411,18 +412,33 @@ public final class Salamanca {
         }
     }
 
+    /**
+     * El Vizcacha viene a buscar al jugador al atardecer del día siguiente al final. Antes la ventana era muy
+     * corta (un minuto) y si justo estabas bajo techo, sentado a una mesa o durmiendo, no venía nunca. Ahora:
+     * el primer día viene entre las 17 y las 20 (hora del juego); si ese día no pudo, desde el día siguiente
+     * viene a cualquier hora en cuanto estés a cielo abierto. Y si estás adentro, te avisa que salgas.
+     */
     private static void revisarVisitas(ServerWorld w) {
         long hora = w.getDayTime() % 24000L;
-        if (hora < 11600L || hora > 12900L) {
-            return;
-        }
         int dia = (int) (w.getDayTime() / 24000L);
         for (ServerPlayerEntity p : w.players()) {
-            if (etapa(p) != ESPERA || JugadorData.get(p, DIA) >= dia || !p.isAlive() || p.isSpectator()
-                    || p.isSleeping() || CinematicaServidor.enCurso(p)
+            if (etapa(p) != ESPERA || JugadorData.get(p, DIA) >= dia || !p.isAlive() || p.isSpectator()) {
+                continue;
+            }
+            boolean atrasado = dia - JugadorData.get(p, DIA) >= 2;      // ya se le pasó un atardecer
+            boolean atardecer = hora >= 11000L && hora <= 14000L;
+            if (!atrasado && !atardecer) {
+                continue;
+            }
+            if (p.isSleeping() || CinematicaServidor.enCurso(p) || Cuadreras.corriendo(p)
                     || p.getVehicle() instanceof com.trucoya.entity.SeatEntity
                     || !w.canSeeSky(p.blockPosition().above())) {
-                continue;   // bajo techo o en una cueva: el Vizcacha viene otro atardecer
+                if (w.getServer() != null && w.getServer().getTickCount() % 600 < 100) {
+                    p.displayClientMessage(new StringTextComponent(
+                            "Se oye un galope a lo lejos... Alguien te busca: salí a campo abierto.")
+                            .withStyle(TextFormatting.GRAY), true);
+                }
+                continue;
             }
             if (visita(p) == null) {
                 return;
@@ -470,6 +486,11 @@ public final class Salamanca {
         double d = caballo.distanceTo(p);
         if (c.t % 10 == 0) {
             caballo.getNavigation().moveTo(p, 1.7D);
+            // el tordillo de tiro camina detrás por su cuenta (si solo lo arrastra el cabestro, va de culata)
+            Entity tiro = w.getEntity(c.caballoJugador);
+            if (tiro instanceof AbstractHorseEntity && tiro.distanceToSqr(caballo) > 9.0D) {
+                ((AbstractHorseEntity) tiro).getNavigation().moveTo(caballo, 1.8D);
+            }
         }
         if (c.t == 60) {
             p.displayClientMessage(new StringTextComponent("Se acerca un jinete al galope...").withStyle(TextFormatting.GRAY), true);
@@ -931,6 +952,8 @@ public final class Salamanca {
                 w.sendParticles(ParticleTypes.POOF, g.getX(), g.getY() + 1, g.getZ(), 12, 0.3D, 0.5D, 0.3D, 0.01D);
             }
             terminar(w);
+            // vencieron al Mandinga: vienen los cuatro Fundadores a felicitarlo
+            if (etapa(p) == LIBRE) Fundadores.felicitar(p, false);
         }
     }
 

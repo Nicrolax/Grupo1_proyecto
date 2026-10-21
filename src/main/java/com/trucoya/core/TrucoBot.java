@@ -165,8 +165,8 @@ public final class TrucoBot {
                     florState[s] = -1; // jugó sin cantar flor: no la tiene
                 }
                 break;
-            case TANTO_DECLARED:      // los tantos que cada uno cantó en voz alta
-                if (s >= 0 && s < 4) {
+            case TANTO_DECLARED:      // los tantos que cada uno cantó en voz alta ("son buenas" no dice el número)
+                if (s >= 0 && s < 4 && e.getValue() >= 0) {
                     if (e.getAction() == ActionType.FLOR) {
                         knownFlor[s] = e.getValue();
                         florState[s] = 1;

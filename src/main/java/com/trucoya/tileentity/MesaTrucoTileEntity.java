@@ -1162,14 +1162,15 @@ public class MesaTrucoTileEntity extends TileEntity implements ITickableTileEnti
                     if (e.getSeat() >= 0 && e.getSeat() < 4) {
                         tantos[e.getSeat()] = e.getValue();
                         tantosFlor = e.getAction() == ActionType.FLOR;
-                        bubble(e.getSeat(), (tantosFlor ? "Flor de " : "Tengo ") + e.getValue() + ".");
+                        bubble(e.getSeat(), e.getValue() == com.trucoya.core.GameEvent.SON_BUENAS ? "Son buenas."
+                                : (tantosFlor ? "Flor de " : "Tengo ") + e.getValue() + ".");
                     }
                     break;
                 case ENVIDO_RESOLVED:
                     tantoGanador = e.getSeat();
                     diarioEquipo(e.getSeat() % 2, com.trucoya.progreso.Diario.ENVIDO);
                     addLog("Envido: " + tantosTexto() + " — gana " + nameOf(e.getSeat()) + ".");
-                    bubble(e.getSeat(), "¡" + e.getValue() + "! Son buenas.");
+                    bubble(e.getSeat(), "¡" + e.getValue() + "! Me lo llevo.");
                     break;
                 case FLOR_RESOLVED:
                     if (e.getValue() >= 0) {
@@ -1217,9 +1218,9 @@ public class MesaTrucoTileEntity extends TileEntity implements ITickableTileEnti
     private String tantosTexto() {
         StringBuilder sb = new StringBuilder();
         for (int s = 0; s < tantos.length; s++) {
-            if (tantos[s] >= 0) {
+            if (tantos[s] >= 0 || tantos[s] == com.trucoya.core.GameEvent.SON_BUENAS) {
                 if (sb.length() > 0) sb.append(" · ");
-                sb.append(nameOf(s)).append(' ').append(tantos[s]);
+                sb.append(nameOf(s)).append(' ').append(tantos[s] >= 0 ? String.valueOf(tantos[s]) : "son buenas");
             }
         }
         return sb.toString();

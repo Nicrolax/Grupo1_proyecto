@@ -49,6 +49,12 @@ public class MesaTrucoRenderer extends TileEntityRenderer<MesaTrucoTileEntity> {
         // la misma textura grande del tapete, con mipmaps: nítida de cerca y sin titilar de lejos
         IVertexBuilder b = buffers.getBuffer(RenderType.entityCutoutNoCull(
                 CartasTextura.preparar(Baraja.de(v.baraja).atlasGui())));
+        // con el Anotador de porotos encima de la mesa, las cartas van apoyadas arriba de la tablita y de los
+        // porotos (si no, quedaban tapadas en el medio de la mesa)
+        float y0 = te.getLevel().getBlockState(te.getBlockPos().above()).getBlock()
+                instanceof com.trucoya.block.AnotadorBlock ? 0.115F : 0.0F;
+        ms.pushPose();
+        ms.translate(0.0D, y0, 0.0D);
         Matrix4f m = ms.last().pose();
         Matrix3f n = ms.last().normal();
         // las cartas jugadas, delante de cada uno
@@ -88,6 +94,7 @@ public class MesaTrucoRenderer extends TileEntityRenderer<MesaTrucoTileEntity> {
                 carta(b, m, n, light, cx - fx * 0.03F, 1.008F + k * 0.0011F, cz - fz * 0.03F, rx, rz, fx, fz, 0, 4);
             }
         }
+        ms.popPose();
     }
 
     /** Una carta acostada: centro (x, y, z), eje del ancho (ax, az), eje del alto (bx, bz); celda del atlas. */

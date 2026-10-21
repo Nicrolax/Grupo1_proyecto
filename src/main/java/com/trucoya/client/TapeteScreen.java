@@ -561,12 +561,12 @@ public class TapeteScreen extends Screen {
     private void drawTantos(MatrixStack ms, TableSnapshot s, PlayerView v) {
         for (int seat = 0; seat < v.players && seat < s.tantos.length; seat++) {
             int t = s.tantos[seat];
-            if (t < 0) {
+            if (t < 0 && t != com.trucoya.core.GameEvent.SON_BUENAS) {
                 continue;
             }
             int rel = v.relativePosition(seat);
             int[] p = slot(v, rel);
-            String num = String.valueOf(t);
+            String num = t >= 0 ? String.valueOf(t) : "son buenas";
             boolean gana = seat == s.tantoGanador;
             int w = Math.max(16, this.font.width(num) + 8);
             int bx = rel == 0 ? p[0] + TABLE_W + 30 : p[0] + TABLE_W + 18;
@@ -720,10 +720,11 @@ public class TapeteScreen extends Screen {
             }
             int ty = 56;
             for (int seat = 0; seat < v.players && seat < s.tantos.length; seat++) {
-                if (s.tantos[seat] < 0) continue;
+                if (s.tantos[seat] < 0 && s.tantos[seat] != com.trucoya.core.GameEvent.SON_BUENAS) continue;
                 String quien = seat == v.seat ? "Vos" : s.nameOf(seat);
                 int col = seat == s.tantoGanador ? 0xFFE8B82A : seat % 2 == v.team ? 0xFF9CE89C : 0xFFF0B0A0;
-                chico(ms, (s.tantosFlor ? "Flor " : "Envido ") + quien + ": " + s.tantos[seat], 8, ty, col);
+                chico(ms, (s.tantosFlor ? "Flor " : "Envido ") + quien + ": "
+                        + (s.tantos[seat] >= 0 ? String.valueOf(s.tantos[seat]) : "son buenas"), 8, ty, col);
                 ty += 8;
             }
             drawPot(ms, s, w - 128, 18, mouseX, mouseY);
@@ -812,16 +813,19 @@ public class TapeteScreen extends Screen {
         }
         int maxAncho = Math.min(300, (int) (this.width * 0.45F));
         int altoLibre = Math.max(60, abajo - arriba);
-        int ch = 0, cols = 3;
-        for (int c = 3; c >= 1; c--) {
+        // de preferencia una columna (una baza debajo de otra, bien al costado); si así las cartas quedan muy
+        // chicas, de a dos por fila, y recién después las tres en fila
+        int ch = 0, cols = 1;
+        for (int c = 1; c <= 3; c++) {
             int filas = (3 + c - 1) / c;
-            int cwAncho = (maxAncho - (c - 1) * sepX - c * (v.players - 1) * 3) / (c * v.players);
+            int cwAncho = (Math.min(maxAncho, c == 1 ? 200 : maxAncho) - (c - 1) * sepX - c * (v.players - 1) * 3) / (c * v.players);
             int chAlto = (altoLibre - filas * rotulos - (filas - 1) * sepY) / filas;
             int prueba = Math.min(60, Math.min(cwAncho * 3 / 2, chAlto));
-            if (prueba > ch + 2) {          // a igualdad, menos filas
+            if (prueba > ch + 4) {
                 ch = prueba;
                 cols = c;
             }
+            if (ch >= 40) break;
         }
         ch = Math.max(26, ch);
         int cw = ch * 2 / 3;
@@ -830,8 +834,9 @@ public class TapeteScreen extends Screen {
         int anchoUsado = Math.min(bazas, cols) * gw + (Math.min(bazas, cols) - 1) * sepX;
         int anchoGrilla = cols * gw + (cols - 1) * sepX;
         int x0 = this.width - 8 - anchoGrilla;
-        int y0 = arriba + 2;
         int altoFila = ch + rotulos + sepY;
+        int altoGrilla = ((3 + cols - 1) / cols) * altoFila - sepY;
+        int y0 = arriba + 2 + Math.max(0, (abajo - arriba - altoGrilla) / 2);   // centrada a lo alto del costado
         fill(ms, x0 - 6, y0 - 4, x0 + anchoUsado + 6, y0 + filasUsadas * altoFila - sepY + 2, 0x80100C08);
         String[] orden = {"1ª baza", "2ª baza", "3ª baza"};
         for (int t = 0; t < bazas; t++) {

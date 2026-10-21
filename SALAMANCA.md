@@ -23,6 +23,7 @@ a alguien que me acompañara a buscarlo."
 | 5 | **El Paso de las Ánimas** | Orilla de un río, a 1000-1500 bloques de la estancia | De día es una tapera en ruinas, un ombú, cruces de madera y lanzas oxidadas (se puede encontrar de casualidad). Al llegar con el Vizcacha, de noche, la tapera se rearma delante tuyo entre rayos: velas, mesa y el Mandinga esperando con Ledesma a su lado. |
 | 6 | **La partida** | Adentro de la Salamanca | Vos y el Vizcacha contra el Mandinga y Ledesma, a 30. |
 | 7 | **El amanecer** (media cinemática) | El Paso | Si ganás: para la tormenta, sale el sol, la pulpería se deshace. Ledesma se despide del Vizcacha y le devuelve el facón que le ganó aquella noche. Queda una cruz con flores. |
+| 8 | **Los Fundadores** | Donde estés | Un rato después llegan los cuatro creadores del juego a caballo, te felicitan uno por uno con su voz y te regalan la Baraja de los Fundadores. |
 
 ## La partida contra el Mandinga
 - **Equipos:** jugador + Vizcacha (nivel 6) contra Mandinga (nivel 6, el más difícil del juego) + Ledesma.

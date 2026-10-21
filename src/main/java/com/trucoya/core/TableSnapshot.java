@@ -157,7 +157,7 @@ public final class TableSnapshot {
         }
         out.writeBoolean(clandestina);
         for (int i = 0; i < 4; i++) {
-            out.writeByte(tantos[i]);
+            out.writeByte(tantos[i] == GameEvent.SON_BUENAS ? 99 : tantos[i]);
         }
         out.writeBoolean(tantosFlor);
         out.writeByte(tantoGanador);
@@ -207,7 +207,7 @@ public final class TableSnapshot {
         int[] tantos = new int[4];
         for (int i = 0; i < 4; i++) {
             int x = in.readByte();
-            tantos[i] = x >= 0 && x <= 40 ? x : -1;
+            tantos[i] = x >= 0 && x <= 40 ? x : x == 99 ? GameEvent.SON_BUENAS : -1;
         }
         boolean tantosFlor = in.readBoolean();
         int ganador = in.readByte();

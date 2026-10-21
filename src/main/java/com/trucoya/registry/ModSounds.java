@@ -42,6 +42,17 @@ public final class ModSounds {
     public static final RegistryObject<SoundEvent> DISCO_VALS = register("disco.vals");
     public static final RegistryObject<SoundEvent> DISCO_PAYADA = register("disco.payada");
 
+    /** Las felicitaciones de los cuatro Fundadores al vencer al Mandinga (sus voces, clonadas de sus grabaciones). */
+    public static final String[] FUNDADORES = {"nicolas", "agustin", "matias", "thiago"};
+    @SuppressWarnings("unchecked")
+    public static final RegistryObject<SoundEvent>[] FELICITA = new RegistryObject[FUNDADORES.length];
+
+    static {
+        for (int i = 0; i < FUNDADORES.length; i++) {
+            FELICITA[i] = register("fundadores.felicita_" + FUNDADORES[i]);
+        }
+    }
+
     private static RegistryObject<SoundEvent> register(String name) {
         return SOUNDS.register(name, () -> new SoundEvent(new ResourceLocation(TrucoYa.MOD_ID, name)));
     }

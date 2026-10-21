@@ -437,10 +437,13 @@ final class Round {
                 }
             }
             int value = rules.envidoPoints(dealt.get(winnerSeat));
-            for (int k = 0; k < n; k++) {      // cada uno canta sus tantos, empezando por la mano
-                int s = (mano + k) % n;
-                match.emit(GameEvent.tantoDeclared(s, rules.envidoPoints(dealt.get(s)), false));
+            int[] tantos = new int[n];
+            boolean[] tiene = new boolean[n];
+            for (int s = 0; s < n; s++) {
+                tantos[s] = rules.envidoPoints(dealt.get(s));
+                tiene[s] = true;
             }
+            cantarTantos(tantos, tiene, false);
             closeEnvido();
             match.emit(GameEvent.envidoResolved(winnerSeat, value, points));
             award(winTeam, points, "Envido (" + value + ")");
@@ -459,6 +462,31 @@ final class Round {
             }
             closeEnvido();
             award(callerTeam, points, "Envido no querido");
+        }
+    }
+
+    /**
+     * Los tantos se cantan como en la mesa de verdad, empezando por la mano: el primero dice su número; después,
+     * cada rival del que va ganando o lo supera (y dice el suyo) o dice "son buenas" sin mostrar nada; los
+     * compañeros del que va ganando no hablan. En empate gana el más cerca de la mano, así que empatar es
+     * "son buenas".
+     */
+    private void cantarTantos(int[] tantos, boolean[] tiene, boolean flor) {
+        int lider = -1;
+        for (int k = 0; k < n; k++) {
+            int s = (mano + k) % n;
+            if (!tiene[s]) continue;
+            if (lider < 0) {
+                lider = s;
+                match.emit(GameEvent.tantoDeclared(s, tantos[s], flor));
+            } else if (teamOf(s) == teamOf(lider)) {
+                continue;                                   // su compañero ya va ganando: se calla
+            } else if (tantos[s] > tantos[lider]) {
+                lider = s;
+                match.emit(GameEvent.tantoDeclared(s, tantos[s], flor));
+            } else {
+                match.emit(GameEvent.tantoDeclared(s, GameEvent.SON_BUENAS, flor));
+            }
         }
     }
 
@@ -566,12 +594,13 @@ final class Round {
                 }
             }
         }
-        for (int k = 0; k < n; k++) {
-            int s = (mano + k) % n;
-            if (rules.hasFlor(dealt.get(s))) {
-                match.emit(GameEvent.tantoDeclared(s, rules.florPoints(dealt.get(s)), true));
-            }
+        int[] tantos = new int[n];
+        boolean[] tiene = new boolean[n];
+        for (int s = 0; s < n; s++) {
+            tiene[s] = rules.hasFlor(dealt.get(s));
+            tantos[s] = tiene[s] ? rules.florPoints(dealt.get(s)) : 0;
         }
+        cantarTantos(tantos, tiene, true);
         int winTeam = teamOf(bestSeat);
         int pts = alResto ? match.faltaPointsFor(winTeam) : points;
         closeFlor();

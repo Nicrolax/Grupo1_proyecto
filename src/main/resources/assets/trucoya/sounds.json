@@ -1237,5 +1237,45 @@
     "sounds": [
       "trucoya:cinematica/final_9"
     ]
+  },
+  "fundadores.felicita_nicolas": {
+    "category": "voice",
+    "subtitle": "subtitles.trucoya.fundador",
+    "sounds": [
+      {
+        "name": "trucoya:voz/fundadores/felicita_nicolas",
+        "attenuation_distance": 24
+      }
+    ]
+  },
+  "fundadores.felicita_agustin": {
+    "category": "voice",
+    "subtitle": "subtitles.trucoya.fundador",
+    "sounds": [
+      {
+        "name": "trucoya:voz/fundadores/felicita_agustin",
+        "attenuation_distance": 24
+      }
+    ]
+  },
+  "fundadores.felicita_matias": {
+    "category": "voice",
+    "subtitle": "subtitles.trucoya.fundador",
+    "sounds": [
+      {
+        "name": "trucoya:voz/fundadores/felicita_matias",
+        "attenuation_distance": 24
+      }
+    ]
+  },
+  "fundadores.felicita_thiago": {
+    "category": "voice",
+    "subtitle": "subtitles.trucoya.fundador",
+    "sounds": [
+      {
+        "name": "trucoya:voz/fundadores/felicita_thiago",
+        "attenuation_distance": 24
+      }
+    ]
   }
 }

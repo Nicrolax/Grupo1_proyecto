@@ -3,10 +3,10 @@ Pone las voces REALES de los cuatro Fundadores en la cinemática final.
 
 Grabaciones: una por persona, en cualquier formato que lea ffmpeg (audio de WhatsApp .opus/.ogg, .m4a del
 celular, .mp3, .wav...), con el nombre de quien habla:
-    grabaciones/nicolas.*   grabaciones/agustin.*   grabaciones/matias.*   grabaciones/thiago.*
+    tools/grabaciones/nicolas.*   agustin.*   matias.*   thiago.*
 (No hace falta que estén las cuatro: las que falten siguen con la voz sintética.)
 
-Si alguno cambió la frase, va en grabaciones/textos.txt, una línea por persona, para el subtítulo:
+Si alguno cambió la frase, va en tools/grabaciones/textos.txt, una línea por persona, para el subtítulo:
     matias: Esto se festeja con un asado...
 
 Qué hace con cada grabación: corta los silencios del principio y el final, saca el zumbido grave y un poco
@@ -187,7 +187,7 @@ def main():
         args = [a for a in args if a != prueba_ruta]
     else:
         prueba_ruta = None
-    carpeta = args[0] if args else os.path.join(HERE, "..", "grabaciones")
+    carpeta = args[0] if args else os.path.join(HERE, "grabaciones")
     textos = {}
     tp = os.path.join(carpeta, "textos.txt")
     if os.path.exists(tp):

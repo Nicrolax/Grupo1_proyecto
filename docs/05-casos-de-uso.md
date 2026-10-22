@@ -185,7 +185,7 @@ Fuente: [`uml/casos_de_uso.puml`](uml/casos_de_uso.puml).
 - **Actor:** Administrador. **Requisitos:** RF-27, RF-28.
 - **Precondición:** PC con Windows y conexión a internet.
 - **Flujo principal:**
-  1. El administrador corre `servidor.bat`.
+  1. El administrador corre `scripts\servidor.bat`.
   2. El script compila el mod, instala Forge para servidor, consigue GeckoLib y pregunta por la EULA de Minecraft.
   3. El administrador arranca con `servidor\iniciar.bat`.
   4. Si quiere, edita `trucoya-server.toml`.

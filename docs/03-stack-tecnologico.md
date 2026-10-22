@@ -28,7 +28,7 @@ cliente del juego y el *backend* es el servidor (integrado si se juega solo, ded
 | **GitHub Actions** | Integración continua: compila y corre las pruebas en cada push. | Gratis para repositorios de GitHub; detecta enseguida si un cambio rompe algo. |
 | **PMD 7** (reglas en `config/pmd/reglas.xml`) | Análisis estático: errores probables, seguridad y buenas prácticas. | Herramienta libre, estándar para Java (ver [08-calidad.md](08-calidad.md)). |
 | **PlantUML** | Diagramas UML en `docs/uml/*.puml` (texto versionado). | Los diagramas se mantienen como código, junto con el programa. |
-| Scripts `.bat` de Windows | `probar.bat`, `jugar.bat`, `actualizar.bat`, `servidor.bat` y `armar_jar.bat`. | El grupo trabaja en Windows: con doble clic se baja el JDK, se compila, se juega y se arma el servidor. |
+| Scripts `.bat` de Windows | `scripts\probar.bat`, `scripts\jugar.bat`, `scripts\actualizar.bat`, `scripts\servidor.bat` y `scripts\armar_jar.bat`. | El grupo trabaja en Windows: con doble clic se baja el JDK, se compila, se juega y se arma el servidor. |
 
 ## 3.3 Herramientas de producción de contenido (no van dentro del `.jar`)
 
@@ -49,7 +49,7 @@ se sube al repositorio.
 
 | Declarado | Dónde está en el código |
 |---|---|
-| Java 8 | `build.gradle` (`java.toolchain.languageVersion = 8`); el JDK 8 lo baja `probar.bat`. |
+| Java 8 | `build.gradle` (`java.toolchain.languageVersion = 8`); el JDK 8 lo baja `scripts\probar.bat`. |
 | Forge 36.2.39, Minecraft 1.16.5 | `gradle.properties` (`forge_version`, `minecraft_version`), `META-INF/mods.toml`. |
 | GeckoLib 3.0.106 | `gradle.properties` (`geckolib_version`), `entity/GauchoEntity.java` (`IAnimatable`), `client/GauchoModel.java`, `client/GauchoRenderer.java`. |
 | SimpleChannel | `network/TrucoNetwork.java` y los 10 `*Packet.java`. |

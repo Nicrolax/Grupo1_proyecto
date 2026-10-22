@@ -1,0 +1,70 @@
+﻿GUION - VOCES DE LOS FUNDADORES (cinemática final de Truco Ya)
+================================================================
+
+ESTADO: las cuatro voces ya están en el juego (versión 1.7.0). Desde la 1.7.3 también se usan para frases
+nuevas (la felicitación al vencer al Mandinga): se clonan con scripts\clonar_voces.bat (ver más abajo). Si alguno quiere regrabar, reemplace su
+archivo en esta carpeta y corra: python3 tools/usar_grabaciones.py
+
+La escena: ya le ganaste al Viejo Vizcacha. Atardecer en la Estancia del Caudillo. Llegan cuatro jinetes
+al fogón, se bajan del caballo y cada uno le habla al jugador, uno por vez y en este orden, con la cámara
+de cerca. Después el Vizcacha dice "Siéntense, muchachos" y se sientan todos en ronda alrededor del fuego.
+
+Hablen natural, como le hablarían a un amigo que acaba de ganar algo importante. No hace falta exagerar
+el acento: con hablar como hablan siempre alcanza.
+
+Cada uno tiene un tiempo máximo. Si se pasan un poquito no pasa nada: hasta un 12 % lo acelero sin
+cambiar el tono de la voz.
+
+
+1) NICOLÁS — llega primero, con una sonrisa enorme
+   "¡No lo puedo creer! Le ganaste al Viejo Vizcacha. Nadie le ganaba hace setenta años, ¿te das cuenta?"
+   Máximo: 9 s (ideal: 6 a 8 s)
+   Cómo: sorprendido y contento. La pregunta del final, de verdad, como esperando que el otro dimensione.
+
+2) AGUSTÍN
+   "Te vi jugar la última mano y no sabía si mirar o taparme los ojos. Pero ganaste, que es lo que importa."
+   Máximo: 9 s
+   Cómo: medio riéndose de los nervios que pasó; "pero ganaste" más tranquilo, con orgullo.
+
+3) MATÍAS
+   "Che, muy lindo todo, pero esto se festeja con un asado. ¿Alguien trajo carne? ... ¿Nadie? Bueno, voy yo."
+   Máximo: 9 s
+   Cómo: interrumpe el momento emotivo. Después de "¿Alguien trajo carne?" una pausa de un segundo,
+   como mirando a los otros, y "Bueno, voy yo" resignado.
+
+4) THIAGO — cierra él, tiene un poco más de tiempo
+   "Gracias por jugar, en serio. Hicimos este juego entre amigos, con muchas ganas, y ahora vos también
+   sos parte de esta mesa."
+   Máximo: 11 s
+   Cómo: más tranquilo y sincero, es el momento lindo del final. Que suene a invitación a sentarse.
+
+
+SI QUIEREN CAMBIAR SU FRASE
+  Se puede, mientras entre en el tiempo. Escriban la frase nueva en un archivo textos.txt (en esta
+  misma carpeta), así sale bien en el subtítulo:
+      matias: Che, muy lindo todo, pero...
+
+
+CÓMO GRABAR
+  - Con el celular alcanza: la grabadora de voz o un audio de WhatsApp.
+  - En un cuarto chico y callado. Un cuarto con ropa, cortinas o la cama hace menos eco que la cocina o
+    el baño. Nada de ventilador, tele ni música de fondo.
+  - El celular a un palmo de la boca (unos 20 cm), un poco de costado para no soplarle el micrófono.
+  - Hablen como si el otro estuviera a dos metros, al lado del fuego: con ganas, pero sin gritar.
+  - Dejen un segundo de silencio antes y después. Los silencios los corto yo.
+  - Graben 3 o 4 tomas y quédense con la que más les guste.
+
+
+DÓNDE PONERLAS
+  Una grabación por persona, con su nombre (el formato da igual: .opus, .ogg, .m4a, .mp3, .wav):
+      nicolas.m4a   agustin.m4a   matias.m4a   thiago.m4a
+  Pónganlas en esta carpeta (MOD-trucoya\tools\grabaciones) o mándenlas por el chat de Claude.
+  Mientras no estén, en la película aparece solo el subtítulo de cada uno, sin voz.
+
+
+FRASES NUEVAS CON SUS VOCES (clonación)
+  1. Escribir la frase en tools\grabaciones\clonar_textos.json (id, quién y texto).
+  2. Doble clic en scripts\clonar_voces.bat (la primera vez baja unos 2 GB a la carpeta .clonar, que no se sube a GitHub).
+     Usa XTTS-v2 (licencia Coqui Public Model License, uso no comercial) y las muestras de tools\grabaciones\referencias.
+  3. Salen tres tomas por frase en tools\grabaciones\clonadas. Se elige la mejor y se pasa al juego con:
+       python3 tools/felicitaciones.py tools/grabaciones/clonadas nicolas=0 agustin=1 matias=0 thiago=1

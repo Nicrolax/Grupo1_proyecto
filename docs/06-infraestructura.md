@@ -8,7 +8,7 @@ Fuente: [`uml/infraestructura.puml`](uml/infraestructura.puml).
 
 | Componente | Dónde corre | Qué contiene |
 |---|---|---|
-| **Cliente** | PC de cada jugador (Windows 10/11), JVM Java 8 | Minecraft Java 1.16.5, Forge 36.2.39, `trucoya-1.7.3.jar` y `geckolib-forge-1.16.5-3.0.106.jar` en `.minecraft\mods`. Dibuja el mundo, las pantallas y el audio. |
+| **Cliente** | PC de cada jugador (Windows 10/11), JVM Java 8 | Minecraft Java 1.16.5, Forge 36.2.39, `trucoya-1.7.4.jar` y `geckolib-forge-1.16.5-3.0.106.jar` en `.minecraft\mods`. Dibuja el mundo, las pantallas y el audio. |
 | **Servidor dedicado** | PC del grupo o un VPS, JVM Java 8 (`-Xmx3G`) | `forge-1.16.5-36.2.39.jar` (servidor), con el mod y GeckoLib en `mods/`. Es la **autoridad** de todo: partidos, IA, progreso. |
 | **Servidor integrado** | La misma JVM del cliente, al jugar solo | Igual que el dedicado, pero comunicado en memoria (sin red). |
 | **Almacenamiento** ("base de datos") | Disco del servidor, carpeta `world/` | Formato NBT: `region/*.mca` (bloques y mesas), `playerdata/*.dat` (el progreso de cada jugador va dentro de `PlayerPersisted`) y `data/trucoya_salamanca.dat` (`WorldSavedData`). |
@@ -23,7 +23,7 @@ Fuente: [`uml/infraestructura.puml`](uml/infraestructura.puml).
 |---|---|---|---|
 | Cliente → servidor | TCP, protocolo de Minecraft 1.16.5 con el *handshake* de Forge | **25565** (por defecto, en `server.properties`) | Todo el juego. Por la misma conexión viaja el canal propio **`trucoya:main`** (Forge SimpleChannel, protocolo **v7**). Si el mod no coincide en versión, el cliente no entra. |
 | Cliente y servidor → Mojang | HTTPS | 443 | Inicio de sesión y verificación de la cuenta. |
-| PC de desarrollo → repositorios Maven, Gradle y Adoptium | HTTPS | 443 | Bajar dependencias al compilar (`gradlew`, `probar.bat`). |
+| PC de desarrollo → repositorios Maven, Gradle y Adoptium | HTTPS | 443 | Bajar dependencias al compilar (`gradlew`, `scripts\probar.bat`). |
 | PC de desarrollo → GitHub | HTTPS | 443 | `git push`; GitHub Actions compila en la nube. |
 | Un jugador solo | En memoria | — | El servidor integrado comparte la JVM con el cliente. |
 
@@ -45,6 +45,6 @@ bloque-entidad de Minecraft (`SUpdateTileEntityPacket`), solo cuando cambia.
 
 ## 6.4 Formas de desplegar
 
-1. **Un jugador:** `jugar.bat` (desarrollo), o el `.jar` en `.minecraft\mods` con Forge instalado.
+1. **Un jugador:** `scripts\jugar.bat` (desarrollo), o el `.jar` en `.minecraft\mods` con Forge instalado.
 2. **LAN:** "Abrir en LAN" desde el juego, o servidor dedicado, con la IP local y el puerto 25565.
-3. **Internet:** servidor dedicado (`servidor.bat`, ver [SERVIDOR.md](../SERVIDOR.md)), con el puerto 25565/TCP abierto en el router o con una VPN de juego (Radmin VPN, ZeroTier).
+3. **Internet:** servidor dedicado (`scripts\servidor.bat`, ver [SERVIDOR.md](SERVIDOR.md)), con el puerto 25565/TCP abierto en el router o con una VPN de juego (Radmin VPN, ZeroTier).

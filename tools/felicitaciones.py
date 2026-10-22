@@ -2,7 +2,7 @@
 Prepara las felicitaciones de los Fundadores (voces clonadas con tools/clonar_voces.py en la PC) para el juego:
 elige la toma, recorta silencios (también las pausas largas del medio), empareja el volumen con las otras voces
 y las guarda en .ogg mono (para que se escuchen desde donde está cada uno).
-Uso: python3 tools/felicitaciones.py <carpeta con las tomas .wav> nicolas=0 agustin=1 matias=0 thiago=1
+Uso: python3 tools/felicitaciones.py tools/grabaciones/clonadas nicolas=0 agustin=1 matias=0 thiago=1
 """
 import json, os, subprocess, sys, tempfile, wave
 import numpy as np

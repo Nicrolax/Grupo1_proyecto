@@ -1,0 +1,23 @@
+name: Proponer una idea
+description: Algo nuevo para el juego, o una mejora.
+labels: ["idea"]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: La idea
+      description: Qué te gustaría que tuviera el mod.
+    validations:
+      required: true
+  - type: textarea
+    id: para_que
+    attributes:
+      label: Para qué sirve
+      description: Qué problema resuelve o qué lo haría más divertido.
+    validations:
+      required: true
+  - type: textarea
+    id: como
+    attributes:
+      label: Cómo te lo imaginás
+      description: Opcional. Cómo se jugaría, cómo se vería, en qué parte del juego.

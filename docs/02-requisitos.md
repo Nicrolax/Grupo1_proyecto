@@ -46,7 +46,7 @@ funcionales en orden.
 
 | ID | Requisito | Verificación |
 |---|---|---|
-| RF-27 | El mod funciona en un **servidor dedicado**. El progreso de cada jugador (prestigio, sellos, barajas, pedidos) queda guardado con su personaje y sobrevive a la muerte y al reinicio. | `servidor.bat`; entrar con dos clientes. |
+| RF-27 | El mod funciona en un **servidor dedicado**. El progreso de cada jugador (prestigio, sellos, barajas, pedidos) queda guardado con su personaje y sobrevive a la muerte y al reinicio. | `scripts\servidor.bat`; entrar con dos clientes. |
 | RF-28 | El administrador configura en `serverconfig/trucoya-server.toml` si la Salamanca puede cambiar la hora y el clima, si hay pedidos y la espera de `/truco cinematica`. | Editar el archivo y reiniciar. |
 | RF-29 | **Modo tráiler:** el jugador marca lugares y la cámara de cine los recorre con carteles y música. | `/truco trailer marcar`, luego `/truco trailer`. |
 | RF-30 | **Comandos de prueba para operadores:** `/truco completar [todo]`, `/truco gaucho <rol> [nivel]`, `/truco salamanca …`, `/truco prestigio set …`. | Probarlos como operador y como no operador. |

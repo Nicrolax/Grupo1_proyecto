@@ -1,19 +1,19 @@
 """
 Clona las voces de los cuatro Fundadores (sus grabaciones) para decir frases nuevas.
 
-Corre en la PC (lo llama clonar_voces.bat, que instala todo en la carpeta .clonar, que no se sube a GitHub).
+Corre en la PC (lo llama scripts/clonar_voces.bat, que instala todo en la carpeta .clonar, que no se sube a GitHub).
 Modelo: XTTS-v2 de Coqui (clonación de voz con unos segundos de muestra, habla español). Licencia del modelo:
 Coqui Public Model License (uso no comercial), que alcanza para este proyecto de clase.
 
-Entrada:  grabaciones/referencias/<quien>.wav   (las grabaciones de cada uno, ya limpias)
-          grabaciones/clonar_textos.json         (id, quién y qué dice)
-Salida:   grabaciones/clonadas/<id>_<toma>.wav   (tres tomas por frase; después se elige la mejor)
+Entrada:  tools/grabaciones/referencias/<quien>.flac (las grabaciones de cada uno, ya limpias)
+          tools/grabaciones/clonar_textos.json       (id, quién y qué dice)
+Salida:   tools/grabaciones/clonadas/<id>_<toma>.wav   (tres tomas por frase; después se elige la mejor)
 """
 import json, os, sys, time
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 RAIZ = os.path.dirname(AQUI)
-GRAB = os.path.join(RAIZ, "grabaciones")
+GRAB = os.path.join(AQUI, "grabaciones")
 TOMAS = int(os.environ.get("TOMAS", "3"))
 
 
@@ -29,7 +29,7 @@ def main():
     sal = os.path.join(GRAB, "clonadas")
     os.makedirs(sal, exist_ok=True)
     for l in datos["lineas"]:
-        ref = os.path.join(GRAB, "referencias", l["quien"] + ".wav")
+        ref = os.path.join(GRAB, "referencias", l["quien"] + ".flac")
         for k in range(TOMAS):
             out = os.path.join(sal, "%s_%d.wav" % (l["id"], k))
             if os.path.exists(out):

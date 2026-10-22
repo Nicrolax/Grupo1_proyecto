@@ -36,7 +36,7 @@ Resultado actual: **33 de 33 correctas**.
 ## 7.2 Guía de prueba en vivo (para el docente)
 
 **Preparación:**
-1. Instalar Forge 1.16.5-36.2.39 y copiar a `.minecraft\mods` los dos `.jar` de la carpeta `entrega/`. En la PC de desarrollo, `jugar.bat` hace lo mismo.
+1. Instalar Forge 1.16.5-36.2.39 y copiar a `.minecraft\mods` el `.jar` de Truco Ya (de Modrinth, o el que arma `scripts\armar_jar.bat` en `entrega/`) y el de GeckoLib. En la PC de desarrollo, `scripts\jugar.bat` hace lo mismo.
 2. Crear un mundo nuevo en **Creativo, con trucos activados**. Así se pueden usar los comandos de operador para ir rápido.
 
 | # | Prueba | Pasos | Resultado esperado | RF |
@@ -61,7 +61,7 @@ Resultado actual: **33 de 33 correctas**.
 | 18 | Pedidos | Buscar un paisano con «¡Pedido!» (o esperar un día), clic derecho dos veces. Cumplirlo. | El pedido aparece en la Libreta; al cumplirlo da esmeraldas y no se puede aceptar de nuevo. | RF-24 |
 | 19 | Logros | Tecla L. | Aparece el árbol «Truco Ya» con los logros ganados. | RF-26 |
 | 20 | Tráiler | Dos veces `/truco trailer marcar` en lugares distintos, después `/truco trailer 5`. | La cámara recorre las marcas con carteles y música, y el jugador vuelve a su lugar. | RF-29 |
-| 21 | Servidor | `servidor.bat`, `servidor\iniciar.bat`, entrar con dos clientes y sentarse a la misma mesa. | Cada uno ve solo sus cartas y la jugada de uno le llega al otro. | RF-27 |
+| 21 | Servidor | `scripts\servidor.bat`, `servidor\iniciar.bat`, entrar con dos clientes y sentarse a la misma mesa. | Cada uno ve solo sus cartas y la jugada de uno le llega al otro. | RF-27 |
 | 22 | Permisos | Desde un cliente sin operador: `/truco completar`. | El comando no existe para ese jugador. | RF-30, RNF-S4 |
 | 23 | Configuración | Poner `cambiaElCielo = "NUNCA"` en `trucoya-server.toml`, reiniciar y hacer `/truco salamanca visita`. | La historia sigue, pero no cambian la hora ni el clima. | RF-28 |
 | 24 | Idioma | Opciones → Idioma → English. | Los ítems tienen nombre en inglés. | RF-31 |

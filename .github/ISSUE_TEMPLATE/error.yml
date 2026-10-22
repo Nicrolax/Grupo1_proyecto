@@ -1,0 +1,63 @@
+name: Reportar un error
+description: Algo no funciona como debería.
+labels: ["error"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Gracias por avisar. Antes de mandarlo:
+        - fijate que tengas la última versión de Truco Ya y GeckoLib 3.0.106;
+        - buscá si ya hay un issue igual;
+        - si usás otros mods, probá con Truco Ya y GeckoLib solos.
+  - type: input
+    id: version
+    attributes:
+      label: Versión de Truco Ya
+      placeholder: "1.7.3"
+    validations:
+      required: true
+  - type: dropdown
+    id: donde
+    attributes:
+      label: ¿Dónde pasa?
+      options:
+        - Un jugador
+        - Servidor (multijugador)
+        - Las dos
+    validations:
+      required: true
+  - type: textarea
+    id: descripcion
+    attributes:
+      label: Qué pasó
+      description: Qué pasó y qué esperabas que pasara. Si podés, sumá capturas o un video.
+    validations:
+      required: true
+  - type: textarea
+    id: pasos
+    attributes:
+      label: Cómo repetirlo
+      description: Los pasos para que nos pase a nosotros también.
+      placeholder: |
+        1. Sentarse a una mesa contra un paisano
+        2. Cantar envido
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: Registro del juego
+      description: Arrastrá acá el archivo `latest.log` (carpeta `.minecraft/logs`).
+    validations:
+      required: true
+  - type: textarea
+    id: crash
+    attributes:
+      label: Reporte de cierre
+      description: Si el juego se cerró, arrastrá el archivo de `.minecraft/crash-reports`.
+  - type: textarea
+    id: mods
+    attributes:
+      label: Otros mods
+      description: Si tenés otros mods instalados, cuáles.

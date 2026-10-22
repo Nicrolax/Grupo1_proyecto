@@ -96,7 +96,7 @@ public class TapeteScreen extends Screen {
     /** Tamaño de las cartas en la vista compacta: crece con la pantalla (mínimo 34 x 51). */
     private int manoW = 34, manoH = 51;
     private int muestraW = 24, muestraH = 36;
-    private static final int BOTON_W = 66, BOTON_H = 14;
+    private static final int BOTON_W = 80, BOTON_H = 14;
 
     private int left;
     private int top;
@@ -178,6 +178,16 @@ public class TapeteScreen extends Screen {
                     btn -> TrucoNetwork.CHANNEL.sendToServer(TableActionPacket.bet(pos()))));
             this.addButton(new Button(bx + 61, by + 88, 59, 14, new StringTextComponent("Retirar"),
                     btn -> TrucoNetwork.CHANNEL.sendToServer(TableActionPacket.withdraw(pos()))));
+        }
+    }
+
+    /** En la botonera compacta los botones son angostos: los cantos largos van abreviados (el atajo sale al pasar el mouse). */
+    private static String labelCorto(ActionType a) {
+        switch (a) {
+            case CONTRAFLOR_AL_RESTO: return "Flor al resto";
+            case CON_FLOR_ME_ACHICO: return "Me achico";
+            case ME_VOY_AL_MAZO: return "Al mazo";
+            default: return label(a);
         }
     }
 
@@ -638,7 +648,7 @@ public class TapeteScreen extends Screen {
                 if (!v.isLegal(a)) continue;
                 int bx = x0 + col * (BOTON_W + 2);
                 int by = y0 + fila * (BOTON_H + 2);
-                this.addButton(new Button(bx, by, BOTON_W, BOTON_H, new StringTextComponent(label(a)), btn -> send(a),
+                this.addButton(new Button(bx, by, BOTON_W, BOTON_H, new StringTextComponent(labelCorto(a)), btn -> send(a),
                         (btn, ms, mx, my) -> this.renderTooltip(ms, new StringTextComponent("Atajo: " + atajo(a)), mx, my)));
                 if (++col == columnas) {
                     col = 0;

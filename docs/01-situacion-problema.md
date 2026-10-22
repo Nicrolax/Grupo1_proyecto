@@ -88,7 +88,7 @@ Consecuencias:
 | **B. Plugin de servidor (Spigot/Paper)** | No requiere instalar nada en el cliente. | Un plugin no puede agregar modelos 3D, texturas propias, animaciones, sonidos ni pantallas nuevas sin "trucos" con ítems de vanilla. No permitiría la mesa con cartas visibles, los gauchos animados ni el tapete. |
 | **C. Datapack de Minecraft** | Sin programar en Java. | La lógica del truco (estados de la mano, envido, flor, IA con simulación) es inviable con comandos. Tampoco permite interfaces nuevas. |
 | **D. Mod para Fabric** | Más liviano y actualizado. | En 1.16.5, Forge trae de fábrica lo que el proyecto necesita: canal de red entre cliente y servidor, configuración de servidor, generación de estructuras, eventos y registro de contenido. Con Fabric habría que sumar varias librerías aparte. Además, es el cargador con más mods compatibles en esa versión. |
-| **E. Minecraft más nuevo (1.20+)** | Más funciones del motor. | 1.16.5 sigue siendo de las versiones con más mods disponibles, corre en computadoras modestas y usa Java 8, que viene con el entorno de desarrollo del proyecto (`probar.bat` lo descarga solo). |
+| **E. Minecraft más nuevo (1.20+)** | Más funciones del motor. | 1.16.5 sigue siendo de las versiones con más mods disponibles, corre en computadoras modestas y usa Java 8, que viene con el entorno de desarrollo del proyecto (`scripts\probar.bat` lo descarga solo). |
 | **F. Mod para Forge 1.16.5 (elegida)** | Contenido propio completo (bloques, entidades, pantallas, sonidos, estructuras), cliente y servidor con la misma base de código, y servidor dedicado para jugar en grupo. | — |
 
 ## 1.6 Por qué la solución elegida resuelve el problema

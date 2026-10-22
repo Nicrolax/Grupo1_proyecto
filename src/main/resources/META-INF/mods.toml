@@ -1,15 +1,19 @@
 modLoader="javafml"
 loaderVersion="[36,)"
 license="MIT"
+issueTrackerURL="https://github.com/Nicrolax/Grupo1_proyecto/issues"
 
 [[mods]]
 modId="trucoya"
 version="${file.jarVersion}"
 displayName="Truco Ya"
-authors="Truco Ya"
+displayURL="https://modrinth.com/mod/truco-ya"
+logoFile="trucoya_logo.png"
+authors="Nicolás Bentancour, Agustín Perdomo, Matías Piñeyro y Thiago Rodríguez (Grupo 1)"
+credits="Modelos y animaciones con GeckoLib. Ver CREDITOS.md en el repositorio."
 description='''
-Truco Uruguayo en Minecraft: mazo español con muestra y piezas, envido, flor y truco,
-mobiliario criollo, pulperías, gauchos con IA y yerba mate.
+El truco uruguayo dentro de Minecraft: muestra y piezas, envido, flor y truco, contra paisanos con IA o
+con amigos. Con modo historia por las pulperías del Uruguay hasta el Viejo Vizcacha y la Salamanca.
 '''
 
 [[dependencies.trucoya]]

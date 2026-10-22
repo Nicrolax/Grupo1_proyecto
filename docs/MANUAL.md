@@ -270,8 +270,8 @@ Nicolás te recibe apenas entrás al mundo, unos segundos después de cargar (ta
 
 #### Las voces reales de los Fundadores
 Desde 1.7.0, las cuatro líneas de los Fundadores en la cinemática final tienen **las voces de verdad** de
-Nicolás, Agustín, Matías y Thiago. Las grabaciones originales están en `grabaciones/`. El guion y cómo
-grabar están en `grabaciones/LEEME.txt`.
+Nicolás, Agustín, Matías y Thiago. Las grabaciones originales están en `tools/grabaciones/`. El guion y cómo
+grabar están en `tools/grabaciones/LEEME.txt`.
 
 `python3 tools/usar_grabaciones.py` procesa cada grabación:
 - La limpia con un limpiador de voz neuronal (GTCRN) que saca el ruido de fondo y el eco del cuarto. Solo se queda con la versión limpia si la nota de oyente (DNSMOS) mejora.
@@ -281,7 +281,7 @@ grabar están en `grabaciones/LEEME.txt`.
 - La acomoda al turno de 9,5 s de cada uno; si se pasa, la acelera hasta un 12 % sin cambiar el tono.
 - Rehace la música, que baja el volumen donde habla cada uno, y los tiempos de los subtítulos.
 
-Para cambiar una voz, se reemplaza el archivo en `grabaciones/` y se vuelve a correr.
+Para cambiar una voz, se reemplaza el archivo en `tools/grabaciones/` y se vuelve a correr.
 
 ## Torneos en las pulperías
 
@@ -345,8 +345,8 @@ Comandos de prueba (operadores): `/truco salamanca visita` (que venga el Vizcach
 
 - **Los cuatro Fundadores te felicitan.** Cuando le ganás al Mandinga en la Salamanca, después del amanecer llegan
   los cuatro creadores juntos a caballo, se paran en media ronda delante tuyo y cada uno te felicita **con su
-  propia voz**: las frases nuevas se hicieron clonando las grabaciones que mandaron (`grabaciones/`), con el
-  modelo XTTS-v2 (`clonar_voces.bat` en la PC, `tools/clonar_voces.py` y `tools/felicitaciones.py`). Después te
+  propia voz**: las frases nuevas se hicieron clonando las grabaciones que mandaron (`tools/grabaciones/`), con el
+  modelo XTTS-v2 (`scripts\clonar_voces.bat` en la PC, `tools/clonar_voces.py` y `tools/felicitaciones.py`). Después te
   regalan la Baraja de los Fundadores y se van. Si ya habías vencido al Mandinga antes de esta versión, vienen la
   próxima vez que entres. Para probarlo: `/truco fundadores` (operadores).
 - **"Son buenas".** Al querer un envido (o comparar flores), los tantos se cantan como en la mesa de verdad: la
@@ -524,7 +524,7 @@ carteles que cuentan el mod y cierra con el título y los nombres de los cuatro 
 
 ## Servidor (1.6.0)
 
-Se puede jugar en un servidor con amigos. Los pasos están en **[SERVIDOR.md](../SERVIDOR.md)**: `servidor.bat` arma
+Se puede jugar en un servidor con amigos. Los pasos están en **[SERVIDOR.md](SERVIDOR.md)**: `scripts\servidor.bat` arma
 todo solo. La historia es de cada jugador.
 
 Las opciones del servidor están en `serverconfig/trucoya-server.toml`:

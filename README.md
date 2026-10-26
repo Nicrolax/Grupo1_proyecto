@@ -12,7 +12,7 @@
 [![Licencia: MIT](https://img.shields.io/github/license/Nicrolax/Grupo1_proyecto?color=blue)](LICENSE)
 [![Compilar y probar](https://github.com/Nicrolax/Grupo1_proyecto/actions/workflows/build.yml/badge.svg)](https://github.com/Nicrolax/Grupo1_proyecto/actions/workflows/build.yml)
 
-<img src="docs/capturas/tapete.jpg" alt="Una mano de truco: el tapete con tu mano y las bazas" width="760">
+<img src="docs/capturas/tapete.jpg" alt="Una mano de truco: el rival canta truco, con tu mano y las tres bazas a la derecha" width="760">
 
 </div>
 
@@ -33,7 +33,7 @@ pulperías del Uruguay hasta el Viejo Vizcacha y la leyenda de la Salamanca.
   tantos se cantan como en la mesa: "son buenas".
 - 🪑 **Mesa de Truco, Sillas Criollas y Anotador de porotos**: las cartas se ven sobre la mesa, y el tapete
   muestra solo lo que se puede hacer en cada momento.
-- 🧉 **Paisanos con IA de seis niveles**, que leen la mesa, farolean y se hacen señas en el 2 contra 2.
+- 🧉 **Paisanos con IA de cinco niveles** (y el Viejo Vizcacha, en un sexto), que leen la mesa, farolean y se hacen señas en el 2 contra 2.
 - 🗺️ **Modo historia**: seis regiones con su pulpería, torneos, cuadreras, la Estancia del Caudillo, el
   Viejo Vizcacha, dos cinemáticas y el capítulo de La Salamanca contra el Mandinga.
 - 🎴 **Diez barajas coleccionables**, pedidos de los paisanos, desafíos del día y la Libreta del Truquero.
@@ -44,7 +44,7 @@ pulperías del Uruguay hasta el Viejo Vizcacha y la leyenda de la Salamanca.
 <img src="docs/capturas/pulperia.jpg" alt="Una pulpería en la sabana" width="380">
 <img src="docs/capturas/estancia.jpg" alt="La Estancia del Caudillo" width="380">
 <img src="docs/capturas/vizcacha.jpg" alt="El Viejo Vizcacha, en la cinemática El Último Truco" width="380">
-<img src="docs/capturas/fundadores.jpg" alt="Los cuatro Fundadores llegan a felicitarte" width="380">
+<img src="docs/capturas/amanecer.jpg" alt="El amanecer en la Salamanca: Ledesma y el Vizcacha" width="380">
 </div>
 
 ## 📥 Descargas
@@ -57,7 +57,7 @@ pulperías del Uruguay hasta el Viejo Vizcacha y la leyenda de la Salamanca.
 
 1. Instalá [Forge 1.16.5-36.2.39](https://files.minecraftforge.net) (el "Installer").
 2. Copiá a la carpeta `mods` de Minecraft (en Windows, `%appdata%\.minecraft\mods`):
-   - `trucoya-1.7.4.jar`;
+   - `trucoya-1.7.5.jar`;
    - **[GeckoLib 3.0.106](https://modrinth.com/mod/geckolib)** para Forge 1.16.5 (dependencia obligatoria).
 3. Abrí Minecraft con el perfil de Forge.
 4. Poné una **Mesa de Truco** y una **Silla Criolla**, sentate y apretá **J**.

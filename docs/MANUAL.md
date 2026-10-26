@@ -339,7 +339,8 @@ tiempos de cada escena (`cinematica/escena_*.json`, que leen igual el servidor y
 Mandinga en la mesa. Las plantillas de día y de noche: `tools/estructuras_paso.py`.
 
 Comandos de prueba (operadores): `/truco salamanca visita` (que venga el Vizcacha ahora),
-`/truco salamanca partida` (directo al Paso, de noche), `/truco salamanca cancelar`.
+`/truco salamanca partida` (directo al Paso, de noche), `/truco salamanca amanecer` (al Paso y, sin jugar la
+partida, directo al amanecer y la llegada de los Fundadores), `/truco salamanca cancelar`.
 
 ## Los Fundadores al final, "son buenas" y arreglos (1.7.3)
 

@@ -28,7 +28,8 @@ código y audio (voces) asistidos por IA. Es obligatorio desde agosto de 2026.
 
 | Imagen | Título | Destacada |
 |---|---|---|
-| `tapete.jpg` | Una mano de truco | sí |
+| `tapete.jpg` | Una mano de truco: el rival canta truco | sí |
+| `son_buenas.jpg` | El envido: "son buenas" | |
 | `mesa.jpg` | Las cartas sobre la mesa | |
 | `pulperia.jpg` | Una pulpería en la sabana | |
 | `estancia.jpg` | La Estancia del Caudillo | |
@@ -36,8 +37,9 @@ código y audio (voces) asistidos por IA. Es obligatorio desde agosto de 2026.
 | `vizcacha.jpg` | El Viejo Vizcacha | |
 | `paso.jpg` | La cinemática "El Último Truco" | |
 | `carga.jpg` | La carga al alba | |
+| `amanecer.jpg` | El amanecer en la Salamanca | |
+| `ledesma.jpg` | La despedida del Negro Ledesma | |
 | `libreta.jpg` | La Libreta del Truquero | |
-| `fundadores.jpg` | Los cuatro Fundadores | |
 
 ## Cada versión
 

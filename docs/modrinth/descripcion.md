@@ -15,7 +15,7 @@ la leyenda de la Salamanca.
   cantan como en la mesa: "son buenas".
 - 🪑 **Mesa de Truco, Sillas Criollas y Anotador de porotos.** Las cartas se ven sobre la mesa, y el tapete muestra
   solo lo que podés hacer en cada momento.
-- 🧉 **Paisanos con IA de seis niveles**, que leen la mesa, farolean y se hacen señas en el 2 contra 2.
+- 🧉 **Paisanos con IA de cinco niveles** (y el Viejo Vizcacha, en un sexto), que leen la mesa, farolean y se hacen señas en el 2 contra 2.
 - 🗺️ **Modo historia:** seis regiones con su pulpería, torneos, carreras cuadreras, la Estancia del Caudillo, el
   Viejo Vizcacha, cinemáticas con voces y el capítulo de La Salamanca contra el Mandinga.
 - 🎴 **Diez barajas coleccionables**, pedidos de los paisanos, desafíos del día y la Libreta del Truquero.

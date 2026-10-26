@@ -317,11 +317,11 @@ public final class Fundadores {
         }
     }
 
-    /** Dónde se para cada uno: media ronda de frente al jugador, a unos 3,5 bloques. */
+    /** Dónde se para cada uno: media ronda de frente al jugador, a unos 5,5 bloques (a caballo no lo tapan). */
     private static Vector3d lugar(ServerPlayerEntity p, Grupo gr, int i) {
         double base = Math.atan2(gr.frente.z, gr.frente.x);
-        double a = base + Math.toRadians((i - 1.5D) * 30.0D);
-        double x = p.getX() + Math.cos(a) * 3.6D, z = p.getZ() + Math.sin(a) * 3.6D;
+        double a = base + Math.toRadians((i - 1.5D) * 24.0D);
+        double x = p.getX() + Math.cos(a) * 5.5D, z = p.getZ() + Math.sin(a) * 5.5D;
         BlockPos b = new BlockPos(x, p.getY(), z);
         ServerWorld sw = p.getLevel();
         int y = sw.getHeight(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, b.getX(), b.getZ());

@@ -36,5 +36,5 @@ con esas herramientas, no se editan a mano.
 - Las pruebas tienen que pasar (`gradlew coreTests`); si cambiás reglas del truco, agregá una prueba en
   `src/test/java/com/trucoya/core/TrucoCoreTests.java`.
 - Si el cambio se nota en el juego, sumalo a [CHANGELOG.md](CHANGELOG.md) en "Sin publicar".
-- Si usaste IA generativa para una parte importante del aporte, decilo en la descripción (ver
-  [Uso de inteligencia artificial](README.md#-uso-de-inteligencia-artificial)).
+- Si usaste IA generativa para una parte importante del aporte, decilo en la descripción (ver la sección
+  "Uso de inteligencia artificial" del [README](README.md)).

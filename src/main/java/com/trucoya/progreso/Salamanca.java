@@ -82,6 +82,8 @@ public final class Salamanca {
         boolean viajeHecho;
         boolean nocheArmada;
         boolean ganaron;
+        /** Prueba de operador (/truco salamanca amanecer): se saltea la partida y se pasa al amanecer, como si ganaran. */
+        boolean saltarPartida;
         int esperaFin = -1;
         int proximoRayo = 40;
         Vector3d ultimoLugar = Vector3d.ZERO;
@@ -346,6 +348,16 @@ public final class Salamanca {
         }
         revancha(p, o);
         return null;
+    }
+
+    /** Para probar el final (/truco salamanca amanecer): directo al Paso y, sin jugar la partida, al amanecer. */
+    @Nullable
+    public static String probarAmanecer(ServerPlayerEntity p) {
+        String no = irAlPaso(p);
+        if (no == null && corrida != null) {
+            corrida.saltarPartida = true;
+        }
+        return no;
     }
 
     public static void cancelar(String motivo) {
@@ -801,6 +813,12 @@ public final class Salamanca {
         BlockPos o = c.origen;
         if (o == null) {
             abortar("sin Paso");
+            return;
+        }
+        if (c.saltarPartida && c.t >= 20 * 3 && gaucho(w, c.mandinga) != null && gaucho(w, c.ledesma) != null) {
+            CinematicaServidor.liberar(p);
+            c.ganaron = true;
+            cambiar(c, Fase.AMANECER);
             return;
         }
         if (c.t % 40 == 0) {

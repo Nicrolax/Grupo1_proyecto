@@ -6,6 +6,16 @@ y las versiones usan [versionado semántico](https://semver.org/lang/es/). El de
 
 ## [Sin publicar]
 
+## [1.7.5] - 2026-10-25
+
+### Agregado
+- Comando de prueba `/truco salamanca amanecer` (operadores): va al Paso de las Ánimas y salta la partida, para ver
+  el final de la Salamanca y la llegada de los Fundadores sin jugar los 30 puntos.
+
+### Cambiado
+- Los cuatro Fundadores se paran a unos 5 bloques en media ronda: a caballo ya no tapan la vista.
+- Capturas nuevas en `docs/capturas/`.
+
 ## [1.7.4] - 2026-10-21
 
 ### Agregado
@@ -71,7 +81,7 @@ y las versiones usan [versionado semántico](https://semver.org/lang/es/). El de
 - Documentación completa del proyecto (requisitos, UML, casos de uso, infraestructura, pruebas, calidad) e
   informe en PDF.
 
-## [1.6.0] - 2026-10
+## [1.6.0]
 
 ### Agregado
 - Diez barajas coleccionables, cada una con su diseño y su forma de ganarla.
@@ -81,7 +91,7 @@ y las versiones usan [versionado semántico](https://semver.org/lang/es/). El de
 - Servidor dedicado con `scripts\servidor.bat` y opciones en `trucoya-server.toml`.
 - Capítulo 7: La Salamanca.
 
-## [1.0.0 – 1.5.0] - 2026-10
+## [1.0.0 – 1.5.0]
 
 Las seis fases del proyecto:
 - **Fase 1:** motor del truco uruguayo (Java puro, con pruebas automáticas).
@@ -91,6 +101,8 @@ Las seis fases del proyecto:
 - **Fase 5:** mate, picada, bebidas, discos de música criolla y logros.
 - **Fase 6:** el Camino del Truco, torneos, cuadreras y la cinemática "El Último Truco".
 
+[1.7.5]: https://github.com/Nicrolax/Grupo1_proyecto/commits/main
+[1.7.4]: https://github.com/Nicrolax/Grupo1_proyecto/commit/d7488c9
 [1.7.3]: https://github.com/Nicrolax/Grupo1_proyecto/commit/cafc900
 [1.7.2]: https://github.com/Nicrolax/Grupo1_proyecto/commit/0a982bb
 [1.7.1]: https://github.com/Nicrolax/Grupo1_proyecto/commit/373720b

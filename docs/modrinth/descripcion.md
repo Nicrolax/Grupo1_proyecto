@@ -44,3 +44,37 @@ capturas son del juego.
 Hecho por el **Grupo 1** de Programación Avanzada (UTU): Nicolás Bentancour, Agustín Perdomo, Matías Piñeyro y
 Thiago Rodríguez. Código MIT; licencias de terceros en
 [CREDITOS.md](https://github.com/Nicrolax/Grupo1_proyecto/blob/main/CREDITOS.md).
+
+---
+
+## English
+
+**Truco Ya** brings **Uruguayan Truco, with the real rules**, to Minecraft 1.16.5 (Forge): the *muestra* and its
+*piezas*, envido, flor and contraflor, truco and vale cuatro, *malas y buenas*. Play against AI gauchos or with
+friends on a server, and follow a **story mode** through Uruguay's country stores (*pulperías*) up to the Viejo
+Vizcacha and the legend of the Salamanca. **The game text and voices are in Spanish.**
+
+- 🃏 **Full Uruguayan Truco:** muestra and piezas; envido, real envido and falta envido; flor, contraflor and "con
+  flor me achico"; truco, retruco and vale cuatro; ties (*pardas*); matches to 30 or 40 points. Points are called
+  the way people do at the table ("son buenas").
+- 🪑 **Truco Table, Criollo Chairs and a bean scoreboard.** Cards are shown on the table, and the play mat only
+  offers the moves you can make.
+- 🧉 **AI gauchos with five skill levels** (plus the Viejo Vizcacha on a sixth) that read the table, bluff and
+  signal their partner in 2v2.
+- 🗺️ **Story mode:** six regions with their country store, tournaments, horse races, the Caudillo's Estancia, the
+  Viejo Vizcacha, voiced cinematics and the Salamanca chapter against the Devil (*Mandinga*).
+- 🎴 **Ten collectible decks**, villager requests, daily challenges and the Truco player's notebook.
+- 🍖 **Criollo culture:** mate, snacks, drinks, music discs (milonga, candombe, waltz, payada) and gaucho weapons.
+- 🌐 **Multiplayer:** the server is the only authority and each player only sees their own cards.
+
+**Getting started:** install Forge 1.16.5-36.2.39 and **GeckoLib 3.0.106** (required). Place a Truco Table and a
+Criollo Chair, sit down and press **J**. Choose 1v1 or 2v2; empty seats are taken by gauchos. The mod is needed
+on both client and server.
+
+**AI use:** the idea, game and story design, rules and testing are by Grupo 1. Much of the code and of the tools
+that generate textures, structures, music and sounds was written with AI assistance (Claude). Character voices are
+synthetic (Kokoro and Piper); the Founders' voices are their real recordings, and new lines were cloned from them
+with their consent (XTTS-v2). No image generators were used: screenshots are from the game.
+
+Made by **Grupo 1** (Programación Avanzada, UTU): Nicolás Bentancour, Agustín Perdomo, Matías Piñeyro and Thiago
+Rodríguez.

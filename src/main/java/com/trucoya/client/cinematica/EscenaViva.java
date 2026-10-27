@@ -298,24 +298,41 @@ public final class EscenaViva {
                     double k = u(t, 0.0D, 5.0D);
                     return p(local(17.5D, 9.0D - 0.5D * k, -3.0D + 2.0D * k), local(17.5D, 4.0D, 17.0D), 60);
                 }
-                if (t < 11.0D) {
-                    double k = u(t, 5.0D, 11.0D);
-                    return p(local(17.5D, 4.8D - 0.6D * k, 1.0D + 6.5D * k), local(17.5D, 3.8D, 17.0D), 58 - 6 * k);
+                if (t < 7.3D) {
+                    // por la puerta, hacia la mesa que se acaba de levantar
+                    double k = u(t, 5.0D, 7.3D);
+                    return p(local(17.5D, 4.8D - 0.4D * k, 1.0D + 5.5D * k), local(17.5D, 4.0D, 17.0D), 58 - 4 * k);
                 }
-                if (t < 16.0D) return p(local(16.2D, 4.5D, 15.6D), local(18.5D, 4.2D, 17.5D), 50);
-                if (t < 22.0D) return p(local(17.3D, 4.3D, 16.3D), local(18.5D, 4.15D, 17.5D), 45);
-                if (t < 27.0D) {
-                    Entity v = level.getEntity(guiaId);
-                    Vector3d hV = ojos(v, local(17.5D, 4.2D, 18.5D));
-                    Vector3d pos = local(17.5D, 4.4D, 15.9D);
-                    return p(pos, hV, 48);
+                // Adentro, cada uno de frente y desde arriba del paño (nunca a través de un respaldo): la cámara
+                // sigue en vivo a quien habla.
+                Vector3d hM = ojos(actor("mandinga"), local(18.5D, 4.6D, 17.5D));
+                Vector3d hV = ojos(level.getEntity(guiaId), local(17.5D, 4.6D, 18.5D));
+                Vector3d hL = ojos(actor("ledesma"), local(16.5D, 4.6D, 17.5D));
+                if (t < 12.0D) {
+                    // "Mirá quién se acordó del camino..."
+                    double k = u(t, 7.3D, 12.0D);
+                    return frente(hM, 1.3D - 0.15D * k, 0.45D, 0.14D, 50 - 4 * k);
                 }
-                if (t < 32.2D) return p(local(17.0D, 4.4D, 15.8D), local(18.5D, 4.1D, 17.5D), 46);
-                if (t < 37.4D) return p(local(17.9D, 4.3D, 16.0D), local(16.5D, 4.1D, 17.5D), 44);
-                return p(local(17.5D, 5.6D, 13.2D), local(17.5D, 3.6D, 17.5D), 62);
+                if (t < 16.5D) return frente(hV, 1.45D, -0.4D, 0.12D, 48);       // "Vengo por el Negro"
+                if (t < 21.7D) return frente(hM, 1.2D, -0.38D, 0.08D, 44);       // "¿Y con qué pensás pagar?"
+                if (t < 26.95D) return frente(hV, 1.4D, 0.42D, 0.12D, 46);      // "Una partida, a treinta"
+                if (t < 32.0D) {
+                    // "...y la próxima me traen la baraja": se acerca despacio, apenas de abajo
+                    double k = u(t, 26.95D, 32.0D);
+                    return frente(hM, 1.25D - 0.25D * k, 0.3D, 0.02D - 0.04D * k, 46 - 6 * k);
+                }
+                if (t < 37.2D) return frente(hL, 1.3D, 0.36D, 0.1D, 44);         // Ledesma
+                // "Sentate, gurí": la mesa entera, desde donde se va a sentar el jugador (alto, sobre la silla)
+                double k = u(t, 37.2D, duracion);
+                return p(local(17.5D, 6.1D - 0.3D * k, 14.2D + 0.5D * k), local(17.5D, 3.95D, 17.6D), 58);
             }
             case Escenas.AMANECER: {
-                if (t < 6.0D) return p(local(17.2D, 4.3D, 16.2D), local(18.5D, 4.15D, 17.5D), 46);
+                if (t < 6.0D) {
+                    // "¡No! ¡No puede ser!": el Mandinga, de frente, mientras se esfuma
+                    double k = u(t, 0.0D, 6.0D);
+                    return frente(ojos(actor("mandinga"), local(18.5D, 4.6D, 17.5D)), 1.15D + 0.35D * k, 0.38D,
+                            0.1D, 46 + 4 * k);
+                }
                 // Ledesma y el Vizcacha quedan parados entre la mesa (al norte, con las sillas) y el mostrador (al
                 // sur). Las cámaras los siguen en vivo y nunca miran por encima de los respaldares: o se ponen en el
                 // pasillo entre los dos, o bien altas del lado de la mesa (más arriba que cualquier silla).
@@ -374,13 +391,35 @@ public final class EscenaViva {
                 return p(hV.subtract(un.scale(1.25D)).add(sT.scale(0.4D)).add(0, 0.05D, 0), hV.add(0, -0.05D, 0), 48);
             }
             case Escenas.DERROTA: {
-                if (t < 4.6D) return p(local(17.2D, 4.3D, 16.2D), local(18.5D, 4.15D, 17.5D), 46);
-                double k = u(t, 4.6D, 9.5D);
-                return p(local(17.5D, 5.4D + 0.6D * k, 14.0D - 0.7D * k), local(17.5D, 3.6D, 17.5D), 58 + 6 * k);
+                Vector3d hM = ojos(actor("mandinga"), local(18.5D, 4.6D, 17.5D));
+                if (t < 4.6D) return frente(hM, 1.25D, 0.38D, 0.1D, 46);         // "Je, je..."
+                double negro = info.marca("negro", 9.0D);
+                if (t < negro + 0.5D) {
+                    // "El Negro se queda conmigo": se le acerca, apenas de abajo
+                    double k = u(t, 4.6D, negro);
+                    return frente(hM, 1.3D - 0.3D * k, -0.32D, 0.03D - 0.05D * k, 44 - 6 * k);
+                }
+                // en la tapera otra vez: el Vizcacha ("Otra noche será, gurí")
+                Vector3d hV = ojos(level.getEntity(guiaId), local(17.5D, 4.6D, 18.5D));
+                return frente(hV, 1.6D, 0.45D, 0.15D, 50);
             }
             default:
                 return p(pl.getEyePosition(1.0F), pl.getEyePosition(1.0F).add(pl.getLookAngle()), 70);
         }
+    }
+
+    /**
+     * Un primer plano de frente a {@code h} (los ojos de alguien sentado a la mesa): la cámara se pone del lado del
+     * centro de la mesa, a {@code dist} bloques, corrida {@code lado} a la derecha del que mira y {@code alto} más
+     * arriba de sus ojos. Así nunca queda detrás de un respaldo ni adentro de otro personaje.
+     */
+    private Toma.Pose frente(Vector3d h, double dist, double lado, double alto, double fov) {
+        Vector3d c = local(17.5D, h.y, 17.5D);
+        Vector3d un = c.subtract(h);
+        un = new Vector3d(un.x, 0, un.z);
+        un = un.lengthSqr() < 0.04D ? new Vector3d(0, 0, -1) : un.normalize();
+        Vector3d s = new Vector3d(-un.z, 0, un.x);
+        return p(h.add(un.scale(dist)).add(s.scale(lado)).add(0, alto, 0), h.add(0, -0.05D, 0), fov);
     }
 
     /** Si entre lo que se mira y la cámara hay una pared, la cámara se acerca (suave). */

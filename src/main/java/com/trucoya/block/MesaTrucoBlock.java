@@ -41,10 +41,17 @@ public class MesaTrucoBlock extends Block {
     @Override
     public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity player,
                                 Hand hand, BlockRayTraceResult hit) {
-        // Con un bloque en la mano (por ejemplo el Anotador) se deja colocar arriba de la mesa
-        // en vez de abrir el tapete; sentado en la silla, el clic sigue abriendo el tapete.
+        // Con un bloque en la mano se deja colocar arriba de la mesa en vez de abrir el tapete (sentado en la
+        // silla, el clic sigue abriendo el tapete). El Anotador no: tapaba las cartas; va al lado de la mesa.
         boolean sentado = player.getVehicle() instanceof SeatEntity;
         if (!sentado && player.getItemInHand(hand).getItem() instanceof BlockItem) {
+            if (((BlockItem) player.getItemInHand(hand).getItem()).getBlock() instanceof AnotadorBlock) {
+                if (!world.isClientSide) {
+                    player.displayClientMessage(new StringTextComponent(
+                            "El anotador va al lado de la mesa (en el piso o en un mueble), no arriba: tapa las cartas."), true);
+                }
+                return ActionResultType.sidedSuccess(world.isClientSide);
+            }
             return ActionResultType.PASS;
         }
         if (world.isClientSide) {

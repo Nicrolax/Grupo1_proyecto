@@ -31,7 +31,7 @@ pulperías del Uruguay hasta el Viejo Vizcacha y la leyenda de la Salamanca.
 - 🃏 **Truco uruguayo completo**: muestra y piezas, envido, real envido y falta envido, flor, contraflor y
   "con flor me achico", truco, retruco y vale cuatro, pardas, partidos a 30 o 40 en malas y buenas. Los
   tantos se cantan como en la mesa: "son buenas".
-- 🪑 **Mesa de Truco, Sillas Criollas y Anotador de porotos**: las cartas se ven sobre la mesa, y el tapete
+- 🪑 **Mesa de Truco, Sillas Criollas y Anotador de porotos**: la baza en juego se ve sobre la mesa, y el tapete
   muestra solo lo que se puede hacer en cada momento.
 - 🧉 **Paisanos con IA de cinco niveles** (y el Viejo Vizcacha, en un sexto), que leen la mesa, farolean y se hacen señas en el 2 contra 2.
 - 🗺️ **Modo historia**: seis regiones con su pulpería, torneos, cuadreras, la Estancia del Caudillo, el
@@ -57,7 +57,7 @@ pulperías del Uruguay hasta el Viejo Vizcacha y la leyenda de la Salamanca.
 
 1. Instalá [Forge 1.16.5-36.2.39](https://files.minecraftforge.net) (el "Installer").
 2. Copiá a la carpeta `mods` de Minecraft (en Windows, `%appdata%\.minecraft\mods`):
-   - `trucoya-1.7.5.jar`;
+   - `trucoya-1.7.6.jar`;
    - **[GeckoLib 3.0.106](https://modrinth.com/mod/geckolib)** para Forge 1.16.5 (dependencia obligatoria).
 3. Abrí Minecraft con el perfil de Forge.
 4. Poné una **Mesa de Truco** y una **Silla Criolla**, sentate y apretá **J**.

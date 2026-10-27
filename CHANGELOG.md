@@ -6,6 +6,19 @@ y las versiones usan [versionado semántico](https://semver.org/lang/es/). El de
 
 ## [Sin publicar]
 
+## [1.7.6] - 2026-10-27
+
+### Agregado
+- Comando de prueba `/truco salamanca derrota` (operadores): al Paso y directo a la escena de la derrota.
+
+### Cambiado
+- Sobre la mesa se ve solo la baza que se está jugando, en cruz en el medio del paño; el mazo y la muestra van
+  en la esquina de quien repartió, sin salirse de la mesa.
+- El Anotador de porotos ya no va arriba de la mesa (tapaba las cartas): las estructuras no lo traen, no se deja
+  poner encima y, en mundos viejos, al repartir se levanta. Al lado de la mesa sigue contando.
+- Cámaras nuevas en la llegada a la Salamanca, la derrota y el comienzo del amanecer: cada uno de frente mientras
+  habla, sin tomas a través de los respaldos.
+
 ## [1.7.5] - 2026-10-25
 
 ### Agregado
@@ -101,7 +114,8 @@ Las seis fases del proyecto:
 - **Fase 5:** mate, picada, bebidas, discos de música criolla y logros.
 - **Fase 6:** el Camino del Truco, torneos, cuadreras y la cinemática "El Último Truco".
 
-[1.7.5]: https://github.com/Nicrolax/Grupo1_proyecto/commits/main
+[1.7.6]: https://github.com/Nicrolax/Grupo1_proyecto/releases/tag/v1.7.6
+[1.7.5]: https://github.com/Nicrolax/Grupo1_proyecto/releases/tag/v1.7.5
 [1.7.4]: https://github.com/Nicrolax/Grupo1_proyecto/commit/d7488c9
 [1.7.3]: https://github.com/Nicrolax/Grupo1_proyecto/commit/cafc900
 [1.7.2]: https://github.com/Nicrolax/Grupo1_proyecto/commit/0a982bb

@@ -84,6 +84,8 @@ public final class Salamanca {
         boolean ganaron;
         /** Prueba de operador (/truco salamanca amanecer): se saltea la partida y se pasa al amanecer, como si ganaran. */
         boolean saltarPartida;
+        /** Con saltarPartida: true salta a la derrota en vez del amanecer (para probar). */
+        boolean perderAdrede;
         int esperaFin = -1;
         int proximoRayo = 40;
         Vector3d ultimoLugar = Vector3d.ZERO;
@@ -356,6 +358,17 @@ public final class Salamanca {
         String no = irAlPaso(p);
         if (no == null && corrida != null) {
             corrida.saltarPartida = true;
+        }
+        return no;
+    }
+
+    /** Para probar (/truco salamanca derrota): al Paso y, sin jugar la partida, directo a la derrota. */
+    @Nullable
+    public static String probarDerrota(ServerPlayerEntity p) {
+        String no = irAlPaso(p);
+        if (no == null && corrida != null) {
+            corrida.saltarPartida = true;
+            corrida.perderAdrede = true;
         }
         return no;
     }
@@ -817,8 +830,8 @@ public final class Salamanca {
         }
         if (c.saltarPartida && c.t >= 20 * 3 && gaucho(w, c.mandinga) != null && gaucho(w, c.ledesma) != null) {
             CinematicaServidor.liberar(p);
-            c.ganaron = true;
-            cambiar(c, Fase.AMANECER);
+            c.ganaron = !c.perderAdrede;
+            cambiar(c, c.ganaron ? Fase.AMANECER : Fase.DERROTA);
             return;
         }
         if (c.t % 40 == 0) {

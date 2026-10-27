@@ -130,7 +130,7 @@ class Template:
     def silla(self, x, y, z, facing):
         self.set(x, y, z, f"trucoya:silla_criolla[facing={facing}]")
 
-    def mesa_con_sillas(self, x, y, z, cuatro=False, clandestina=False, anotador=True, eje="x"):
+    def mesa_con_sillas(self, x, y, z, cuatro=False, clandestina=False, anotador=False, eje="x"):
         self.mesa(x, y, z, clandestina, 4 if cuatro else 2)
         if eje == "x" or cuatro:
             self.silla(x - 1, y, z, "east")

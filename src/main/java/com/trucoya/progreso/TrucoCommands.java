@@ -202,6 +202,11 @@ public final class TrucoCommands {
                             if (no != null) ctx.getSource().sendFailure(new StringTextComponent(no));
                             return no == null ? 1 : 0;
                         }))
+                        .then(Commands.literal("derrota").executes(ctx -> {
+                            String no = Salamanca.probarDerrota(ctx.getSource().getPlayerOrException());
+                            if (no != null) ctx.getSource().sendFailure(new StringTextComponent(no));
+                            return no == null ? 1 : 0;
+                        }))
                         .then(Commands.literal("cancelar").executes(ctx -> {
                             Salamanca.cancelar("comando");
                             return 1;

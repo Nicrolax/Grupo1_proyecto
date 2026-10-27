@@ -597,8 +597,20 @@ public class MesaTrucoTileEntity extends TileEntity implements ITickableTileEnti
             GauchoEntity m = npcEntity(asientoMandinga);
             if (m != null) m.say("Repartí, Vizcacha... que la noche es corta para el que pierde.");
         }
+        sacarAnotadorDeArriba();
         updateAnotador();
         afterChange();
+    }
+
+    /** Un anotador arriba de la mesa (de mundos viejos) tapa las cartas: se levanta y queda en el piso. */
+    private void sacarAnotadorDeArriba() {
+        if (level == null || level.isClientSide) {
+            return;
+        }
+        BlockPos up = worldPosition.above();
+        if (level.getBlockState(up).getBlock() instanceof AnotadorBlock) {
+            level.destroyBlock(up, true);
+        }
     }
 
     private boolean consumeFicha(ServerPlayerEntity player) {
@@ -1675,12 +1687,17 @@ public class MesaTrucoTileEntity extends TileEntity implements ITickableTileEnti
         if (level == null || match == null) {
             return;
         }
-        BlockPos up = worldPosition.above();
-        BlockState state = level.getBlockState(up);
-        if (state.getBlock() instanceof AnotadorBlock) {
-            BlockState updated = ((AnotadorBlock) state.getBlock()).withScore(state, match.getScore(0), match.getScore(1));
-            if (updated != state) {
-                level.setBlock(up, updated, 3);
+        // el anotador va al lado de la mesa: en el piso o arriba de un mueble, a dos bloques como mucho
+        for (BlockPos q : BlockPos.betweenClosed(worldPosition.offset(-2, -1, -2), worldPosition.offset(2, 1, 2))) {
+            if (q.equals(worldPosition.above())) {
+                continue;
+            }
+            BlockState state = level.getBlockState(q);
+            if (state.getBlock() instanceof AnotadorBlock) {
+                BlockState updated = ((AnotadorBlock) state.getBlock()).withScore(state, match.getScore(0), match.getScore(1));
+                if (updated != state) {
+                    level.setBlock(q.immutable(), updated, 3);
+                }
             }
         }
     }

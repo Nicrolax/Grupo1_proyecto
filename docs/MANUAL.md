@@ -28,8 +28,8 @@ java -cp out com.trucoya.core.TrucoCoreTests
 ## Cómo se juega (Fase 2)
 
 1. Fabricá una **Mesa de Truco** y hasta cuatro **Sillas Criollas**; poné las sillas pegadas a los
-   lados de la mesa (se orientan solas hacia ella). Opcional: un **Anotador con Porotos** encima de la mesa
-   (con el anotador en la mano, clic derecho sobre la mesa). Las recetas aparecen en el libro de recetas.
+   lados de la mesa (se orientan solas hacia ella). Opcional: un **Anotador con Porotos** al lado de la mesa
+   (en el piso o arriba de un mueble, a dos bloques como mucho; encima de la mesa no, porque tapa las cartas). Las recetas aparecen en el libro de recetas.
 2. Clic derecho en una silla para sentarte: se abre el tapete. (Shift o la tecla de bajarse para levantarte.)
 3. Elegí modalidad (1 contra 1 o 2 contra 2), 30 o 40 puntos y con o sin flor, y tocá **Repartir**.
    Los lugares vacíos los ocupan paisanos automáticos (bot básico).
@@ -142,7 +142,7 @@ Las teclas G y J se cambian en Opciones → Controles → Truco Ya.
 | Selva | Palafito de madera de jungla con techo de hojas y sandías |
 | Montaña | Casa de pirca con techo de lajas, corral de piedra con llamas y una apacheta |
 
-- Todas tienen pulpero detrás de la reja, una mesa 2 contra 2 y mesas 1 contra 1 con anotador, y parroquianos.
+- Todas tienen pulpero detrás de la reja, una mesa 2 contra 2 y mesas 1 contra 1, y parroquianos.
 - **Cada aldea tiene su pulpería** (con el estilo de su bioma), pegada a una de las casas de las orillas,
   mirando al pueblo y sin pisar ninguna construcción. Además hay pulperías sueltas en el campo.
 - Ubicarlas: `/locate trucoya:pulperia_aldea` (la de la aldea más cercana) o `/locate trucoya:pulperia`.
@@ -340,7 +340,23 @@ Mandinga en la mesa. Las plantillas de día y de noche: `tools/estructuras_paso.
 
 Comandos de prueba (operadores): `/truco salamanca visita` (que venga el Vizcacha ahora),
 `/truco salamanca partida` (directo al Paso, de noche), `/truco salamanca amanecer` (al Paso y, sin jugar la
-partida, directo al amanecer y la llegada de los Fundadores), `/truco salamanca cancelar`.
+partida, directo al amanecer y la llegada de los Fundadores), `/truco salamanca derrota` (lo mismo, pero a la
+escena de la derrota), `/truco salamanca cancelar`.
+
+## Mesa más limpia y cámaras de la Salamanca (1.7.6)
+
+- **Sobre la mesa, solo la baza que se juega:** una carta delante de cada uno, en cruz en el medio del paño.
+  Cuando alguien tira la primera carta de la baza siguiente, las de la anterior se levantan (mientras tanto quedan
+  a la vista, para ver quién la ganó). Las tres bazas siguen en la columna del costado de la pantalla.
+- **El mazo y la muestra** van en la esquina a la derecha de quien repartió, sin salirse del paño.
+- **El anotador ya no va arriba de la mesa:** tapaba las cartas. Las estructuras ya no lo traen, no se deja
+  poner encima de la mesa, y si en un mundo viejo había uno, al repartir se levanta y queda en el piso. Puesto
+  al lado de la mesa (a dos bloques como mucho) sigue contando los porotos.
+- **Las cámaras de la Salamanca:** en la llegada, la derrota y el comienzo del amanecer, cada uno aparece de
+  frente y desde arriba del paño mientras habla; ninguna toma queda detrás de un respaldo.
+- **Si perdés contra el Mandinga** el Vizcacha no te viene a buscar de nuevo: amanecés en el Paso, y otra noche
+  volvés con el Farol de las Ánimas en la mano. Las luces malas te marcan el camino y, cerca del Paso, el Vizcacha
+  ya te está esperando para la revancha.
 
 ## Los Fundadores al final, "son buenas" y arreglos (1.7.3)
 
@@ -362,7 +378,6 @@ partida, directo al amanecer y la llegada de los Fundadores), `/truco salamanca 
   sentado a una mesa o durmiendo, no venía. Ahora el primer atardecer tiene tres horas de juego, y si ese día no
   pudo, a partir del día siguiente viene a cualquier hora en cuanto estés a cielo abierto. Si estás adentro, te
   avisa: "Se oye un galope a lo lejos...".
-- **El anotador de porotos no tapa las cartas:** con el anotador encima de la mesa, las cartas van apoyadas arriba.
 - **Las bazas, bien al costado:** en pantallas grandes quedan en una columna contra el borde derecho, centradas
   a lo alto; si no entran, de a dos por fila.
 - `/truco completar todo` también te da la Baraja de Oro (antes solo la habilitaba en la colección).

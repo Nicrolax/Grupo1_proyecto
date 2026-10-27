@@ -16,17 +16,20 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 /**
- * Las cartas sobre la mesa, en el mundo: cada uno juega sus cartas delante suyo (de izquierda a derecha, como
- * en el boliche), la muestra queda boca arriba debajo del mazo, en la esquina de quien repartió. Las ve todo el
- * que esté cerca, no solo los que juegan.
+ * Las cartas sobre la mesa, en el mundo: solo la baza que se está jugando, una carta delante de cada uno, en una
+ * cruz en el medio del paño (cuando alguien tira la primera carta de la baza siguiente, las de la anterior se
+ * levantan). La muestra queda atravesada debajo del mazo, en la esquina de quien repartió. Las ve todo el que esté
+ * cerca, no solo los que juegan.
  */
 @OnlyIn(Dist.CLIENT)
 public class MesaTrucoRenderer extends TileEntityRenderer<MesaTrucoTileEntity> {
 
     /** Medio ancho y media altura de una carta, en bloques (una carta mide 0,21 x 0,315: se lee desde la silla). */
     private static final float HW = 0.105F, HH = 0.1575F;
-    /** Distancia del centro de la mesa al centro de las cartas de cada uno, y separación entre bazas. */
-    private static final float FONDO = 0.325F, PASO = 0.222F;
+    /** Distancia del centro de la mesa al centro de la carta de cada uno (las cuatro no se tocan). */
+    private static final float FONDO = 0.265F;
+    /** Distancia del centro de la mesa al mazo, en cada eje: en la esquina, sin salirse del paño. */
+    private static final float ESQUINA = 0.29F;
     /** Luz mínima sobre las cartas (de 0 a 15): de noche o en un rancho oscuro se siguen leyendo. */
     private static final int LUZ_MINIMA = 11;
     /** Lados de la mesa: norte, este, sur, oeste (hacia donde está sentado cada uno). */
@@ -49,32 +52,34 @@ public class MesaTrucoRenderer extends TileEntityRenderer<MesaTrucoTileEntity> {
         // la misma textura grande del tapete, con mipmaps: nítida de cerca y sin titilar de lejos
         IVertexBuilder b = buffers.getBuffer(RenderType.entityCutoutNoCull(
                 CartasTextura.preparar(Baraja.de(v.baraja).atlasGui())));
-        // con el Anotador de porotos encima de la mesa, las cartas van apoyadas arriba de la tablita y de los
-        // porotos (si no, quedaban tapadas en el medio de la mesa)
-        float y0 = te.getLevel().getBlockState(te.getBlockPos().above()).getBlock()
-                instanceof com.trucoya.block.AnotadorBlock ? 0.115F : 0.0F;
         ms.pushPose();
-        ms.translate(0.0D, y0, 0.0D);
         Matrix4f m = ms.last().pose();
         Matrix3f n = ms.last().normal();
-        // las cartas jugadas, delante de cada uno
-        for (int s = 0; s < v.jugadores; s++) {
+        // solo la baza en juego: la última que tiene alguna carta (la anterior queda a la vista hasta que
+        // alguien abre la siguiente, así se ve quién la ganó)
+        int baza = -1;
+        for (int t = 2; t >= 0 && baza < 0; t--) {
+            for (int s = 0; s < v.jugadores; s++) {
+                if (v.jugadas[t * 4 + s] >= 0) {
+                    baza = t;
+                    break;
+                }
+            }
+        }
+        for (int s = 0; s < v.jugadores && baza >= 0; s++) {
+            int id = v.jugadas[baza * 4 + s];
+            if (id < 0) continue;
             int silla = Math.floorMod(v.silla[s], 4);
             float lx = LADO[silla][0], lz = LADO[silla][1];
             float fx = -lx, fz = -lz;            // hacia el centro de la mesa
             float rx = -fz, rz = fx;             // la derecha de quien está sentado
-            for (int t = 0; t < 3; t++) {
-                int id = v.jugadas[t * 4 + s];
-                if (id < 0) continue;
-                float giro = (((id * 37 + t * 11 + s * 5) % 13) - 6) * 0.018F;   // ninguna queda derechita
-                float c = (float) Math.cos(giro), sn = (float) Math.sin(giro);
-                float ax = rx * c - fx * sn, az = rz * c - fz * sn;   // eje del ancho, girado
-                float bx = fx * c + rx * sn, bz = fz * c + rz * sn;   // eje del alto (hacia el centro), girado
-                float cx = 0.5F + lx * FONDO + rx * (t - 1) * PASO;
-                float cz = 0.5F + lz * FONDO + rz * (t - 1) * PASO;
-                // cada baza un poquito más arriba (y cada asiento a su altura): nunca se pisan dos cartas
-                carta(b, m, n, light, cx, 1.002F + t * 0.0016F + s * 0.0004F, cz, ax, az, bx, bz, id % 10, id / 10);
-            }
+            float giro = (((id * 37 + baza * 11 + s * 5) % 9) - 4) * 0.02F;   // apenas torcida, como tirada
+            float c = (float) Math.cos(giro), sn = (float) Math.sin(giro);
+            float ax = rx * c - fx * sn, az = rz * c - fz * sn;   // eje del ancho, girado
+            float bx = fx * c + rx * sn, bz = fz * c + rz * sn;   // eje del alto (hacia el centro), girado
+            float cx = 0.5F + lx * FONDO, cz = 0.5F + lz * FONDO;
+            // cada asiento a su altura: nunca se pisan dos cartas
+            carta(b, m, n, light, cx, 1.002F + s * 0.0005F, cz, ax, az, bx, bz, id % 10, id / 10);
         }
         // la muestra y el mazo, en la esquina a la derecha de quien repartió
         if (v.repartidor >= 0 && v.repartidor < v.jugadores) {
@@ -82,16 +87,15 @@ public class MesaTrucoRenderer extends TileEntityRenderer<MesaTrucoTileEntity> {
             float lx = LADO[silla][0], lz = LADO[silla][1];
             float fx = -lx, fz = -lz;
             float rx = -fz, rz = fx;
-            float cx = 0.5F + lx * 0.30F + rx * 0.385F, cz = 0.5F + lz * 0.30F + rz * 0.385F;
+            float cx = 0.5F + lx * ESQUINA + rx * ESQUINA, cz = 0.5F + lz * ESQUINA + rz * ESQUINA;
             if (v.muestra >= 0) {
-                // atravesada debajo del mazo, asomando
-                carta(b, m, n, light, cx - rx * 0.05F, 1.0065F, cz - rz * 0.05F, fx, fz, -rx, -rz,
-                        v.muestra % 10, v.muestra / 10);
+                // atravesada debajo del mazo, asomando por los dos lados
+                carta(b, m, n, light, cx, 1.0065F, cz, fx, fz, -rx, -rz, v.muestra % 10, v.muestra / 10);
             }
             int quedan = 40 - 3 * v.jugadores - 1;
             int capas = Math.max(2, quedan / 4);
             for (int k = 0; k < capas; k++) {
-                carta(b, m, n, light, cx - fx * 0.03F, 1.008F + k * 0.0011F, cz - fz * 0.03F, rx, rz, fx, fz, 0, 4);
+                carta(b, m, n, light, cx, 1.008F + k * 0.0011F, cz, rx, rz, fx, fz, 0, 4);
             }
         }
         ms.popPose();
